@@ -79,7 +79,7 @@ function SEO({ description, lang, meta, keywords, title }) {
         .concat(meta)}
     >
       <link
-        href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
+        href="https://fonts.googleapis.com/css?family=Lato|Montserrat:700"
         rel="stylesheet"
       />
     </Helmet>
