@@ -35,8 +35,8 @@ const InsideBurger = styled.div`
   }
 `;
 
-const Hamburger = ({ isOpen }) => (
-  <StyledHamburger>
+const Hamburger = ({ isOpen, ...props }) => (
+  <StyledHamburger {...props}>
     <InsideBurger isOpen={isOpen} />
   </StyledHamburger>
 );

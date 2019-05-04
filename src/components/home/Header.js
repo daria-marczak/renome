@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
@@ -6,6 +6,7 @@ import headerImage from '../../assets/images/home/header.png';
 import logo from '../../assets/images/logo.png';
 import cartIcon from '../../assets/icons/cart.png';
 import Hamburger from './Hamburger';
+import MobileMenu from './MobileMenu';
 
 const StyledHeader = styled.header`
   min-height: 100vh;
@@ -46,23 +47,32 @@ const StyledText = styled.span`
   text-shadow: 1px 1px 2px #fff;
 `;
 
-const Header = ({ cartItems }) => (
-  <>
-    <StyledBar>
-      <img src={logo} alt="Renome logo" />
-      <StyledNavigation>
-        <img src={cartIcon} alt="cart" /> | {cartItems}
-        <Hamburger />
-      </StyledNavigation>
-    </StyledBar>
-    <StyledHeader>
-      <StyledParagraph>
-        made with love <br />
-        <StyledText>for you</StyledText>
-      </StyledParagraph>
-    </StyledHeader>
-  </>
-);
+const Header = ({ cartItems }) => {
+  const [isOpen, toggleMenu] = useState(false);
+
+  const toggleMobileNavigation = () => {
+    toggleMenu(!isOpen);
+  };
+
+  return (
+    <>
+      <StyledBar>
+        <img src={logo} alt="Renome logo" />
+        <StyledNavigation>
+          <img src={cartIcon} alt="cart" /> | {cartItems}
+          <Hamburger onClick={toggleMobileNavigation} />
+        </StyledNavigation>
+      </StyledBar>
+      <StyledHeader>
+        <MobileMenu isOpen={isOpen} />
+        <StyledParagraph>
+          made with love <br />
+          <StyledText>for you</StyledText>
+        </StyledParagraph>
+      </StyledHeader>
+    </>
+  );
+};
 
 Header.propTypes = {
   cartItems: PropTypes.number,

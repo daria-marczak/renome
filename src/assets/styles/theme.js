@@ -1,6 +1,7 @@
 export const theme = {
   primary: '#985e5b',
   black: '#000',
+  white: '#fff',
   font: {
     family: {
       lato: 'Lato, sans-serif',
