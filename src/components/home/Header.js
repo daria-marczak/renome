@@ -14,7 +14,8 @@ const StyledHeader = styled.header`
   background-size: cover;
   font-size: ${({ theme }) => theme.font.size.header};
   color: #fff;
-  letter-spacing: 3px;
+  letter-spacing: 0.04em;
+  font-weight: 700;
   font-family: ${({ theme }) => theme.font.family.montserrat};
 `;
 
@@ -25,7 +26,8 @@ const StyledBar = styled.nav`
   top: 0;
   width: 100%;
   z-index: 11;
-  padding: 32px 12px;
+  padding: 2em 0.85em;
+  font-weight: 700;
   display: flex;
   align-items: center;
   font-size: ${({ theme }) => theme.font.size.paragraph};
@@ -38,8 +40,8 @@ const StyledNavigation = styled.ul`
 
 const StyledParagraph = styled.p`
   position: absolute;
-  bottom: 30px;
-  margin-left: 15px;
+  bottom: 1.5em;
+  margin-left: 0.5em;
   text-shadow: 1px 1px 2px gray;
 `;
 

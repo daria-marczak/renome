@@ -36,7 +36,7 @@ const pages = [
 const MobileMenu = ({ isOpen }) => (
   <StyledList isOpen={isOpen}>
     {pages.map(item => (
-      <StyledLink to={item} isOpen={isOpen} key={item}>
+      <StyledLink to={`/${item}`} isOpen={isOpen} key={item}>
         {item}
       </StyledLink>
     ))}
