@@ -24,6 +24,7 @@ const StyledBar = styled.nav`
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 11;
   padding: 32px 12px;
   display: flex;
   align-items: center;
@@ -60,7 +61,7 @@ const Header = ({ cartItems }) => {
         <img src={logo} alt="Renome logo" />
         <StyledNavigation>
           <img src={cartIcon} alt="cart" /> | {cartItems}
-          <Hamburger onClick={toggleMobileNavigation} />
+          <Hamburger onClick={toggleMobileNavigation} isOpen={isOpen} />
         </StyledNavigation>
       </StyledBar>
       <StyledHeader>

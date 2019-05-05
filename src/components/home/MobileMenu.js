@@ -10,9 +10,17 @@ const StyledList = styled.ul`
   position: fixed;
   flex-direction: column;
   margin-top: 0;
+  display: flex;
   justify-content: center;
   background: ${({ theme }) => theme.white};
-  display: ${({ isOpen }) => (isOpen ? 'flex' : 'none')};
+  transition: transform 0.3s ease-in;
+  transform: translateX(${({ isOpen }) => (isOpen ? '0%' : '-100%')});
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  cursor: pointer;
+  color: ${({ theme }) => theme.black};
 `;
 
 const pages = [
@@ -28,9 +36,9 @@ const pages = [
 const MobileMenu = ({ isOpen }) => (
   <StyledList isOpen={isOpen}>
     {pages.map(item => (
-      <Link to={item} isOpen={isOpen} key={item}>
+      <StyledLink to={item} isOpen={isOpen} key={item}>
         {item}
-      </Link>
+      </StyledLink>
     ))}
   </StyledList>
 );

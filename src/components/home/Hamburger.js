@@ -9,12 +9,15 @@ const StyledHamburger = styled.button`
   right: -8px;
   position: relative;
   top: 4px;
+  cursor: pointer;
 `;
 
 const InsideBurger = styled.div`
-  background-color: ${({ theme }) => theme.black};
+  background-color: ${({ theme, isOpen }) =>
+    isOpen ? 'transparent' : theme.black};
   width: 20px;
   height: 2px;
+  transition: background-color 0.3s 0.1s ease-in;
 
   &::before,
   &::after {
@@ -24,14 +27,19 @@ const InsideBurger = styled.div`
     width: 20px;
     height: 2px;
     background-color: ${({ theme }) => theme.black};
+    transition: transform 0.3s 0.1s ease-in;
   }
 
   &::before {
     top: 3px;
+    transform: translateY(${({ isOpen }) => (isOpen ? '6px' : '0')})
+      rotate(${({ isOpen }) => (isOpen ? '45deg' : '0')});
   }
 
   &::after {
     top: 15px;
+    transform: translateY(${({ isOpen }) => (isOpen ? '-6px' : '0')})
+      rotate(${({ isOpen }) => (isOpen ? '-45deg' : '0')});
   }
 `;
 
