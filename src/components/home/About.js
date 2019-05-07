@@ -7,6 +7,7 @@ const StyledHeading = styled.h1`
   letter-spacing: ;
   margin-bottom: -0.3em;
   font-family: ${({ theme }) => theme.font.family.montserrat};
+  font-size: ${({ theme }) => theme.font.size.header};
 `;
 
 const StyledDescription = styled.p`
@@ -23,10 +24,33 @@ const StyledParagraph = styled.p`
   letter-spacing: 0.1em;
 `;
 
+const StyledSection = styled.section`
+  margin-top: 70px;
+`;
+
+const StyledImageFirst = styled(Img)`
+  max-width: 272px;
+  margin-right: 10px;
+  position: relative !important;
+  transform: translateX(20%);
+`;
+
+const StyledImageSecond = styled(Img)`
+  max-width: 272px;
+  position: relative !important;
+  transform: translateY(-30%);
+`;
+
 const About = ({ data }) => (
-  <>
-    <Img fluid={data.imageOne.childImageSharp.fluid} alt="house" />
-    <Img fluid={data.imageTwo.childImageSharp.fluid} alt="house" />
+  <StyledSection>
+    <StyledImageFirst
+      fluid={data.aboutHouseOne.childImageSharp.fluid}
+      alt="house"
+    />
+    <StyledImageSecond
+      fluid={data.aboutHouseTwo.childImageSharp.fluid}
+      alt="house"
+    />
     <StyledHeading>about</StyledHeading>
     <StyledDescription>we create delicious memories</StyledDescription>
     <StyledParagraph>
@@ -38,7 +62,7 @@ const About = ({ data }) => (
       sumptuous late night desserts. Is one of the few Manhattan restaurants to
       have a coveted 3-star Michelin rating.
     </StyledParagraph>
-  </>
+  </StyledSection>
 );
 
 About.propTypes = {

@@ -10,7 +10,7 @@ import About from '../components/home/About';
 
 const StyledWrapper = styled.div`
   margin: 0 auto;
-  width: 95%;
+  width: 90%;
 `;
 
 const IndexPage = ({ data }) => (
@@ -25,14 +25,14 @@ const IndexPage = ({ data }) => (
 
 export const pageQuery = graphql`
   query {
-    imageOne: file(relativePath: { eq: "images/home/house1.png" }) {
+    aboutHouseOne: file(relativePath: { eq: "images/home/house2.png" }) {
       childImageSharp {
         fluid(maxWidth: 600) {
           ...GatsbyImageSharpFluid_noBase64
         }
       }
     }
-    imageTwo: file(relativePath: { eq: "images/home/house2.png" }) {
+    aboutHouseTwo: file(relativePath: { eq: "images/home/house1.png" }) {
       childImageSharp {
         fluid(maxWidth: 600) {
           ...GatsbyImageSharpFluid_noBase64
