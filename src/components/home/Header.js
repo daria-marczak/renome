@@ -51,10 +51,10 @@ const StyledText = styled.span`
 `;
 
 const Header = ({ cartItems }) => {
-  const [isOpen, toggleMenu] = useState(false);
+  const [isMenuOpen, toggleMenu] = useState(false);
 
   const toggleMobileNavigation = () => {
-    toggleMenu(!isOpen);
+    toggleMenu(!isMenuOpen);
   };
 
   return (
@@ -63,11 +63,11 @@ const Header = ({ cartItems }) => {
         <img src={logo} alt="Renome logo" />
         <StyledNavigation>
           <img src={cartIcon} alt="cart" /> | {cartItems}
-          <Hamburger onClick={toggleMobileNavigation} isOpen={isOpen} />
+          <Hamburger onClick={toggleMobileNavigation} isOpen={isMenuOpen} />
         </StyledNavigation>
       </StyledBar>
       <StyledHeader>
-        <MobileMenu isOpen={isOpen} />
+        <MobileMenu isOpen={isMenuOpen} />
         <StyledParagraph>
           made with love <br />
           <StyledText>for you</StyledText>

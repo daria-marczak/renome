@@ -33,10 +33,12 @@ const pages = [
   'contact',
 ];
 
+const linkAddres = item => (item === 'home' ? '/' : `/${item}`);
+
 const MobileMenu = ({ isOpen }) => (
   <StyledList isOpen={isOpen}>
     {pages.map(item => (
-      <StyledLink to={`/${item}`} isOpen={isOpen} key={item}>
+      <StyledLink to={`${linkAddres(item)}`} key={item}>
         {item}
       </StyledLink>
     ))}

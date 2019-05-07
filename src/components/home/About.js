@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 
 const StyledHeading = styled.h1`
@@ -42,33 +41,8 @@ const About = ({ data }) => (
   </>
 );
 
-export const fluidImage = graphql`
-  fragment squareImage on File {
-    childImageSharp {
-      fluid(maxWidth: 600) {
-        ...GatsbyImageSharpFluid
-      }
-    }
-  }
-`;
-
-export const pageQuery = graphql`
-  query {
-    imageOne: file(relativePath: { eq: "images/home/house1.png" }) {
-      ...fluidImage
-    }
-    imageTwo: file(relativePath: { eq: "images/home/house2.png" }) {
-      ...fluidImage
-    }
-  }
-`;
-
 About.propTypes = {
-  data: PropTypes.shape,
-};
-
-About.defaultProps = {
-  data: {},
+  data: PropTypes.shape().isRequired,
 };
 
 export default About;
