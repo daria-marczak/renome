@@ -7,6 +7,7 @@ import HomeTemplate from '../templates/HomeTemplate';
 import SEO from '../components/seo';
 import Header from '../components/home/Header';
 import About from '../components/home/About';
+import LunchOfDay from '../components/home/LunchOfDay';
 
 const StyledWrapper = styled.div`
   margin: 0 auto;
@@ -19,6 +20,7 @@ const IndexPage = ({ data }) => (
     <Header />
     <StyledWrapper>
       <About data={data} />
+      <LunchOfDay data={data} />
     </StyledWrapper>
   </HomeTemplate>
 );
