@@ -11,6 +11,9 @@ const StyledSection = styled.section`
   position: absolute;
   width: 100%;
   left: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 `;
 
 const Lunch = () => (

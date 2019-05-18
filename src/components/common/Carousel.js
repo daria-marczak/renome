@@ -8,34 +8,51 @@ const StyledWrapper = styled.div`
   height: 250px;
   width: 300px;
   overflow: 'hidden';
+  transition: transform 0.3s ease-in;
+`;
+
+const StyledButtonsContainer = styled.div`
+  position: absolute;
+  bottom: 60px;
+  left: 36%;
+`;
+
+const StyledButton = styled.button`
+  width: 20px;
+  height: 20px;
+  border: 3px solid ${({ theme }) => theme.white};
+  border-radius: 100%;
+  margin-left: 4px;
+  cursor: pointer;
+  box-shadow: 1px 1px 10px black;
 `;
 
 const Carousel = ({ data }) => {
   const [index, setIndex] = useState(0);
+  const { node } = data.allFile.edges[index];
 
-  const length = data && data.allFile.edges.length - 1;
-
-  const handleChange = isNext =>
-    index === length
-      ? isNext
-        ? setIndex(0)
-        : setIndex(length)
-      : isNext
-      ? setIndex(index + 1)
-      : setIndex(index - 1);
+  const carouselData = [
+    { day: 'monday', dish: 'home made baguette', price: '$8.95' },
+    { day: 'tuesday', dish: 'miso ramen', price: '$12.35' },
+    { day: 'wednesday', dish: 'curry duck', price: '$15.75' },
+    { day: 'thursday', dish: 'pumpkin spicy pie', price: '$7.75' },
+  ];
 
   return (
     <StyledWrapper>
-      {data.allFile.edges.map(({ node }) => (
-        <Img fluid={node.childImageSharp.fluid} key={node.id} alt={node.name} />
-      ))}
-
-      <button type="button" onClick={() => handleChange(true)}>
-        Previous
-      </button>
-      <button type="button" onClick={() => handleChange(false)}>
-        Next
-      </button>
+      <Img fluid={node.childImageSharp.fluid} key={node.id} alt={node.name} />
+      <StyledButtonsContainer>
+        {carouselData.map((day, index) => (
+          <StyledButton
+            key={day.day}
+            style={{
+              background: node.name === day.day ? 'white' : 'transparent',
+            }}
+            type="button"
+            onClick={() => setIndex(index)}
+          />
+        ))}
+      </StyledButtonsContainer>
     </StyledWrapper>
   );
 };
