@@ -7,12 +7,14 @@ export const theme = {
     family: {
       lato: 'Lato, sans-serif',
       montserrat: 'Montserrat, sans-serif',
+      playfair: 'Playfair Display, serif',
     },
     size: {
       header: '38px',
       paragraph: '14px',
       jumbotron: '22px',
       paragraphDescription: '11px',
+      carouselDescription: '16px',
     },
   },
 };

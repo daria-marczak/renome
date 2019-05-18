@@ -5,16 +5,17 @@ import styled from 'styled-components';
 import Img from 'gatsby-image';
 
 const StyledWrapper = styled.div`
-  height: 250px;
+  height: 300px;
   width: 300px;
   overflow: 'hidden';
+  position: relative;
   transition: transform 0.3s ease-in;
 `;
 
 const StyledButtonsContainer = styled.div`
   position: absolute;
-  bottom: 60px;
-  left: 36%;
+  bottom: 120px;
+  left: 34%;
 `;
 
 const StyledButton = styled.button`
@@ -24,7 +25,28 @@ const StyledButton = styled.button`
   border-radius: 100%;
   margin-left: 4px;
   cursor: pointer;
-  box-shadow: 1px 1px 10px black;
+`;
+
+const StyledPriceTag = styled.div`
+  position: absolute;
+  top: 24px;
+  right: 20px;
+  background: ${({ theme }) => theme.lightGray};
+  font-family: ${({ theme }) => theme.font.family.montserrat};
+  padding: 6px 8px;
+`;
+
+const StyledDescription = styled.p`
+  font-family: ${({ theme }) => theme.font.family.montserrat};
+  font-weight: 700;
+  font-size: ${({ theme }) => theme.font.size.carouselDescription};
+`;
+
+const StyledDay = styled.p`
+  font-family: ${({ theme }) => theme.font.family.playfair};
+  text-transform: capitalize;
+  font-size: ${({ theme }) => theme.font.size.jumbotron};
+  color: #dcdee0;
 `;
 
 const Carousel = ({ data }) => {
@@ -38,9 +60,12 @@ const Carousel = ({ data }) => {
     { day: 'thursday', dish: 'pumpkin spicy pie', price: '$7.75' },
   ];
 
+  const specificDay = carouselData.find(data => data.day === node.name);
+
   return (
     <StyledWrapper>
       <Img fluid={node.childImageSharp.fluid} key={node.id} alt={node.name} />
+      <StyledPriceTag>{specificDay.price}</StyledPriceTag>
       <StyledButtonsContainer>
         {carouselData.map((day, index) => (
           <StyledButton
@@ -53,6 +78,8 @@ const Carousel = ({ data }) => {
           />
         ))}
       </StyledButtonsContainer>
+      <StyledDescription>{specificDay.dish}</StyledDescription>
+      <StyledDay>{specificDay.day}</StyledDay>
     </StyledWrapper>
   );
 };
