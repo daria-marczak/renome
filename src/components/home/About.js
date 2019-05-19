@@ -2,12 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import PhotoComponent from './PhotoComponent';
+import PhotoComponent from '../common/PhotoComponent';
 import {
   StyledHeading,
   StyledDescription,
   StyledParagraph,
-} from '../../assets/styles/common';
+} from '../common/common';
 
 const StyledSection = styled.section`
   margin-top: 70px;
@@ -15,7 +15,10 @@ const StyledSection = styled.section`
 
 const About = ({ data }) => (
   <StyledSection>
-    <PhotoComponent data={data} />
+    <PhotoComponent
+      firstPhoto={data.aboutHouseOne}
+      secondPhoto={data.aboutHouseTwo}
+    />
     <StyledHeading>about</StyledHeading>
     <StyledDescription>we create delicious memories</StyledDescription>
     <StyledParagraph>

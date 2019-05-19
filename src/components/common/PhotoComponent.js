@@ -3,11 +3,16 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
 
+const StyledWrapper = styled.div`
+  position: relative;
+`;
+
 const StyledImageFirst = styled(Img)`
   max-width: 272px;
   margin-right: 10px;
   position: relative !important;
   transform: translateX(20%);
+  z-index: ${({ flipped }) => (flipped ? '1' : '0')};
 `;
 
 const StyledImageSecond = styled(Img)`
@@ -16,21 +21,16 @@ const StyledImageSecond = styled(Img)`
   transform: translateY(-30%);
 `;
 
-const PhotoComponent = ({ data }) => (
-  <>
-    <StyledImageFirst
-      fluid={data.aboutHouseOne.childImageSharp.fluid}
-      alt="house"
-    />
-    <StyledImageSecond
-      fluid={data.aboutHouseTwo.childImageSharp.fluid}
-      alt="house"
-    />
-  </>
+const PhotoComponent = ({ firstPhoto, secondPhoto }) => (
+  <StyledWrapper>
+    <StyledImageFirst fluid={firstPhoto.childImageSharp.fluid} alt="house" />
+    <StyledImageSecond fluid={secondPhoto.childImageSharp.fluid} alt="house" />
+  </StyledWrapper>
 );
 
 PhotoComponent.propTypes = {
-  data: PropTypes.shape().isRequired,
+  firstPhoto: PropTypes.shape().isRequired,
+  secondPhoto: PropTypes.shape().isRequired,
 };
 
 export default PhotoComponent;

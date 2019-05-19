@@ -3,14 +3,12 @@ import styled from 'styled-components';
 
 import Carousel from '../common/Carousel';
 
-import { StyledHeading, StyledDescription } from '../../assets/styles/common';
+import { StyledHeading, StyledDescription } from '../common/common';
 
 const StyledSection = styled.section`
   text-align: center;
   background-color: ${({ theme }) => theme.lightGray};
-  position: absolute;
   width: 100%;
-  left: 0;
   display: flex;
   align-items: center;
   flex-direction: column;
