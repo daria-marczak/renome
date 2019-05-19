@@ -8,6 +8,7 @@ import LunchOfDay from '../components/home/LunchOfDay';
 import MenuSection from '../components/home/Menu';
 import Quote from '../components/home/Quote';
 import Reservation from '../components/home/Reservation';
+import Services from '../components/home/Services';
 
 const IndexPage = () => (
   <HomeTemplate>
@@ -18,6 +19,7 @@ const IndexPage = () => (
     <MenuSection />
     <Quote />
     <Reservation />
+    <Services />
   </HomeTemplate>
 );
 
