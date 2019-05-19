@@ -25,6 +25,7 @@ export const StyledParagraph = styled.p`
 export const StyledSection = styled.section`
   margin-top: 70px;
   text-align: ${({ align }) => (align ? 'right' : 'left')};
+  margin-bottom: 30px;
 `;
 
 export const StyledSectionLink = styled(Link)`
@@ -32,7 +33,6 @@ export const StyledSectionLink = styled(Link)`
   line-height: 18px;
   text-decoration: none;
   color: ${({ theme }) => theme.black};
-  margin-bottom: 20px;
 `;
 
 export const StyledWrapper = styled.div`

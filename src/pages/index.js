@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 
 import HomeTemplate from '../templates/HomeTemplate';
 import SEO from '../components/seo';
@@ -8,24 +7,17 @@ import About from '../components/home/About';
 import LunchOfDay from '../components/home/LunchOfDay';
 import MenuSection from '../components/home/Menu';
 import Quote from '../components/home/Quote';
-
-const StyledWrapper = styled.div`
-  margin: 0 auto;
-  width: 90%;
-`;
+import Reservation from '../components/home/Reservation';
 
 const IndexPage = () => (
   <HomeTemplate>
     <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
     <Header />
-    <StyledWrapper>
-      <About />
-    </StyledWrapper>
+    <About />
     <LunchOfDay />
-    <StyledWrapper>
-      <MenuSection />
-    </StyledWrapper>
+    <MenuSection />
     <Quote />
+    <Reservation />
   </HomeTemplate>
 );
 

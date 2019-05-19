@@ -12,7 +12,7 @@ import {
   StyledWrapper,
 } from '../common/common';
 
-const MenuSection = ({
+const Reservation = ({
   data: {
     allFile: { edges },
   },
@@ -20,28 +20,32 @@ const MenuSection = ({
   const [firstPhoto, secondPhoto] = edges;
 
   return (
-    <StyledSection name="menu" align>
+    <StyledSection name="reservation">
       <StyledWrapper>
         <PhotoComponent
-          firstPhoto={secondPhoto.node}
-          secondPhoto={firstPhoto.node}
-          flipped
+          firstPhoto={firstPhoto.node}
+          secondPhoto={secondPhoto.node}
+          switched
         />
-        <StyledHeading>menu</StyledHeading>
-        <StyledDescription>delicious and beautiful</StyledDescription>
+        <StyledHeading>reservation</StyledHeading>
+        <StyledDescription>
+          book your table at our restaurant now!
+        </StyledDescription>
         <StyledParagraph>
-          In our menu you will find a great variety of delicious food that will
-          satisfy the needs and tastes of everyone. We strive to source the
-          highest quality ingredients for all of our dishes thereby enhancing
-          the quality of services.
+          When you finalize a reservation with OpenTable they will send you a
+          confirmation email immediately. We will also call you on the date of
+          your reservation to confirm your table.  If you do not receive an
+          email, or do not hear from the restaurant, we would recommend calling
+          to confirm your table and verify your reservation booking (+1 939 777
+          55 33).
         </StyledParagraph>
-        <StyledSectionLink to="/menu">...</StyledSectionLink>
+        <StyledSectionLink to="/reservation">...</StyledSectionLink>
       </StyledWrapper>
     </StyledSection>
   );
 };
 
-MenuSection.propTypes = {
+Reservation.propTypes = {
   data: PropTypes.shape().isRequired,
 };
 
@@ -49,7 +53,7 @@ export default props => (
   <StaticQuery
     query={graphql`
       query {
-        allFile(filter: { absolutePath: { regex: "/menuSection/" } }) {
+        allFile(filter: { absolutePath: { regex: "/reservation/" } }) {
           edges {
             node {
               id
@@ -64,6 +68,6 @@ export default props => (
         }
       }
     `}
-    render={data => <MenuSection data={data} {...props} />}
+    render={data => <Reservation data={data} {...props} />}
   />
 );
