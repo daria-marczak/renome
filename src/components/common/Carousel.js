@@ -84,7 +84,6 @@ const Carousel = ({ data }) => {
   );
 };
 
-// eslint-disable-next-line react/display-name
 export default props => (
   <StaticQuery
     query={graphql`

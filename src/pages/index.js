@@ -1,7 +1,5 @@
 import React from 'react';
-import { graphql } from 'gatsby';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 
 import HomeTemplate from '../templates/HomeTemplate';
 import SEO from '../components/seo';
@@ -15,12 +13,12 @@ const StyledWrapper = styled.div`
   width: 90%;
 `;
 
-const IndexPage = ({ data }) => (
+const IndexPage = () => (
   <HomeTemplate>
     <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
     <Header />
     <StyledWrapper>
-      <About data={data} />
+      <About />
     </StyledWrapper>
     <LunchOfDay />
     <StyledWrapper>
@@ -28,28 +26,5 @@ const IndexPage = ({ data }) => (
     </StyledWrapper>
   </HomeTemplate>
 );
-
-export const pageQuery = graphql`
-  query {
-    aboutHouseOne: file(relativePath: { eq: "images/home/house2.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 600) {
-          ...GatsbyImageSharpFluid_noBase64
-        }
-      }
-    }
-    aboutHouseTwo: file(relativePath: { eq: "images/home/house1.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 600) {
-          ...GatsbyImageSharpFluid_noBase64
-        }
-      }
-    }
-  }
-`;
-
-IndexPage.propTypes = {
-  data: PropTypes.shape().isRequired,
-};
 
 export default IndexPage;

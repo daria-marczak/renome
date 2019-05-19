@@ -30,6 +30,7 @@ const MenuSection = ({
 MenuSection.propTypes = {
   data: PropTypes.shape().isRequired,
 };
+
 export default props => (
   <StaticQuery
     query={graphql`

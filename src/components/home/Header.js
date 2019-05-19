@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import headerImage from '../../assets/images/home/header.png';
+import headerImage from '../../assets/images/headers/home.png';
 import logo from '../../assets/images/logo.png';
 import cartIcon from '../../assets/icons/cart.png';
 import Hamburger from './Hamburger';
