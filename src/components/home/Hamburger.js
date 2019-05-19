@@ -3,42 +3,42 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 const StyledHamburger = styled.button`
-  height: 20px;
+  height: 1.5em;
   background: none;
   border: none;
-  right: -8px;
+  right: -0.5em;
   position: relative;
-  top: 4px;
+  top: 0.25em;
   cursor: pointer;
 `;
 
 const InsideBurger = styled.div`
   background-color: ${({ theme, isOpen }) =>
     isOpen ? 'transparent' : theme.black};
-  width: 20px;
-  height: 2px;
+  width: 1.5em;
+  height: 0.2em;
   transition: background-color 0.3s 0.1s ease-in;
 
   &::before,
   &::after {
     content: '';
     position: absolute;
-    right: 6px;
-    width: 20px;
-    height: 2px;
+    right: 0.4em;
+    width: 1.5em;
+    height: 0.2em;
     background-color: ${({ theme }) => theme.black};
     transition: transform 0.3s 0.1s ease-in;
   }
 
   &::before {
-    top: 3px;
-    transform: translateY(${({ isOpen }) => (isOpen ? '6px' : '0')})
+    top: 0.15em;
+    transform: translateY(${({ isOpen }) => (isOpen ? '.55em' : '0')})
       rotate(${({ isOpen }) => (isOpen ? '45deg' : '0')});
   }
 
   &::after {
-    top: 15px;
-    transform: translateY(${({ isOpen }) => (isOpen ? '-6px' : '0')})
+    top: 1.2em;
+    transform: translateY(${({ isOpen }) => (isOpen ? '-.55em' : '0')})
       rotate(${({ isOpen }) => (isOpen ? '-45deg' : '0')});
   }
 `;

@@ -1,20 +1,27 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
 
-import Header from './home/Header';
-import SEO from './seo';
+import SEO from '../components/seo';
 
 import GlobalStyles from '../assets/styles/GlobalStyles';
 import { theme } from '../assets/styles/theme';
 
-const Layout = () => (
+const HomeTemplate = ({ children }) => (
   <ThemeProvider theme={theme}>
     <>
       <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
       <GlobalStyles />
-      <Header />
+      {children}
     </>
   </ThemeProvider>
 );
 
-export default Layout;
+HomeTemplate.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
+};
+
+export default HomeTemplate;

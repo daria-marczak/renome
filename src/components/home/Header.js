@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import headerImage from '../../assets/images/home/header.png';
+import headerImage from '../../assets/images/headers/home.png';
 import logo from '../../assets/images/logo.png';
 import cartIcon from '../../assets/icons/cart.png';
 import Hamburger from './Hamburger';
@@ -14,7 +14,8 @@ const StyledHeader = styled.header`
   background-size: cover;
   font-size: ${({ theme }) => theme.font.size.header};
   color: #fff;
-  letter-spacing: 3px;
+  letter-spacing: 0.04em;
+  font-weight: 700;
   font-family: ${({ theme }) => theme.font.family.montserrat};
 `;
 
@@ -25,7 +26,8 @@ const StyledBar = styled.nav`
   top: 0;
   width: 100%;
   z-index: 11;
-  padding: 32px 12px;
+  padding: 2em 0.85em;
+  font-weight: 700;
   display: flex;
   align-items: center;
   font-size: ${({ theme }) => theme.font.size.paragraph};
@@ -38,8 +40,8 @@ const StyledNavigation = styled.ul`
 
 const StyledParagraph = styled.p`
   position: absolute;
-  bottom: 30px;
-  margin-left: 15px;
+  bottom: 1.5em;
+  margin-left: 0.5em;
   text-shadow: 1px 1px 2px gray;
 `;
 
@@ -49,10 +51,10 @@ const StyledText = styled.span`
 `;
 
 const Header = ({ cartItems }) => {
-  const [isOpen, toggleMenu] = useState(false);
+  const [isMenuOpen, toggleMenu] = useState(false);
 
   const toggleMobileNavigation = () => {
-    toggleMenu(!isOpen);
+    toggleMenu(!isMenuOpen);
   };
 
   return (
@@ -61,11 +63,11 @@ const Header = ({ cartItems }) => {
         <img src={logo} alt="Renome logo" />
         <StyledNavigation>
           <img src={cartIcon} alt="cart" /> | {cartItems}
-          <Hamburger onClick={toggleMobileNavigation} isOpen={isOpen} />
+          <Hamburger onClick={toggleMobileNavigation} isOpen={isMenuOpen} />
         </StyledNavigation>
       </StyledBar>
       <StyledHeader>
-        <MobileMenu isOpen={isOpen} />
+        <MobileMenu isOpen={isMenuOpen} />
         <StyledParagraph>
           made with love <br />
           <StyledText>for you</StyledText>
