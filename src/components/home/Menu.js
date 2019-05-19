@@ -1,13 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 import { graphql, StaticQuery } from 'gatsby';
 
 import PhotoComponent from '../common/PhotoComponent';
-
-const StyledMenu = styled.section`
-  margin-top: 70px;
-`;
+import {
+  StyledHeading,
+  StyledDescription,
+  StyledParagraph,
+  StyledSection,
+  StyledSectionLink,
+} from '../common/common';
 
 const MenuSection = ({
   data: {
@@ -17,13 +19,22 @@ const MenuSection = ({
   const [firstPhoto, secondPhoto] = edges;
 
   return (
-    <StyledMenu name="menu">
+    <StyledSection name="menu" align>
       <PhotoComponent
         firstPhoto={secondPhoto.node}
         secondPhoto={firstPhoto.node}
         flipped
       />
-    </StyledMenu>
+      <StyledHeading>menu</StyledHeading>
+      <StyledDescription>delicious and beautiful</StyledDescription>
+      <StyledParagraph>
+        In our menu you will find a great variety of delicious food that will
+        satisfy the needs and tastes of everyone. We strive to source the
+        highest quality ingredients for all of our dishes thereby enhancing the
+        quality of services.
+      </StyledParagraph>
+      <StyledSectionLink to="menu">...</StyledSectionLink>
+    </StyledSection>
   );
 };
 

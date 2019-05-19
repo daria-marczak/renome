@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { graphql, StaticQuery } from 'gatsby';
 
@@ -8,11 +7,9 @@ import {
   StyledHeading,
   StyledDescription,
   StyledParagraph,
+  StyledSection,
+  StyledSectionLink,
 } from '../common/common';
-
-const StyledSection = styled.section`
-  margin-top: 70px;
-`;
 
 const About = ({
   data: {
@@ -22,7 +19,7 @@ const About = ({
   const [firstPhoto, secondPhoto] = edges;
 
   return (
-    <StyledSection>
+    <StyledSection name="about">
       <PhotoComponent
         firstPhoto={firstPhoto.node}
         secondPhoto={secondPhoto.node}
@@ -38,6 +35,7 @@ const About = ({
         sumptuous late night desserts. Is one of the few Manhattan restaurants
         to have a coveted 3-star Michelin rating.
       </StyledParagraph>
+      <StyledSectionLink to="about">...</StyledSectionLink>
     </StyledSection>
   );
 };

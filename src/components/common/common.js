@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'gatsby';
 
 export const StyledHeading = styled.h1`
   letter-spacing: ;
@@ -19,4 +20,16 @@ export const StyledParagraph = styled.p`
   font-weight: 400;
   line-height: 1.5em;
   letter-spacing: 0.1em;
+`;
+
+export const StyledSection = styled.section`
+  margin-top: 70px;
+  text-align: ${({ align }) => (align ? 'right' : 'left')};
+`;
+
+export const StyledSectionLink = styled(Link)`
+  font-size: 48px;
+  line-height: 18px;
+  text-decoration: none;
+  color: ${({ theme }) => theme.black};
 `;
