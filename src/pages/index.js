@@ -9,6 +9,7 @@ import MenuSection from '../components/home/Menu';
 import Quote from '../components/home/Quote';
 import Reservation from '../components/home/Reservation';
 import Services from '../components/home/Services';
+import Blog from '../components/home/Blog';
 
 const IndexPage = () => (
   <HomeTemplate>
@@ -20,6 +21,7 @@ const IndexPage = () => (
     <Quote />
     <Reservation />
     <Services />
+    <Blog />
   </HomeTemplate>
 );
 
