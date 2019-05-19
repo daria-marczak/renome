@@ -35,7 +35,7 @@ const About = ({
         sumptuous late night desserts. Is one of the few Manhattan restaurants
         to have a coveted 3-star Michelin rating.
       </StyledParagraph>
-      <StyledSectionLink to="about">...</StyledSectionLink>
+      <StyledSectionLink to="/about">...</StyledSectionLink>
     </StyledSection>
   );
 };

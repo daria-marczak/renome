@@ -33,7 +33,7 @@ const MenuSection = ({
         highest quality ingredients for all of our dishes thereby enhancing the
         quality of services.
       </StyledParagraph>
-      <StyledSectionLink to="menu">...</StyledSectionLink>
+      <StyledSectionLink to="/menu">...</StyledSectionLink>
     </StyledSection>
   );
 };

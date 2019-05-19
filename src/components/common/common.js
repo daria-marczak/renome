@@ -32,4 +32,10 @@ export const StyledSectionLink = styled(Link)`
   line-height: 18px;
   text-decoration: none;
   color: ${({ theme }) => theme.black};
+  margin-bottom: 20px;
+`;
+
+export const StyledWrapper = styled.div`
+  margin: 0 auto;
+  width: 90%;
 `;
