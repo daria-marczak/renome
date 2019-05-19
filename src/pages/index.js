@@ -10,6 +10,8 @@ import Quote from '../components/home/Quote';
 import Reservation from '../components/home/Reservation';
 import Services from '../components/home/Services';
 import Blog from '../components/home/Blog';
+import Contact from '../components/home/Contact';
+import Footer from '../components/common/Footer';
 
 const IndexPage = () => (
   <HomeTemplate>
@@ -22,6 +24,8 @@ const IndexPage = () => (
     <Reservation />
     <Services />
     <Blog />
+    <Contact />
+    <Footer />
   </HomeTemplate>
 );
 

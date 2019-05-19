@@ -14,6 +14,7 @@ import {
 
 const StyledBlogSection = styled(StyledSection)`
   position: relative;
+  margin-bottom: 50px;
 `;
 
 const StyledBlogPost = styled.div`
