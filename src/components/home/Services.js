@@ -9,7 +9,7 @@ import {
   StyledDescription,
   StyledSection,
   StyledSectionLink,
-  StyledWrapper,
+  StyledThreeColumnGrid,
 } from '../common/common';
 
 const StyledAdvantage = styled.div`
@@ -19,6 +19,20 @@ const StyledAdvantage = styled.div`
   font-family: ${({ theme }) => theme.font.family.montserrat};
   text-align: center;
   border-bottom: 1px solid #d9d9d9;
+
+  @media (min-width: 1200px) {
+    height: 280px;
+    border-bottom: none;
+    border-right: 1px solid #d9d9d9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+
+    &:last-of-type {
+      border-right: none;
+    }
+  }
 `;
 
 const StyledLink = styled(StyledSectionLink)`
@@ -34,6 +48,12 @@ const StyledLink = styled(StyledSectionLink)`
   z-index: 1;
 `;
 
+const StyledServices = styled(StyledSection)`
+  @media (min-width: 1200px) {
+    text-align: center;
+  }
+`;
+
 const Services = ({ data }) => {
   const servicesList = [
     'Pickup or delivery',
@@ -42,17 +62,17 @@ const Services = ({ data }) => {
   ];
 
   return (
-    <StyledSection name="services">
-      <StyledWrapper>
-        <StyledHeading>our services</StyledHeading>
-        <StyledDescription>advantages of our restaurant</StyledDescription>
-      </StyledWrapper>
-      {servicesList.map(service => (
-        <StyledAdvantage key={service}>{service}</StyledAdvantage>
-      ))}
+    <StyledServices name="services">
+      <StyledHeading>our services</StyledHeading>
+      <StyledDescription>advantages of our restaurant</StyledDescription>
+      <StyledThreeColumnGrid>
+        {servicesList.map(service => (
+          <StyledAdvantage key={service}>{service}</StyledAdvantage>
+        ))}
+      </StyledThreeColumnGrid>
       <Img fluid={data.file.childImageSharp.fluid} />
       <StyledLink to="/order">order now</StyledLink>
-    </StyledSection>
+    </StyledServices>
   );
 };
 

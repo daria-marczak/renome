@@ -13,6 +13,11 @@ const GlobalStyle = createGlobalStyle`
         font-size: 16px;
         font-family: Lato, sans-serif;
     }
+
+    .gatsby-image-wrapper {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+      }
 `;
 
 export default GlobalStyle;

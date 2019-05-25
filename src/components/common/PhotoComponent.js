@@ -6,6 +6,13 @@ import Img from 'gatsby-image';
 const StyledWrapper = styled.div`
   position: relative;
   z-index: 0;
+
+  @media (min-width: 1200px) {
+    max-width: 450px;
+    transform: translateX(
+      ${({ isDescription }) => (isDescription ? '0' : '250px')}
+    );
+  }
 `;
 
 const StyledImageFirst = styled(Img)`
@@ -15,12 +22,20 @@ const StyledImageFirst = styled(Img)`
   transform: translateX(${({ switched }) => (switched ? '20%' : '20%')})
     translateY(${({ switched }) => (switched ? '70%' : '0')});
   z-index: ${({ flipped }) => (flipped ? '1' : '0')};
+
+  @media (min-width: 1200px) {
+    max-width: 450px;
+  }
 `;
 
 const StyledImageSecond = styled(Img)`
   max-width: 272px;
   position: relative !important;
   transform: translateY(${({ switched }) => (switched ? '-100%' : '-30%')});
+
+  @media (min-width: 1200px) {
+    max-width: 450px;
+  }
 `;
 
 const PhotoComponent = ({ firstPhoto, secondPhoto, flipped, switched }) => (

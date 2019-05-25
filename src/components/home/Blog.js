@@ -9,7 +9,7 @@ import {
   StyledDescription,
   StyledSection,
   StyledSectionLink,
-  StyledWrapper,
+  StyledThreeColumnGrid,
 } from '../common/common';
 
 const StyledBlogSection = styled(StyledSection)`
@@ -27,6 +27,12 @@ const StyledBlogPost = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  @media (min-width: 1200px) {
+    width: 260px;
+    height: 260px;
+    transform: translateY(-130%) translateX(12%);
+  }
 `;
 
 const StyledTitle = styled(StyledDescription)`
@@ -36,11 +42,22 @@ const StyledTitle = styled(StyledDescription)`
 
 const StyledImage = styled(Img)`
   margin-bottom: 50px;
+
+  @media (min-width: 1200px) {
+    width: 320px;
+    height: 320px;
+  }
 `;
 
 const StyledDate = styled.p`
   color: #dcdee0;
   font-weight: 700;
+`;
+
+const StyledBlogWrapper = styled.div`
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
 `;
 
 const Blog = ({
@@ -56,25 +73,27 @@ const Blog = ({
 
   return (
     <StyledBlogSection name="blog">
-      <StyledWrapper>
+      <StyledBlogWrapper>
         <StyledHeading>blog</StyledHeading>
         <StyledDescription>news, recipes and much more</StyledDescription>
-        {blogPosts.map((post, index) => (
-          <div key={post.date}>
-            <StyledImage
-              key={post.date}
-              fluid={edges[index].node.childImageSharp.fluid}
-            />
-            <StyledBlogPost>
-              <StyledDate>{post.date}</StyledDate>
-              <StyledTitle>{post.title}</StyledTitle>
-              <StyledSectionLink to={`/${post.title}.split(" ").join("")`}>
-                ...
-              </StyledSectionLink>
-            </StyledBlogPost>
-          </div>
-        ))}
-      </StyledWrapper>
+        <StyledThreeColumnGrid>
+          {blogPosts.map((post, index) => (
+            <div key={post.date}>
+              <StyledImage
+                key={post.date}
+                fluid={edges[index].node.childImageSharp.fluid}
+              />
+              <StyledBlogPost>
+                <StyledDate>{post.date}</StyledDate>
+                <StyledTitle>{post.title}</StyledTitle>
+                <StyledSectionLink to={`/${post.title}.split(" ").join("")`}>
+                  ...
+                </StyledSectionLink>
+              </StyledBlogPost>
+            </div>
+          ))}
+        </StyledThreeColumnGrid>
+      </StyledBlogWrapper>
     </StyledBlogSection>
   );
 };

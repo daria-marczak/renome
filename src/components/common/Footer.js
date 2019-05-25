@@ -10,6 +10,11 @@ const StyledFooter = styled.footer`
   background: ${({ theme }) => theme.lightGray};
   text-align: center;
   padding: 20px;
+
+  @media (min-width: 1200px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 `;
 
 const StyledParagraph = styled.p`
@@ -22,6 +27,11 @@ const StyledContainer = styled.div`
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
+
+  @media (min-width: 1200px) {
+    margin-bottom: 0;
+    margin-left: 10px;
+  }
 `;
 
 const StyledIcon = styled.button`
@@ -36,22 +46,43 @@ const StyledIcon = styled.button`
   margin-right: 10px;
 `;
 
+const StyledFollowColumn = styled.div`
+  @media (min-width: 1200px) {
+    display: flex;
+    align-items: center;
+    order: 3;
+    justify-self: center;
+  }
+`;
+
+const StyledColumn = styled.div`
+  @media (min-width: 1200px) {
+    align-self: center;
+  }
+`;
+
 const Footer = () => (
   <StyledFooter>
-    <StyledParagraph>Follow us:</StyledParagraph>
-    <StyledContainer>
-      <StyledIcon>
-        <img src={Facebook} alt="facebook" />
-      </StyledIcon>
-      <StyledIcon>
-        <img src={Google} alt="google plus" />
-      </StyledIcon>
-      <StyledIcon>
-        <img src={Twitter} alt="twitter" />
-      </StyledIcon>
-    </StyledContainer>
-    <img src={Logo} alt="logo" />
-    <StyledParagraph>Copyright 2015 renome by estetiq</StyledParagraph>
+    <StyledFollowColumn>
+      <StyledParagraph>Follow us:</StyledParagraph>
+      <StyledContainer>
+        <StyledIcon>
+          <img src={Facebook} alt="facebook" />
+        </StyledIcon>
+        <StyledIcon>
+          <img src={Google} alt="google plus" />
+        </StyledIcon>
+        <StyledIcon>
+          <img src={Twitter} alt="twitter" />
+        </StyledIcon>
+      </StyledContainer>
+    </StyledFollowColumn>
+    <StyledColumn>
+      <img src={Logo} alt="logo" />
+    </StyledColumn>
+    <StyledColumn>
+      <StyledParagraph>Copyright 2015 renome by estetiq</StyledParagraph>
+    </StyledColumn>
   </StyledFooter>
 );
 

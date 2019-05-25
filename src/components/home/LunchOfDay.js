@@ -3,7 +3,12 @@ import styled from 'styled-components';
 
 import Carousel from '../common/Carousel';
 
-import { StyledHeading, StyledDescription } from '../common/common';
+import {
+  StyledHeading,
+  StyledDescription,
+  StyledWrapper,
+  StyledColumn,
+} from '../common/common';
 
 const StyledSection = styled.section`
   text-align: center;
@@ -16,9 +21,15 @@ const StyledSection = styled.section`
 
 const Lunch = () => (
   <StyledSection>
-    <StyledHeading>lunch</StyledHeading>
-    <StyledDescription>of the day</StyledDescription>
-    <Carousel />
+    <StyledWrapper>
+      <StyledColumn>
+        <StyledHeading>lunch</StyledHeading>
+        <StyledDescription>of the day</StyledDescription>
+      </StyledColumn>
+      <StyledColumn>
+        <Carousel />
+      </StyledColumn>
+    </StyledWrapper>
   </StyledSection>
 );
 

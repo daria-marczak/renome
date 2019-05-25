@@ -10,6 +10,7 @@ import {
   StyledSection,
   StyledSectionLink,
   StyledWrapper,
+  StyledColumn,
 } from '../common/common';
 
 const Reservation = ({
@@ -22,24 +23,28 @@ const Reservation = ({
   return (
     <StyledSection name="reservation">
       <StyledWrapper>
-        <PhotoComponent
-          firstPhoto={firstPhoto.node}
-          secondPhoto={secondPhoto.node}
-          switched
-        />
-        <StyledHeading>reservation</StyledHeading>
-        <StyledDescription>
-          book your table at our restaurant now!
-        </StyledDescription>
-        <StyledParagraph>
-          When you finalize a reservation with OpenTable they will send you a
-          confirmation email immediately. We will also call you on the date of
-          your reservation to confirm your table.  If you do not receive an
-          email, or do not hear from the restaurant, we would recommend calling
-          to confirm your table and verify your reservation booking (+1 939 777
-          55 33).
-        </StyledParagraph>
-        <StyledSectionLink to="/reservation">...</StyledSectionLink>
+        <StyledColumn>
+          <PhotoComponent
+            firstPhoto={firstPhoto.node}
+            secondPhoto={secondPhoto.node}
+            switched
+          />
+        </StyledColumn>
+        <StyledColumn isDescription>
+          <StyledHeading>reservation</StyledHeading>
+          <StyledDescription>
+            book your table at our restaurant now!
+          </StyledDescription>
+          <StyledParagraph>
+            When you finalize a reservation with OpenTable they will send you a
+            confirmation email immediately. We will also call you on the date of
+            your reservation to confirm your table.  If you do not receive an
+            email, or do not hear from the restaurant, we would recommend
+            calling to confirm your table and verify your reservation booking
+            (+1 939 777 55 33).
+          </StyledParagraph>
+          <StyledSectionLink to="/reservation">...</StyledSectionLink>
+        </StyledColumn>
       </StyledWrapper>
     </StyledSection>
   );

@@ -38,4 +38,25 @@ export const StyledSectionLink = styled(Link)`
 export const StyledWrapper = styled.div`
   margin: 0 auto;
   width: 90%;
+
+  @media (min-width: 1200px) {
+    display: grid;
+    grid-template-columns: ${({ threeColumns }) =>
+      threeColumns ? '1fr 1fr 1fr' : '1fr 1fr'};
+  }
+`;
+
+export const StyledColumn = styled.div`
+  @media (min-width: 1200px) {
+    max-width: ${({ isDescription }) => (isDescription ? '70%' : '100%')};
+    order: ${({ left }) => (left ? '1' : '2')};
+  }
+`;
+
+export const StyledThreeColumnGrid = styled.div`
+  @media (min-width: 1200px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 60px;
+  }
 `;
