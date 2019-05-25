@@ -49,9 +49,7 @@ const StyledLink = styled(StyledSectionLink)`
 `;
 
 const StyledServices = styled(StyledSection)`
-  @media (min-width: 1200px) {
-    text-align: center;
-  }
+  text-align: center;
 `;
 
 const Services = ({ data }) => {

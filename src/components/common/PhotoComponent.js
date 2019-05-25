@@ -10,7 +10,8 @@ const StyledWrapper = styled.div`
   @media (min-width: 1200px) {
     max-width: 450px;
     transform: translateX(
-      ${({ isDescription }) => (isDescription ? '0' : '250px')}
+      ${({ isDescription, flipped }) =>
+        isDescription ? (flipped ? '250px' : '0') : '250px'}
     );
   }
 `;

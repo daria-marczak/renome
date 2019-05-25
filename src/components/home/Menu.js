@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import { graphql, StaticQuery } from 'gatsby';
 
 import PhotoComponent from '../common/PhotoComponent';
@@ -13,6 +14,18 @@ import {
   StyledColumn,
 } from '../common/common';
 
+const MenuColumn = styled(StyledColumn)`
+  @media (min-width: 1200px) {
+    justify-self: end;
+  }
+`;
+
+const StyledSwitched = styled(StyledColumn)`
+  @media (min-width: 1200px) {
+    transform: translateX(-200px);
+  }
+`;
+
 const MenuSection = ({
   data: {
     allFile: { edges },
@@ -23,14 +36,14 @@ const MenuSection = ({
   return (
     <StyledSection name="menu" align>
       <StyledWrapper>
-        <StyledColumn right>
+        <StyledSwitched right>
           <PhotoComponent
             firstPhoto={secondPhoto.node}
             secondPhoto={firstPhoto.node}
             flipped
           />
-        </StyledColumn>
-        <StyledColumn isDescription left>
+        </StyledSwitched>
+        <MenuColumn isDescription left>
           <StyledHeading>menu</StyledHeading>
           <StyledDescription>delicious and beautiful</StyledDescription>
           <StyledParagraph>
@@ -40,7 +53,7 @@ const MenuSection = ({
             enhancing the quality of services.
           </StyledParagraph>
           <StyledSectionLink to="/menu">...</StyledSectionLink>
-        </StyledColumn>
+        </MenuColumn>
       </StyledWrapper>
     </StyledSection>
   );

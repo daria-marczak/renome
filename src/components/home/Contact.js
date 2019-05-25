@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import { graphql, StaticQuery } from 'gatsby';
 
 import PhotoComponent from '../common/PhotoComponent';
@@ -13,6 +14,18 @@ import {
   StyledColumn,
 } from '../common/common';
 
+const ContactColumn = styled(StyledColumn)`
+  @media (min-width: 1200px) {
+    justify-self: end;
+  }
+`;
+
+const StyledSwitched = styled(StyledColumn)`
+  @media (min-width: 1200px) {
+    transform: translateX(-200px);
+  }
+`;
+
 const Contact = ({
   data: {
     allFile: { edges },
@@ -23,14 +36,14 @@ const Contact = ({
   return (
     <StyledSection name="contact" align>
       <StyledWrapper>
-        <StyledColumn>
+        <StyledSwitched right>
           <PhotoComponent
             firstPhoto={firstPhoto.node}
             secondPhoto={secondPhoto.node}
             flipped
           />
-        </StyledColumn>
-        <StyledColumn isDescription>
+        </StyledSwitched>
+        <ContactColumn isDescription left>
           <StyledHeading>contact</StyledHeading>
           <StyledDescription>
             we welcome you in our restaurant
@@ -41,7 +54,7 @@ const Contact = ({
             a message. We will contact you as soon as possible.
           </StyledParagraph>
           <StyledSectionLink to="/contact">...</StyledSectionLink>
-        </StyledColumn>
+        </ContactColumn>
       </StyledWrapper>
     </StyledSection>
   );
