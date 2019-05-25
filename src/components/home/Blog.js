@@ -60,7 +60,7 @@ const Blog = ({
         <StyledHeading>blog</StyledHeading>
         <StyledDescription>news, recipes and much more</StyledDescription>
         {blogPosts.map((post, index) => (
-          <>
+          <div key={post.date}>
             <StyledImage
               key={post.date}
               fluid={edges[index].node.childImageSharp.fluid}
@@ -72,7 +72,7 @@ const Blog = ({
                 ...
               </StyledSectionLink>
             </StyledBlogPost>
-          </>
+          </div>
         ))}
       </StyledWrapper>
     </StyledBlogSection>
