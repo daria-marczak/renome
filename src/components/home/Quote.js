@@ -10,6 +10,10 @@ const StyledQuote = styled.p`
   letter-spacing: 0.1em;
   font-weight: 700;
   font-size: ${({ theme }) => theme.font.size.jumbotron};
+
+  @media (min-width: 1200px) {
+    transform: translateY(190px);
+  }
 `;
 
 const StyledAuthor = styled.p`
@@ -17,6 +21,10 @@ const StyledAuthor = styled.p`
   font-weight: 700;
   transform: translateY(-70px);
   font-size: ${({ theme }) => theme.font.size.paragraph};
+
+  @media (min-width: 1200px) {
+    transform: translateY(190px);
+  }
 `;
 
 const StyledQuoteSection = styled(StyledSection)`
@@ -26,6 +34,11 @@ const StyledQuoteSection = styled(StyledSection)`
 
 const StyledImage = styled(Img)`
   transform: translateY(-70px);
+
+  @media (min-width: 1200px) {
+    transform: translateY(-70px) translateX(250px);
+    max-width: 50%;
+  }
 `;
 
 const Quote = ({ data }) => (
@@ -54,7 +67,7 @@ export default props => (
       query {
         file(name: { regex: "/quote/" }) {
           childImageSharp {
-            fluid(maxWidth: 600) {
+            fluid(quality: 100) {
               ...GatsbyImageSharpFluid_withWebp_tracedSVG
             }
           }

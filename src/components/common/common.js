@@ -48,7 +48,7 @@ export const StyledWrapper = styled.div`
 
 export const StyledColumn = styled.div`
   @media (min-width: 1200px) {
-    max-width: ${({ isDescription }) => (isDescription ? '70%' : '100%')};
+    max-width: ${({ isDescription }) => (isDescription ? '55%' : '100%')};
     order: ${({ left }) => (left ? '1' : '2')};
   }
 `;

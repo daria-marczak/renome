@@ -46,6 +46,11 @@ const StyledLink = styled(StyledSectionLink)`
   top: -150px;
   cursor: pointer;
   z-index: 1;
+
+  @media (min-width: 1200px) {
+    left: 0;
+    top: -100px;
+  }
 `;
 
 const StyledServices = styled(StyledSection)`
@@ -68,7 +73,10 @@ const Services = ({ data }) => {
           <StyledAdvantage key={service}>{service}</StyledAdvantage>
         ))}
       </StyledThreeColumnGrid>
-      <Img fluid={data.file.childImageSharp.fluid} />
+      <Img
+        fluid={data.file.childImageSharp.fluid}
+        imgStyle={{ maxHeight: '200px' }}
+      />
       <StyledLink to="/order">order now</StyledLink>
     </StyledServices>
   );
@@ -84,7 +92,7 @@ export default props => (
       query {
         file(name: { regex: "/order/" }) {
           childImageSharp {
-            fluid(maxWidth: 600) {
+            fluid(quality: 100) {
               ...GatsbyImageSharpFluid_withWebp_tracedSVG
             }
           }

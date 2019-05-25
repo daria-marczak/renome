@@ -29,10 +29,14 @@ const StyledBlogPost = styled.div`
   align-items: center;
 
   @media (min-width: 1200px) {
-    width: 260px;
-    height: 260px;
-    transform: translateY(-130%) translateX(12%);
+    width: 400px;
+    height: 400px;
+    transform: translateY(-117%) translateX(6%);
   }
+`;
+
+const StyledBlogGrid = styled(StyledThreeColumnGrid)`
+  grid-gap: 100px;
 `;
 
 const StyledTitle = styled(StyledDescription)`
@@ -42,11 +46,6 @@ const StyledTitle = styled(StyledDescription)`
 
 const StyledImage = styled(Img)`
   margin-bottom: 50px;
-
-  @media (min-width: 1200px) {
-    width: 320px;
-    height: 320px;
-  }
 `;
 
 const StyledDate = styled.p`
@@ -76,7 +75,7 @@ const Blog = ({
       <StyledBlogWrapper>
         <StyledHeading>blog</StyledHeading>
         <StyledDescription>news, recipes and much more</StyledDescription>
-        <StyledThreeColumnGrid>
+        <StyledBlogGrid>
           {blogPosts.map((post, index) => (
             <div key={post.date}>
               <StyledImage
@@ -92,7 +91,7 @@ const Blog = ({
               </StyledBlogPost>
             </div>
           ))}
-        </StyledThreeColumnGrid>
+        </StyledBlogGrid>
       </StyledBlogWrapper>
     </StyledBlogSection>
   );
