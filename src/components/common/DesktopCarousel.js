@@ -5,39 +5,54 @@ import styled from 'styled-components';
 import Img from 'gatsby-image';
 
 const StyledWrapper = styled.div`
-  height: 300px;
-  width: 300px;
+  width: 600px;
+  height: 400px;
   overflow: 'hidden';
   position: relative;
   transition: transform 0.3s ease-in;
 
-  @media (min-width: 1200px) {
+  @media (max-width: 1199px) {
     display: none;
   }
 `;
 
 const StyledButtonsContainer = styled.div`
   position: absolute;
-  bottom: 120px;
-  left: 34%;
+  bottom: 100px;
+  left: -3%;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
 `;
 
 const StyledButton = styled.button`
-  width: 20px;
-  height: 20px;
-  border: 3px solid ${({ theme }) => theme.white};
-  border-radius: 100%;
-  margin-left: 4px;
+  width: 40px;
+  height: 40px;
+  background: #edeff2;
+  margin-top: 8px;
   cursor: pointer;
+  border: none;
+  font-family: ${({ theme }) => theme.font.family.montserrat};
+  font-weight: 700;
 `;
 
 const StyledPriceTag = styled.div`
   position: absolute;
-  top: 24px;
+  top: 84px;
   right: 20px;
   background: ${({ theme }) => theme.lightGray};
   font-family: ${({ theme }) => theme.font.family.montserrat};
   padding: 6px 8px;
+`;
+
+const StyledImage = styled(Img)`
+  width: 600px;
+  height: 400px;
+`;
+
+const StyledContainer = styled.div`
+  display: flex;
+  align-items: center;
 `;
 
 const StyledDescription = styled.p`
@@ -51,9 +66,10 @@ const StyledDay = styled.p`
   text-transform: capitalize;
   font-size: ${({ theme }) => theme.font.size.jumbotron};
   color: #dcdee0;
+  margin-left: auto;
 `;
 
-const Carousel = ({ data }) => {
+const DesktopCarousel = ({ data }) => {
   const [index, setIndex] = useState(0);
   const { node } = data.allFile.edges[index];
 
@@ -66,24 +82,32 @@ const Carousel = ({ data }) => {
 
   const specificDay = carouselData.find(data => data.day === node.name);
 
+  const length = data.allFile.edges.length - 1;
+
+  const changeSlide = isPrev => {
+    if (isPrev) {
+      return index === 0 ? setIndex(length) : setIndex(index - 1);
+    } else {
+      return index === length ? setIndex(0) : setIndex(index + 1);
+    }
+  };
+
   return (
     <StyledWrapper>
-      <Img fluid={node.childImageSharp.fluid} key={node.id} alt={node.name} />
-      <StyledPriceTag>{specificDay.price}</StyledPriceTag>
       <StyledButtonsContainer>
-        {carouselData.map((day, index) => (
-          <StyledButton
-            key={day.day}
-            style={{
-              background: node.name === day.day ? 'white' : 'transparent',
-            }}
-            type="button"
-            onClick={() => setIndex(index)}
-          />
-        ))}
+        <StyledButton onClick={() => changeSlide(true)}>&lt;</StyledButton>
+        <StyledButton onClick={() => changeSlide(false)}>&gt;</StyledButton>
       </StyledButtonsContainer>
-      <StyledDescription>{specificDay.dish}</StyledDescription>
-      <StyledDay>{specificDay.day}</StyledDay>
+      <StyledImage
+        fluid={node.childImageSharp.fluid}
+        key={node.id}
+        alt={node.name}
+      />
+      <StyledPriceTag>{specificDay.price}</StyledPriceTag>
+      <StyledContainer>
+        <StyledDescription>{specificDay.dish}</StyledDescription>
+        <StyledDay>{specificDay.day}</StyledDay>
+      </StyledContainer>
     </StyledWrapper>
   );
 };
@@ -107,10 +131,10 @@ export default props => (
         }
       }
     `}
-    render={data => <Carousel data={data} {...props} />}
+    render={data => <DesktopCarousel data={data} {...props} />}
   />
 );
 
-Carousel.propTypes = {
+DesktopCarousel.propTypes = {
   data: PropTypes.shape().isRequired,
 };

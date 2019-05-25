@@ -21,6 +21,10 @@ const MenuColumn = styled(StyledColumn)`
 `;
 
 const StyledSwitched = styled(StyledColumn)`
+  @media (min-width: 1500px) {
+    transform: translateX(-200px);
+  }
+
   @media (min-width: 1200px) {
     transform: translateX(-200px);
   }
@@ -73,7 +77,7 @@ export default props => (
               id
               name
               childImageSharp {
-                fluid(maxWidth: 600) {
+                fluid(quality: 90) {
                   ...GatsbyImageSharpFluid_withWebp_tracedSVG
                 }
               }

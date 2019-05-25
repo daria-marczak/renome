@@ -12,7 +12,7 @@ const StyledQuote = styled.p`
   font-size: ${({ theme }) => theme.font.size.jumbotron};
 
   @media (min-width: 1200px) {
-    transform: translateY(190px);
+    align-self: center;
   }
 `;
 
@@ -21,10 +21,6 @@ const StyledAuthor = styled.p`
   font-weight: 700;
   transform: translateY(-70px);
   font-size: ${({ theme }) => theme.font.size.paragraph};
-
-  @media (min-width: 1200px) {
-    transform: translateY(190px);
-  }
 `;
 
 const StyledQuoteSection = styled(StyledSection)`

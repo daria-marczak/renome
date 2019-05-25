@@ -64,7 +64,7 @@ export default props => (
               id
               name
               childImageSharp {
-                fluid(maxWidth: 600) {
+                fluid(quality: 100) {
                   ...GatsbyImageSharpFluid_withWebp_tracedSVG
                 }
               }

@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Carousel from '../common/Carousel';
+import DesktopCarousel from '../common/DesktopCarousel';
 
 import {
   StyledHeading,
@@ -17,17 +18,28 @@ const StyledSection = styled.section`
   display: flex;
   align-items: center;
   flex-direction: column;
+
+  @media (min-width: 1200px) {
+    height: 60vh;
+  }
+`;
+
+const StyledLunchColumn = styled(StyledColumn)`
+  @media (min-width: 1200px) {
+    align-self: center;
+  }
 `;
 
 const Lunch = () => (
   <StyledSection>
     <StyledWrapper>
-      <StyledColumn>
+      <StyledLunchColumn>
         <StyledHeading>lunch</StyledHeading>
         <StyledDescription>of the day</StyledDescription>
-      </StyledColumn>
+      </StyledLunchColumn>
       <StyledColumn>
         <Carousel />
+        <DesktopCarousel />
       </StyledColumn>
     </StyledWrapper>
   </StyledSection>

@@ -44,6 +44,7 @@ export const StyledWrapper = styled.div`
     grid-template-columns: ${({ threeColumns }) =>
       threeColumns ? '1fr 1fr 1fr' : '1fr 1fr'};
   }
+  height: 100%;
 `;
 
 export const StyledColumn = styled.div`
