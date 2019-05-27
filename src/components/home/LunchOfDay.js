@@ -20,18 +20,22 @@ const StyledSection = styled.section`
   align-items: center;
   flex-direction: column;
 
-  @media (min-width: 1200px) {
-    height: 60vh;
+  @media (min-width: 768px) and (max-width: 1280px) {
+    height: 34vh;
   }
 
-  @media (min-width: 768px) and (max-width: 1280px) {
-    height: 35vh;
+  @media (min-width: 1281px) {
+    height: 60vh;
   }
 `;
 
 const StyledCarouselColumn = styled(StyledColumn)`
   @media (min-width: 768px) and (max-width: 1280px) {
     margin-top: 20px;
+  }
+
+  @media (min-width: 1281px) {
+    margin-top: 40px;
   }
 `;
 

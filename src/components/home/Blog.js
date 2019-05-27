@@ -28,15 +28,19 @@ const StyledBlogPost = styled.div`
   justify-content: center;
   align-items: center;
 
-  @media (min-width: 1200px) {
-    width: 400px;
-    height: 400px;
-    transform: translateY(-117%) translateX(6%);
+  @media (min-width: 1000px) {
+    width: 22%;
+    height: 50%;
+    transform: translateY(-131%) translateX(8%);
   }
 `;
 
 const StyledBlogGrid = styled(StyledThreeColumnGrid)`
   grid-gap: 100px;
+
+  @media (min-width: 1000px) {
+    grid-gap: 20px;
+  }
 `;
 
 const StyledTitle = styled(StyledDescription)`

@@ -40,15 +40,9 @@ export const StyledWrapper = styled.div`
   width: 90%;
   height: 100%;
 
-  @media (min-width: 768px) and (max-width: 1280px) {
+  @media (min-width: 768px) {
     display: grid;
     grid-template-columns: 1fr 1fr;
-  }
-
-  @media (min-width: 1281px) {
-    display: grid;
-    grid-template-columns: ${({ threeColumns }) =>
-      threeColumns ? '1fr 1fr 1fr' : '1fr 1fr'};
   }
 `;
 
@@ -64,7 +58,7 @@ export const StyledColumnCentered = styled(StyledColumn)`
 `;
 
 export const StyledThreeColumnGrid = styled.div`
-  @media (min-width: 1200px) {
+  @media (min-width: 1001px) {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     margin-top: 60px;
