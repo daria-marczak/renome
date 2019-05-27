@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import { graphql, StaticQuery } from 'gatsby';
 
 import PhotoComponent from '../common/PhotoComponent';
@@ -10,7 +11,24 @@ import {
   StyledSection,
   StyledSectionLink,
   StyledWrapper,
+  StyledColumn,
 } from '../common/common';
+
+const MenuColumn = styled(StyledColumn)`
+  @media (min-width: 1200px) {
+    justify-self: end;
+  }
+`;
+
+const StyledSwitched = styled(StyledColumn)`
+  @media (min-width: 1500px) {
+    transform: translateX(-200px);
+  }
+
+  @media (min-width: 1200px) {
+    transform: translateX(-200px);
+  }
+`;
 
 const MenuSection = ({
   data: {
@@ -22,20 +40,24 @@ const MenuSection = ({
   return (
     <StyledSection name="menu" align>
       <StyledWrapper>
-        <PhotoComponent
-          firstPhoto={secondPhoto.node}
-          secondPhoto={firstPhoto.node}
-          flipped
-        />
-        <StyledHeading>menu</StyledHeading>
-        <StyledDescription>delicious and beautiful</StyledDescription>
-        <StyledParagraph>
-          In our menu you will find a great variety of delicious food that will
-          satisfy the needs and tastes of everyone. We strive to source the
-          highest quality ingredients for all of our dishes thereby enhancing
-          the quality of services.
-        </StyledParagraph>
-        <StyledSectionLink to="/menu">...</StyledSectionLink>
+        <StyledSwitched right>
+          <PhotoComponent
+            firstPhoto={secondPhoto.node}
+            secondPhoto={firstPhoto.node}
+            flipped
+          />
+        </StyledSwitched>
+        <MenuColumn isDescription left>
+          <StyledHeading>menu</StyledHeading>
+          <StyledDescription>delicious and beautiful</StyledDescription>
+          <StyledParagraph>
+            In our menu you will find a great variety of delicious food that
+            will satisfy the needs and tastes of everyone. We strive to source
+            the highest quality ingredients for all of our dishes thereby
+            enhancing the quality of services.
+          </StyledParagraph>
+          <StyledSectionLink to="/menu">...</StyledSectionLink>
+        </MenuColumn>
       </StyledWrapper>
     </StyledSection>
   );
@@ -55,7 +77,7 @@ export default props => (
               id
               name
               childImageSharp {
-                fluid(maxWidth: 600) {
+                fluid(quality: 90) {
                   ...GatsbyImageSharpFluid_withWebp_tracedSVG
                 }
               }

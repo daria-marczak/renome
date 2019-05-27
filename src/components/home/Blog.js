@@ -9,7 +9,7 @@ import {
   StyledDescription,
   StyledSection,
   StyledSectionLink,
-  StyledWrapper,
+  StyledThreeColumnGrid,
 } from '../common/common';
 
 const StyledBlogSection = styled(StyledSection)`
@@ -21,12 +21,26 @@ const StyledBlogPost = styled.div`
   position: absolute;
   background: ${({ theme }) => theme.white};
   transform: translateY(-128%) translateX(12%);
-  width: 280px;
-  height: 280px;
+  width: 65%;
+  height: 23%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  @media (min-width: 1000px) {
+    width: 22%;
+    height: 50%;
+    transform: translateY(-131%) translateX(8%);
+  }
+`;
+
+const StyledBlogGrid = styled(StyledThreeColumnGrid)`
+  grid-gap: 100px;
+
+  @media (min-width: 1000px) {
+    grid-gap: 20px;
+  }
 `;
 
 const StyledTitle = styled(StyledDescription)`
@@ -43,6 +57,12 @@ const StyledDate = styled.p`
   font-weight: 700;
 `;
 
+const StyledBlogWrapper = styled.div`
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+`;
+
 const Blog = ({
   data: {
     allFile: { edges },
@@ -56,25 +76,27 @@ const Blog = ({
 
   return (
     <StyledBlogSection name="blog">
-      <StyledWrapper>
+      <StyledBlogWrapper>
         <StyledHeading>blog</StyledHeading>
         <StyledDescription>news, recipes and much more</StyledDescription>
-        {blogPosts.map((post, index) => (
-          <>
-            <StyledImage
-              key={post.date}
-              fluid={edges[index].node.childImageSharp.fluid}
-            />
-            <StyledBlogPost>
-              <StyledDate>{post.date}</StyledDate>
-              <StyledTitle>{post.title}</StyledTitle>
-              <StyledSectionLink to={`/${post.title}.split(" ").join("")`}>
-                ...
-              </StyledSectionLink>
-            </StyledBlogPost>
-          </>
-        ))}
-      </StyledWrapper>
+        <StyledBlogGrid>
+          {blogPosts.map((post, index) => (
+            <div key={post.date}>
+              <StyledImage
+                key={post.date}
+                fluid={edges[index].node.childImageSharp.fluid}
+              />
+              <StyledBlogPost>
+                <StyledDate>{post.date}</StyledDate>
+                <StyledTitle>{post.title}</StyledTitle>
+                <StyledSectionLink to={`/${post.title}.split(" ").join("")`}>
+                  ...
+                </StyledSectionLink>
+              </StyledBlogPost>
+            </div>
+          ))}
+        </StyledBlogGrid>
+      </StyledBlogWrapper>
     </StyledBlogSection>
   );
 };
@@ -93,7 +115,7 @@ export default props => (
               id
               name
               childImageSharp {
-                fluid(maxWidth: 600) {
+                fluid(quality: 90) {
                   ...GatsbyImageSharpFluid_withWebp_tracedSVG
                 }
               }

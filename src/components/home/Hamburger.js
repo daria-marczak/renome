@@ -10,6 +10,10 @@ const StyledHamburger = styled.button`
   position: relative;
   top: 0.25em;
   cursor: pointer;
+
+  @media (min-width: 1200px) {
+    display: none;
+  }
 `;
 
 const InsideBurger = styled.div`

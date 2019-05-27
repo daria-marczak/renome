@@ -9,7 +9,7 @@ import {
   StyledDescription,
   StyledSection,
   StyledSectionLink,
-  StyledWrapper,
+  StyledThreeColumnGrid,
 } from '../common/common';
 
 const StyledAdvantage = styled.div`
@@ -19,6 +19,20 @@ const StyledAdvantage = styled.div`
   font-family: ${({ theme }) => theme.font.family.montserrat};
   text-align: center;
   border-bottom: 1px solid #d9d9d9;
+
+  @media (min-width: 1200px) {
+    height: 280px;
+    border-bottom: none;
+    border-right: 1px solid #d9d9d9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+
+    &:last-of-type {
+      border-right: none;
+    }
+  }
 `;
 
 const StyledLink = styled(StyledSectionLink)`
@@ -27,11 +41,28 @@ const StyledLink = styled(StyledSectionLink)`
   color: ${({ theme }) => theme.white};
   font-size: ${({ theme }) => theme.font.size.paragraph};
   padding: 10px 20px;
-  position: relative;
-  left: 115px;
-  top: -150px;
+  position: absolute;
+  bottom: 6%;
+  left: 36%;
   cursor: pointer;
   z-index: 1;
+
+  @media (min-width: 1200px) {
+    left: 0;
+  }
+
+  @media (min-width: 768px) and (max-width: 1280px) {
+    left: 42%;
+  }
+`;
+
+const StyledServices = styled(StyledSection)`
+  text-align: center;
+  position: relative;
+`;
+
+const StyledImage = styled(Img)`
+  min-height: 100px;
 `;
 
 const Services = ({ data }) => {
@@ -42,17 +73,17 @@ const Services = ({ data }) => {
   ];
 
   return (
-    <StyledSection name="services">
-      <StyledWrapper>
-        <StyledHeading>our services</StyledHeading>
-        <StyledDescription>advantages of our restaurant</StyledDescription>
-      </StyledWrapper>
-      {servicesList.map(service => (
-        <StyledAdvantage key={service}>{service}</StyledAdvantage>
-      ))}
-      <Img fluid={data.file.childImageSharp.fluid} />
+    <StyledServices name="services">
+      <StyledHeading>our services</StyledHeading>
+      <StyledDescription>advantages of our restaurant</StyledDescription>
+      <StyledThreeColumnGrid>
+        {servicesList.map(service => (
+          <StyledAdvantage key={service}>{service}</StyledAdvantage>
+        ))}
+      </StyledThreeColumnGrid>
+      <StyledImage fluid={data.file.childImageSharp.fluid} />
       <StyledLink to="/order">order now</StyledLink>
-    </StyledSection>
+    </StyledServices>
   );
 };
 
@@ -66,7 +97,7 @@ export default props => (
       query {
         file(name: { regex: "/order/" }) {
           childImageSharp {
-            fluid(maxWidth: 600) {
+            fluid(quality: 100) {
               ...GatsbyImageSharpFluid_withWebp_tracedSVG
             }
           }
