@@ -9,6 +9,7 @@ import {
   StyledDescription,
   StyledWrapper,
   StyledColumn,
+  StyledColumnCentered,
 } from '../common/common';
 
 const StyledSection = styled.section`
@@ -22,25 +23,29 @@ const StyledSection = styled.section`
   @media (min-width: 1200px) {
     height: 60vh;
   }
+
+  @media (min-width: 768px) and (max-width: 1280px) {
+    height: 35vh;
+  }
 `;
 
-const StyledLunchColumn = styled(StyledColumn)`
-  @media (min-width: 1200px) {
-    align-self: center;
+const StyledCarouselColumn = styled(StyledColumn)`
+  @media (min-width: 768px) and (max-width: 1280px) {
+    margin-top: 20px;
   }
 `;
 
 const Lunch = () => (
   <StyledSection>
     <StyledWrapper>
-      <StyledLunchColumn>
+      <StyledColumnCentered>
         <StyledHeading>lunch</StyledHeading>
         <StyledDescription>of the day</StyledDescription>
-      </StyledLunchColumn>
-      <StyledColumn>
+      </StyledColumnCentered>
+      <StyledCarouselColumn>
         <Carousel />
         <DesktopCarousel />
-      </StyledColumn>
+      </StyledCarouselColumn>
     </StyledWrapper>
   </StyledSection>
 );

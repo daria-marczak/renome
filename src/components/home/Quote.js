@@ -3,10 +3,14 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { graphql, StaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
-import { StyledSection, StyledWrapper, StyledColumn } from '../common/common';
+import {
+  StyledSection,
+  StyledWrapper,
+  StyledColumn,
+  StyledColumnCentered,
+} from '../common/common';
 
 const StyledQuote = styled.p`
-  transform: translateY(-70px);
   letter-spacing: 0.1em;
   font-weight: 700;
   font-size: ${({ theme }) => theme.font.size.jumbotron};
@@ -19,7 +23,6 @@ const StyledQuote = styled.p`
 const StyledAuthor = styled.p`
   text-transform: uppercase;
   font-weight: 700;
-  transform: translateY(-70px);
   font-size: ${({ theme }) => theme.font.size.paragraph};
 `;
 
@@ -43,12 +46,12 @@ const Quote = ({ data }) => (
       <StyledColumn>
         <StyledImage fluid={data.file.childImageSharp.fluid} />
       </StyledColumn>
-      <StyledColumn>
+      <StyledColumnCentered>
         <StyledQuote>
           &quot;The most romantic and perfect place&quot;
         </StyledQuote>
         <StyledAuthor>John Doe</StyledAuthor>
-      </StyledColumn>
+      </StyledColumnCentered>
     </StyledWrapper>
   </StyledQuoteSection>
 );

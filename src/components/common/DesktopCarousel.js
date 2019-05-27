@@ -11,7 +11,7 @@ const StyledWrapper = styled.div`
   position: relative;
   transition: transform 0.3s ease-in;
 
-  @media (max-width: 1199px) {
+  @media (max-width: 768px) {
     display: none;
   }
 `;

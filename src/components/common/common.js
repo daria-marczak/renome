@@ -38,13 +38,18 @@ export const StyledSectionLink = styled(Link)`
 export const StyledWrapper = styled.div`
   margin: 0 auto;
   width: 90%;
+  height: 100%;
 
-  @media (min-width: 1200px) {
+  @media (min-width: 768px) and (max-width: 1280px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (min-width: 1281px) {
     display: grid;
     grid-template-columns: ${({ threeColumns }) =>
       threeColumns ? '1fr 1fr 1fr' : '1fr 1fr'};
   }
-  height: 100%;
 `;
 
 export const StyledColumn = styled.div`
@@ -52,6 +57,10 @@ export const StyledColumn = styled.div`
     max-width: ${({ isDescription }) => (isDescription ? '55%' : '100%')};
     order: ${({ left }) => (left ? '1' : '2')};
   }
+`;
+
+export const StyledColumnCentered = styled(StyledColumn)`
+  align-self: center;
 `;
 
 export const StyledThreeColumnGrid = styled.div`

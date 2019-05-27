@@ -50,6 +50,10 @@ const StyledLink = styled(StyledSectionLink)`
   @media (min-width: 1200px) {
     left: 0;
   }
+
+  @media (min-width: 768px) and (max-width: 1280px) {
+    left: 42%;
+  }
 `;
 
 const StyledServices = styled(StyledSection)`
