@@ -21,8 +21,8 @@ const StyledBlogPost = styled.div`
   position: absolute;
   background: ${({ theme }) => theme.white};
   transform: translateY(-128%) translateX(12%);
-  width: 250px;
-  height: 250px;
+  width: 65%;
+  height: 23%;
   display: flex;
   flex-direction: column;
   justify-content: center;

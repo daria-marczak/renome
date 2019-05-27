@@ -5,11 +5,8 @@ import styled from 'styled-components';
 import Img from 'gatsby-image';
 
 const StyledWrapper = styled.div`
-  height: 300px;
-  width: 300px;
   overflow: 'hidden';
   position: relative;
-  transition: transform 0.3s ease-in;
 
   @media (min-width: 1200px) {
     display: none;

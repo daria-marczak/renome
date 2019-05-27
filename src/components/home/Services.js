@@ -41,20 +41,24 @@ const StyledLink = styled(StyledSectionLink)`
   color: ${({ theme }) => theme.white};
   font-size: ${({ theme }) => theme.font.size.paragraph};
   padding: 10px 20px;
-  position: relative;
-  left: 115px;
-  top: -150px;
+  position: absolute;
+  bottom: 6%;
+  left: 36%;
   cursor: pointer;
   z-index: 1;
 
   @media (min-width: 1200px) {
     left: 0;
-    top: -100px;
   }
 `;
 
 const StyledServices = styled(StyledSection)`
   text-align: center;
+  position: relative;
+`;
+
+const StyledImage = styled(Img)`
+  min-height: 100px;
 `;
 
 const Services = ({ data }) => {
@@ -73,10 +77,7 @@ const Services = ({ data }) => {
           <StyledAdvantage key={service}>{service}</StyledAdvantage>
         ))}
       </StyledThreeColumnGrid>
-      <Img
-        fluid={data.file.childImageSharp.fluid}
-        imgStyle={{ maxHeight: '200px' }}
-      />
+      <StyledImage fluid={data.file.childImageSharp.fluid} />
       <StyledLink to="/order">order now</StyledLink>
     </StyledServices>
   );
