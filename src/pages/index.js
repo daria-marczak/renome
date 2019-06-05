@@ -34,8 +34,8 @@ export const query = graphql`
   query {
     homeHeader: file(relativePath: { eq: "images/headers/home.png" }) {
       childImageSharp {
-        sizes(quality: 100) {
-          ...GatsbyImageSharpFluid
+        fluid(maxWidth: 2000, quality: 100) {
+          ...GatsbyImageSharpFluid_noBase64
         }
       }
     }
