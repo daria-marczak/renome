@@ -94,6 +94,15 @@ const StyledHero = styled(Img)`
   }
 `;
 
+const StyledFilter = styled.div`
+  background: #162642;
+  opacity: 0.6;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  bottom: 0;
+`;
+
 const Header = ({ cartItems, photo, title, section }) => {
   const [isMenuOpen, toggleMenu] = useState(false);
 
@@ -116,7 +125,7 @@ const Header = ({ cartItems, photo, title, section }) => {
       <StyledHeader>
         <MobileMenu isOpen={isMenuOpen} />
         <StyledHero fluid={photo.childImageSharp.fluid} />
-
+        <StyledFilter />
         <StyledParagraph>
           {section ? section : 'made with love'}
           <br />
