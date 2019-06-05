@@ -94,7 +94,7 @@ const StyledHero = styled(Img)`
   }
 `;
 
-const Header = ({ cartItems, photo }) => {
+const Header = ({ cartItems, photo, title, section }) => {
   const [isMenuOpen, toggleMenu] = useState(false);
 
   const toggleMobileNavigation = () => {
@@ -118,8 +118,9 @@ const Header = ({ cartItems, photo }) => {
         <StyledHero fluid={photo.childImageSharp.fluid} />
 
         <StyledParagraph>
-          made with love <br />
-          <StyledText>for you</StyledText>
+          {section ? section : 'made with love'}
+          <br />
+          <StyledText>{title ? title : 'for you'}</StyledText>
         </StyledParagraph>
       </StyledHeader>
     </>
@@ -129,10 +130,14 @@ const Header = ({ cartItems, photo }) => {
 Header.propTypes = {
   photo: PropTypes.shape().isRequired,
   cartItems: PropTypes.number,
+  title: PropTypes.string,
+  section: PropTypes.string,
 };
 
 Header.defaultProps = {
   cartItems: 0,
+  title: '',
+  section: '',
 };
 
 export default Header;
