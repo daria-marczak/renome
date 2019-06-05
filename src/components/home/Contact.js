@@ -34,7 +34,7 @@ const Contact = ({
   const [firstPhoto, secondPhoto] = edges;
 
   return (
-    <StyledSection name="contact" align>
+    <StyledSection title="contact" align>
       <StyledWrapper>
         <StyledSwitched right>
           <PhotoComponent

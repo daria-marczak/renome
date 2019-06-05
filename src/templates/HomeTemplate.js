@@ -12,7 +12,7 @@ const HomeTemplate = ({ children }) => (
     <>
       <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
       <GlobalStyles />
-      {children}
+      <main>{children}</main>
     </>
   </ThemeProvider>
 );

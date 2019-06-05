@@ -38,7 +38,7 @@ const MenuSection = ({
   const [firstPhoto, secondPhoto] = edges;
 
   return (
-    <StyledSection name="menu" align>
+    <StyledSection title="menu" align>
       <StyledWrapper>
         <StyledSwitched right>
           <PhotoComponent

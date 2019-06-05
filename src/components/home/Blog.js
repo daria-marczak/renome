@@ -75,7 +75,7 @@ const Blog = ({
   ];
 
   return (
-    <StyledBlogSection name="blog">
+    <StyledBlogSection title="blog">
       <StyledBlogWrapper>
         <StyledHeading>blog</StyledHeading>
         <StyledDescription>news, recipes and much more</StyledDescription>

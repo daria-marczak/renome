@@ -40,7 +40,7 @@ const linkAddres = item => (item === 'home' ? '/' : `/${item}`);
 const Navigation = () => (
   <StyledList>
     {pages.map(item => (
-      <StyledLink to={`${linkAddres(item)}`} key={item}>
+      <StyledLink to={`${linkAddres(item)}`} key={item} role="listitem">
         {item}
       </StyledLink>
     ))}

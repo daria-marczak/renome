@@ -21,7 +21,7 @@ const Reservation = ({
   const [firstPhoto, secondPhoto] = edges;
 
   return (
-    <StyledSection name="reservation">
+    <StyledSection title="reservation">
       <StyledWrapper>
         <StyledColumn>
           <PhotoComponent
