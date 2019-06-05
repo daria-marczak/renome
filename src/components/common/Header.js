@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import Img from 'gatsby-image';
 
-import headerImage from '../../assets/images/headers/home.png';
 import logo from '../../assets/images/logo.png';
 import cartIcon from '../../assets/icons/cart.png';
+
 import Hamburger from './Hamburger';
 import MobileMenu from './MobileMenu';
 import Navigation from './Navigation';
 
 const StyledHeader = styled.header`
   min-height: 100vh;
-  background: url(${headerImage}) no-repeat 25% center;
   background-size: cover;
   font-size: ${({ theme }) => theme.font.size.header};
   color: #fff;
@@ -80,7 +80,21 @@ const StyledImage = styled.img`
   height: fit-content;
 `;
 
-const Header = ({ cartItems }) => {
+const StyledHero = styled(Img)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: -1;
+  height: 100vh;
+
+  & > img {
+    object-fit: cover !important;
+    object-position: 0% 0% !important;
+  }
+`;
+
+const Header = ({ cartItems, photo }) => {
   const [isMenuOpen, toggleMenu] = useState(false);
 
   const toggleMobileNavigation = () => {
@@ -101,6 +115,8 @@ const Header = ({ cartItems }) => {
       </StyledBar>
       <StyledHeader>
         <MobileMenu isOpen={isMenuOpen} />
+        <StyledHero fluid={photo.childImageSharp.fluid} />
+
         <StyledParagraph>
           made with love <br />
           <StyledText>for you</StyledText>
@@ -111,6 +127,7 @@ const Header = ({ cartItems }) => {
 };
 
 Header.propTypes = {
+  photo: PropTypes.shape().isRequired,
   cartItems: PropTypes.number,
 };
 
