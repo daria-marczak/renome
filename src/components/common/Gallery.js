@@ -6,6 +6,7 @@ import Img from 'gatsby-image';
 const StyledWrapper = styled.div`
   position: relative;
   z-index: 0;
+  margin-bottom: 120px;
 
   @media (min-width: 1200px) {
     max-width: 450px;
@@ -15,10 +16,15 @@ const StyledWrapper = styled.div`
 const StyledImage = styled(Img)`
   margin-right: 10px;
   position: 'absolute' !important;
-  margin-bottom: 10px;
+  margin-bottom: -100px;
 
   @media (min-width: 1200px) {
     max-width: 450px;
+  }
+
+  &:hover {
+    z-index: 99;
+    cursor: pointer;
   }
 `;
 
@@ -29,7 +35,7 @@ const PhotoComponent = ({ photos, flipped, switched }) => (
         fluid={photo.node.childImageSharp.fluid}
         flipped={flipped}
         switched={switched}
-        alt={photo.name}
+        alt={photo.node.name}
         key={photo.node.id}
       />
     ))}
@@ -37,7 +43,8 @@ const PhotoComponent = ({ photos, flipped, switched }) => (
 );
 
 PhotoComponent.propTypes = {
-  photos: PropTypes.shape().isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  photos: PropTypes.array.isRequired,
   flipped: PropTypes.bool,
   switched: PropTypes.bool,
 };
