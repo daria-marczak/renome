@@ -43,8 +43,8 @@ const PhotoComponent = ({ photos, flipped, switched }) => (
 );
 
 PhotoComponent.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
-  photos: PropTypes.array.isRequired,
+  photos: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.shape()]))
+    .isRequired,
   flipped: PropTypes.bool,
   switched: PropTypes.bool,
 };
