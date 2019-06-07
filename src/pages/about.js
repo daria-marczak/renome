@@ -6,6 +6,8 @@ import SEO from '../components/seo';
 import Header from '../components/common/Header';
 import History from '../components/about/History';
 import Goals from '../components/about/Goals';
+import MoreAbout from '../components/about/MoreAbout';
+import Footer from '../components/common/Footer';
 
 const IndexPage = ({ data }) => (
   <HomeTemplate>
@@ -17,6 +19,8 @@ const IndexPage = ({ data }) => (
     />
     <History />
     <Goals />
+    <MoreAbout />
+    <Footer />
   </HomeTemplate>
 );
 
