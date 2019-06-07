@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import HomeTemplate from '../templates/HomeTemplate';
 import SEO from '../components/seo';
 import Header from '../components/common/Header';
+import History from '../components/about/History';
 
 const IndexPage = ({ data }) => (
   <HomeTemplate>
@@ -13,6 +14,7 @@ const IndexPage = ({ data }) => (
       section="about"
       title="we create delicious memories"
     />
+    <History />
   </HomeTemplate>
 );
 

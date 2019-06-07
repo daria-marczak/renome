@@ -72,7 +72,7 @@ const StyledParagraph = styled.p`
 
 const StyledText = styled.span`
   color: ${({ theme }) => theme.primary};
-  text-shadow: 1px 1px 2px #fff;
+  text-shadow: 1px 1px 1px #fff;
 `;
 
 const StyledImage = styled.img`
