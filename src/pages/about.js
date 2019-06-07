@@ -5,6 +5,7 @@ import HomeTemplate from '../templates/HomeTemplate';
 import SEO from '../components/seo';
 import Header from '../components/common/Header';
 import History from '../components/about/History';
+import Goals from '../components/about/Goals';
 
 const IndexPage = ({ data }) => (
   <HomeTemplate>
@@ -15,6 +16,7 @@ const IndexPage = ({ data }) => (
       title="we create delicious memories"
     />
     <History />
+    <Goals />
   </HomeTemplate>
 );
 
