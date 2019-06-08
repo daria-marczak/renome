@@ -33,7 +33,15 @@ const StyledBoxColumn = styled(StyledColumn)`
 `;
 
 const StyledGalleryColumn = styled(StyledColumn)`
-  transform: translateX(200px);
+  @media (min-width: 1200px) {
+    transform: translateX(200px);
+  }
+`;
+
+const StyledAboutSection = styled(StyledSection)`
+  @media (min-width: 1200px) {
+    height: 340px;
+  }
 `;
 
 const MoreAbout = ({
@@ -42,7 +50,7 @@ const MoreAbout = ({
   },
 }) => {
   return (
-    <StyledSection title="More about">
+    <StyledAboutSection title="More about">
       <StyledWrapper>
         <StyledGalleryColumn>
           <Gallery photos={edges} />
@@ -57,7 +65,7 @@ const MoreAbout = ({
           </StyledOpeningHoursBox>
         </StyledBoxColumn>
       </StyledWrapper>
-    </StyledSection>
+    </StyledAboutSection>
   );
 };
 

@@ -19,7 +19,7 @@ const History = ({
 }) => {
   const [firstPhoto, secondPhoto] = edges;
   return (
-    <StyledSection title="history">
+    <StyledSection title="goals">
       <StyledWrapper>
         <StyledColumn>
           <PhotoComponent
