@@ -20,10 +20,20 @@ const StyledOpeningHoursBox = styled.div`
   justify-content: center;
   align-items: space-around;
   text-transform: uppercase;
+  width: 360px;
+  height: 320px;
 `;
 
 const StyledStrongParagraph = styled(StyledParagraph)`
   font-weight: 700;
+`;
+
+const StyledBoxColumn = styled(StyledColumn)`
+  justify-self: end;
+`;
+
+const StyledGalleryColumn = styled(StyledColumn)`
+  transform: translateX(200px);
 `;
 
 const MoreAbout = ({
@@ -34,10 +44,10 @@ const MoreAbout = ({
   return (
     <StyledSection title="More about">
       <StyledWrapper>
-        <StyledColumn>
+        <StyledGalleryColumn>
           <Gallery photos={edges} />
-        </StyledColumn>
-        <StyledColumn isDescription>
+        </StyledGalleryColumn>
+        <StyledBoxColumn isDescription>
           <StyledOpeningHoursBox>
             <StyledDescription>opening hours</StyledDescription>
             <StyledStrongParagraph>monday - friday</StyledStrongParagraph>
@@ -45,7 +55,7 @@ const MoreAbout = ({
             <StyledStrongParagraph>saturday - sunday</StyledStrongParagraph>
             <StyledParagraph>10.00 - 21.00</StyledParagraph>
           </StyledOpeningHoursBox>
-        </StyledColumn>
+        </StyledBoxColumn>
       </StyledWrapper>
     </StyledSection>
   );

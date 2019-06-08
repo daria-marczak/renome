@@ -18,7 +18,7 @@ const StyledImage = styled(Img)`
     margin-bottom: 0;
     margin-left: -30px;
     transform: translateY(${({ index }) => index * '-309' + 'px'})
-      translateX(${({ index }) => index * '10' + '%'});
+      translateX(${({ index }) => index * '20' + '%'});
   }
 
   &:hover {
