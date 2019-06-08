@@ -7,19 +7,18 @@ const StyledWrapper = styled.div`
   position: relative;
   z-index: 0;
   margin-bottom: 120px;
-
-  @media (min-width: 1200px) {
-    max-width: 450px;
-  }
 `;
 
 const StyledImage = styled(Img)`
   margin-right: 10px;
-  position: 'absolute' !important;
   margin-bottom: -100px;
 
   @media (min-width: 1200px) {
     max-width: 450px;
+    margin-bottom: 0;
+    margin-left: -30px;
+    transform: translateY(${({ index }) => index * '-309' + 'px'})
+      translateX(${({ index }) => index * '10' + '%'});
   }
 
   &:hover {
@@ -28,14 +27,13 @@ const StyledImage = styled(Img)`
   }
 `;
 
-const PhotoComponent = ({ photos, flipped, switched }) => (
+const PhotoComponent = ({ photos }) => (
   <StyledWrapper>
-    {photos.map(photo => (
+    {photos.map((photo, index) => (
       <StyledImage
         fluid={photo.node.childImageSharp.fluid}
-        flipped={flipped}
-        switched={switched}
         alt={photo.node.name}
+        index={index}
         key={photo.node.id}
       />
     ))}
@@ -45,13 +43,6 @@ const PhotoComponent = ({ photos, flipped, switched }) => (
 PhotoComponent.propTypes = {
   photos: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.shape()]))
     .isRequired,
-  flipped: PropTypes.bool,
-  switched: PropTypes.bool,
-};
-
-PhotoComponent.defaultProps = {
-  flipped: false,
-  switched: false,
 };
 
 export default PhotoComponent;
