@@ -21,7 +21,7 @@ const About = ({
   const [firstPhoto, secondPhoto] = edges;
 
   return (
-    <StyledSection name="about">
+    <StyledSection title="about">
       <StyledWrapper>
         <StyledColumn>
           <PhotoComponent

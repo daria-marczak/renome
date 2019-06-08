@@ -8,49 +8,44 @@ import {
   StyledDescription,
   StyledParagraph,
   StyledSection,
-  StyledSectionLink,
   StyledWrapper,
   StyledColumn,
 } from '../common/common';
 
-const Reservation = ({
+const History = ({
   data: {
     allFile: { edges },
   },
 }) => {
   const [firstPhoto, secondPhoto] = edges;
-
   return (
-    <StyledSection title="reservation">
+    <StyledSection title="history">
       <StyledWrapper>
         <StyledColumn>
           <PhotoComponent
             firstPhoto={firstPhoto.node}
             secondPhoto={secondPhoto.node}
-            switched
           />
         </StyledColumn>
         <StyledColumn isDescription>
-          <StyledHeading>reservation</StyledHeading>
-          <StyledDescription>
-            book your table at our restaurant now!
-          </StyledDescription>
+          <StyledHeading>history</StyledHeading>
+          <StyledDescription>wonderful story of our town</StyledDescription>
           <StyledParagraph>
-            When you finalize a reservation with OpenTable they will send you a
-            confirmation email immediately. We will also call you on the date of
-            your reservation to confirm your table.  If you do not receive an
-            email, or do not hear from the restaurant, we would recommend
-            calling to confirm your table and verify your reservation booking
-            (+1 939 777 55 33).
+            Renome it is renowned restaurant delights the senses with elegant
+            ambiance, gracious service and delectable menus in the heart of
+            Manhattan’s. The distinctive setting boasts contemporary furnishings
+            and finishes atop the restaurant’s grand modern architecture. Renome
+            offers the room for private dining where guests enjoy creative foods
+            and sumptuous late night desserts. Is one of the few Manhattan
+            restaurants to have a coveted 3-star Michelin rating.
           </StyledParagraph>
-          <StyledSectionLink to="/reservation">...</StyledSectionLink>
         </StyledColumn>
       </StyledWrapper>
     </StyledSection>
   );
 };
 
-Reservation.propTypes = {
+History.propTypes = {
   data: PropTypes.shape().isRequired,
 };
 
@@ -58,13 +53,13 @@ export default props => (
   <StaticQuery
     query={graphql`
       query {
-        allFile(filter: { absolutePath: { regex: "/reservation/" } }) {
+        allFile(filter: { absolutePath: { regex: "/home/" } }) {
           edges {
             node {
               id
               name
               childImageSharp {
-                fluid(quality: 100) {
+                fluid(quality: 90) {
                   ...GatsbyImageSharpFluid_withWebp_tracedSVG
                 }
               }
@@ -73,6 +68,6 @@ export default props => (
         }
       }
     `}
-    render={data => <Reservation data={data} {...props} />}
+    render={data => <History data={data} {...props} />}
   />
 );

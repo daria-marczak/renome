@@ -41,7 +41,7 @@ const StyledImage = styled(Img)`
 `;
 
 const Quote = ({ data }) => (
-  <StyledQuoteSection name="quote">
+  <StyledQuoteSection title="quote">
     <StyledWrapper>
       <StyledColumn>
         <StyledImage fluid={data.file.childImageSharp.fluid} />

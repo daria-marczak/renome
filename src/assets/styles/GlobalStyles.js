@@ -14,6 +14,10 @@ const GlobalStyle = createGlobalStyle`
         font-family: Lato, sans-serif;
     }
 
+    main {
+      overflow: hidden;
+    }
+
     .gatsby-image-wrapper {
         margin-left: 0 !important;
         margin-right: 0 !important;

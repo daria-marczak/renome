@@ -8,49 +8,41 @@ import {
   StyledDescription,
   StyledParagraph,
   StyledSection,
-  StyledSectionLink,
   StyledWrapper,
   StyledColumn,
 } from '../common/common';
 
-const Reservation = ({
+const History = ({
   data: {
     allFile: { edges },
   },
 }) => {
   const [firstPhoto, secondPhoto] = edges;
-
   return (
-    <StyledSection title="reservation">
+    <StyledSection title="goals">
       <StyledWrapper>
         <StyledColumn>
           <PhotoComponent
             firstPhoto={firstPhoto.node}
             secondPhoto={secondPhoto.node}
-            switched
           />
         </StyledColumn>
         <StyledColumn isDescription>
-          <StyledHeading>reservation</StyledHeading>
-          <StyledDescription>
-            book your table at our restaurant now!
-          </StyledDescription>
+          <StyledHeading>goals</StyledHeading>
+          <StyledDescription>what we want to achieve</StyledDescription>
           <StyledParagraph>
-            When you finalize a reservation with OpenTable they will send you a
-            confirmation email immediately. We will also call you on the date of
-            your reservation to confirm your table.  If you do not receive an
-            email, or do not hear from the restaurant, we would recommend
-            calling to confirm your table and verify your reservation booking
-            (+1 939 777 55 33).
+            Our guests come for all occasions – a drink after work, a quick bite
+            before a movie, a business dinner and much more. Our goal is to
+            satisfy the needs of every visitor to our restaurant every day
+            improving the quality of our services.
           </StyledParagraph>
-          <StyledSectionLink to="/reservation">...</StyledSectionLink>
         </StyledColumn>
       </StyledWrapper>
     </StyledSection>
   );
 };
 
-Reservation.propTypes = {
+History.propTypes = {
   data: PropTypes.shape().isRequired,
 };
 
@@ -58,13 +50,13 @@ export default props => (
   <StaticQuery
     query={graphql`
       query {
-        allFile(filter: { absolutePath: { regex: "/reservation/" } }) {
+        allFile(filter: { absolutePath: { regex: "/goals/" } }) {
           edges {
             node {
               id
               name
               childImageSharp {
-                fluid(quality: 100) {
+                fluid(quality: 90) {
                   ...GatsbyImageSharpFluid_withWebp_tracedSVG
                 }
               }
@@ -73,6 +65,6 @@ export default props => (
         }
       }
     `}
-    render={data => <Reservation data={data} {...props} />}
+    render={data => <History data={data} {...props} />}
   />
 );

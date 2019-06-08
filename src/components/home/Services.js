@@ -48,7 +48,8 @@ const StyledLink = styled(StyledSectionLink)`
   z-index: 1;
 
   @media (min-width: 1200px) {
-    left: 0;
+    left: 47%;
+    bottom: 9%;
   }
 
   @media (min-width: 768px) and (max-width: 1280px) {
@@ -73,12 +74,14 @@ const Services = ({ data }) => {
   ];
 
   return (
-    <StyledServices name="services">
+    <StyledServices title="services">
       <StyledHeading>our services</StyledHeading>
       <StyledDescription>advantages of our restaurant</StyledDescription>
-      <StyledThreeColumnGrid>
+      <StyledThreeColumnGrid role="list">
         {servicesList.map(service => (
-          <StyledAdvantage key={service}>{service}</StyledAdvantage>
+          <StyledAdvantage key={service} role="listitem">
+            {service}
+          </StyledAdvantage>
         ))}
       </StyledThreeColumnGrid>
       <StyledImage fluid={data.file.childImageSharp.fluid} />

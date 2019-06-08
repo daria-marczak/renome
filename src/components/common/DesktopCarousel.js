@@ -38,7 +38,7 @@ const StyledButton = styled.button`
 
 const StyledPriceTag = styled.div`
   position: absolute;
-  top: 84px;
+  top: 34px;
   right: 20px;
   background: ${({ theme }) => theme.lightGray};
   font-family: ${({ theme }) => theme.font.family.montserrat};
@@ -93,15 +93,27 @@ const DesktopCarousel = ({ data }) => {
   };
 
   return (
-    <StyledWrapper>
+    <StyledWrapper role="list">
       <StyledButtonsContainer>
-        <StyledButton onClick={() => changeSlide(true)}>&lt;</StyledButton>
-        <StyledButton onClick={() => changeSlide(false)}>&gt;</StyledButton>
+        <StyledButton
+          onClick={() => changeSlide(true)}
+          aria-label="previous slide"
+        >
+          &lt;
+        </StyledButton>
+        <StyledButton
+          onClick={() => changeSlide(false)}
+          aria-label="next slide"
+        >
+          &gt;
+        </StyledButton>
       </StyledButtonsContainer>
       <StyledImage
         fluid={node.childImageSharp.fluid}
         key={node.id}
         alt={node.name}
+        aria-label={node.name}
+        role="listitem"
       />
       <StyledPriceTag>{specificDay.price}</StyledPriceTag>
       <StyledContainer>

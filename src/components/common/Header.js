@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import Img from 'gatsby-image';
 
-import headerImage from '../../assets/images/headers/home.png';
 import logo from '../../assets/images/logo.png';
 import cartIcon from '../../assets/icons/cart.png';
+
 import Hamburger from './Hamburger';
 import MobileMenu from './MobileMenu';
 import Navigation from './Navigation';
 
 const StyledHeader = styled.header`
   min-height: 100vh;
-  background: url(${headerImage}) no-repeat 25% center;
   background-size: cover;
   font-size: ${({ theme }) => theme.font.size.header};
   color: #fff;
@@ -72,7 +72,7 @@ const StyledParagraph = styled.p`
 
 const StyledText = styled.span`
   color: ${({ theme }) => theme.primary};
-  text-shadow: 1px 1px 2px #fff;
+  text-shadow: 1px 1px 1px #fff;
 `;
 
 const StyledImage = styled.img`
@@ -80,7 +80,30 @@ const StyledImage = styled.img`
   height: fit-content;
 `;
 
-const Header = ({ cartItems }) => {
+const StyledHero = styled(Img)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: -1;
+  height: 100vh;
+
+  & > img {
+    object-fit: cover !important;
+    object-position: 0% 0% !important;
+  }
+`;
+
+const StyledFilter = styled.div`
+  background: #162642;
+  opacity: 0.6;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  bottom: 0;
+`;
+
+const Header = ({ cartItems, photo, title, section }) => {
   const [isMenuOpen, toggleMenu] = useState(false);
 
   const toggleMobileNavigation = () => {
@@ -101,9 +124,12 @@ const Header = ({ cartItems }) => {
       </StyledBar>
       <StyledHeader>
         <MobileMenu isOpen={isMenuOpen} />
+        <StyledHero fluid={photo.childImageSharp.fluid} />
+        <StyledFilter />
         <StyledParagraph>
-          made with love <br />
-          <StyledText>for you</StyledText>
+          {section ? section : 'made with love'}
+          <br />
+          <StyledText>{title ? title : 'for you'}</StyledText>
         </StyledParagraph>
       </StyledHeader>
     </>
@@ -111,11 +137,16 @@ const Header = ({ cartItems }) => {
 };
 
 Header.propTypes = {
+  photo: PropTypes.shape().isRequired,
   cartItems: PropTypes.number,
+  title: PropTypes.string,
+  section: PropTypes.string,
 };
 
 Header.defaultProps = {
   cartItems: 0,
+  title: '',
+  section: '',
 };
 
 export default Header;

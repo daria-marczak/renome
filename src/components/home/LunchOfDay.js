@@ -40,7 +40,7 @@ const StyledCarouselColumn = styled(StyledColumn)`
 `;
 
 const Lunch = () => (
-  <StyledSection>
+  <StyledSection title="Lunch of the day">
     <StyledWrapper>
       <StyledColumnCentered>
         <StyledHeading>lunch</StyledHeading>
