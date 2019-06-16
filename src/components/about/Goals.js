@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { graphql, StaticQuery } from 'gatsby';
 
@@ -12,6 +13,12 @@ import {
   StyledColumn,
 } from '../common/common';
 
+const GoalsColumn = styled(StyledColumn)`
+  @media (min-width: 1200px) {
+    justify-self: end;
+  }
+`;
+
 const History = ({
   data: {
     allFile: { edges },
@@ -21,13 +28,13 @@ const History = ({
   return (
     <StyledSection title="goals">
       <StyledWrapper>
-        <StyledColumn>
+        <StyledColumn right>
           <PhotoComponent
             firstPhoto={firstPhoto.node}
             secondPhoto={secondPhoto.node}
           />
         </StyledColumn>
-        <StyledColumn isDescription>
+        <GoalsColumn left isDescription>
           <StyledHeading>goals</StyledHeading>
           <StyledDescription>what we want to achieve</StyledDescription>
           <StyledParagraph>
@@ -36,7 +43,7 @@ const History = ({
             satisfy the needs of every visitor to our restaurant every day
             improving the quality of our services.
           </StyledParagraph>
-        </StyledColumn>
+        </GoalsColumn>
       </StyledWrapper>
     </StyledSection>
   );
