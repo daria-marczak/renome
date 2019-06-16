@@ -92,7 +92,7 @@ const menu = [
             price: '5.54',
           },
           {
-            name: 'Sesame tuna',
+            name: 'Sesame Tuna',
             description:
               'Sesame seeds form a tasty crust and are rich in calcium, copper and magnesium.',
             price: '4.64',
@@ -147,11 +147,6 @@ const menu = [
             name: 'Winter salad',
             description: '',
             price: '4.54',
-          },
-          {
-            name: 'Scrambled',
-            description: 'This is a simple winter salad,  fresh and crisp. ',
-            price: '4.14',
           },
           {
             name: 'Thai-style salad',

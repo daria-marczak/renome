@@ -29,6 +29,12 @@ const StyledMenuSection = styled.div`
   margin-bottom: 15px;
 `;
 
+const StyledList = styled.ul`
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+`;
+
 const MenuTabs = ({
   tabs,
   menu,
@@ -57,15 +63,17 @@ const MenuTabs = ({
           meal.categories.map(dish => (
             <StyledMenuSection key={dish.name}>
               <StyledHeading>{dish.name}</StyledHeading>
-              {dish.dishes.map(item => {
-                return (
-                  <MenuItem
-                    key={item.name}
-                    dish={item}
-                    photo={edges.find(edge => edge.node.name === item.name)}
-                  />
-                );
-              })}
+              <StyledList>
+                {dish.dishes.map(item => {
+                  return (
+                    <MenuItem
+                      key={item.name}
+                      dish={item}
+                      photo={edges.find(edge => edge.node.name === item.name)}
+                    />
+                  );
+                })}
+              </StyledList>
             </StyledMenuSection>
           ))
       )}
