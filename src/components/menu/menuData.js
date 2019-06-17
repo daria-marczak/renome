@@ -145,7 +145,7 @@ const menu = [
           },
           {
             name: 'Winter salad',
-            description: '',
+            description: 'This is a simple winter salad,  fresh and crisp.',
             price: '4.54',
           },
           {
@@ -249,12 +249,12 @@ const menu = [
             price: '3.54',
           },
           {
-            name: 'Subarb',
+            name: 'Frozen banana ice cream',
             description: 'Best chocolate lava cake',
             price: '3.54',
           },
           {
-            name: 'Froent peanut butter banana bites',
+            name: 'Frozen peanut butter banana bites',
             description: 'Best chocolate lava cake',
             price: '3.54',
           },

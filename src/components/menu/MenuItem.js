@@ -43,10 +43,10 @@ const StyledPrice = styled.p`
     font-weight: 700;
     color: ${({ theme }) => theme.black};
   }
+`;
 
-  &:before {
-    content: '$';
-  }
+const StyledPriceContainer = styled.div`
+  display: flex;
 `;
 
 const MenuItem = ({ dish, photo }) => {
@@ -54,7 +54,10 @@ const MenuItem = ({ dish, photo }) => {
     <StyledContainer>
       <StyledPhotoColumn>
         {photo && <StyledImage fluid={photo.node.childImageSharp.fluid} />}
-        <StyledPrice>{dish.price}</StyledPrice>
+        <StyledPriceContainer>
+          <StyledPrice>$</StyledPrice>
+          <StyledPrice>{dish.price}</StyledPrice>
+        </StyledPriceContainer>
       </StyledPhotoColumn>
       <StyledDescriptionColumn>
         <StyledHeading>{dish.name}</StyledHeading>

@@ -9,7 +9,7 @@ import Twitter from '../../assets/icons/twitter.png';
 const StyledFooter = styled.footer`
   background: ${({ theme }) => theme.lightGray};
   text-align: center;
-  padding: 20px;
+  padding: 20px 0;
 
   @media (min-width: 1200px) {
     display: grid;
