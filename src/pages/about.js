@@ -9,7 +9,7 @@ import Goals from '../components/about/Goals';
 import MoreAbout from '../components/about/MoreAbout';
 import Footer from '../components/common/Footer';
 
-const IndexPage = ({ data }) => (
+const AboutPage = ({ data }) => (
   <HomeTemplate>
     <SEO title="About" keywords={[`renome`, `restaurant`]} />
     <Header
@@ -36,8 +36,8 @@ export const query = graphql`
   }
 `;
 
-IndexPage.propTypes = {
+AboutPage.propTypes = {
   data: PropTypes.shape().isRequired,
 };
 
-export default IndexPage;
+export default AboutPage;

@@ -4,27 +4,25 @@ import PropTypes from 'prop-types';
 import HomeTemplate from '../templates/HomeTemplate';
 import SEO from '../components/seo';
 import Header from '../components/common/Header';
-import Discover from '../components/menu/Discover';
-import Menu from '../components/menu/Menu';
-import Footer from '../components/common/Footer';
+import Online from '../components/reservations/Online';
 
-const MenuPage = ({ data }) => (
+const Reservations = ({ data }) => (
   <HomeTemplate>
-    <SEO title="Menu" keywords={[`renome`, `restaurant`]} />
+    <SEO title="Reservations" keywords={[`renome`, `restaurant`]} />
     <Header
-      photo={data.menuHeader}
-      section="menu"
-      title="delicious and beautiful"
+      photo={data.reservationsHeader}
+      section="reservations"
+      title="book a table at our restaurant now!"
     />
-    <Discover />
-    <Menu />
-    <Footer />
+    <Online />
   </HomeTemplate>
 );
 
 export const query = graphql`
   query {
-    menuHeader: file(relativePath: { eq: "images/headers/menu.png" }) {
+    reservationsHeader: file(
+      relativePath: { eq: "images/headers/reservations.png" }
+    ) {
       childImageSharp {
         fluid(maxWidth: 2000, quality: 100) {
           ...GatsbyImageSharpFluid_noBase64
@@ -34,8 +32,8 @@ export const query = graphql`
   }
 `;
 
-MenuPage.propTypes = {
+Reservations.propTypes = {
   data: PropTypes.shape().isRequired,
 };
 
-export default MenuPage;
+export default Reservations;
