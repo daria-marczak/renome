@@ -5,6 +5,7 @@ import HomeTemplate from '../templates/HomeTemplate';
 import SEO from '../components/seo';
 import Header from '../components/common/Header';
 import Online from '../components/reservations/Online';
+import ReservationForm from '../components/reservations/ReservationForm';
 
 const Reservations = ({ data }) => (
   <HomeTemplate>
@@ -15,6 +16,7 @@ const Reservations = ({ data }) => (
       title="book a table at our restaurant now!"
     />
     <Online />
+    <ReservationForm />
   </HomeTemplate>
 );
 
