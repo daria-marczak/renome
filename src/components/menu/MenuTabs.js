@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { graphql, StaticQuery } from 'gatsby';
@@ -7,17 +7,34 @@ import MenuItem from './MenuItem';
 
 const StyledTabContainer = styled.div`
   display: flex;
+  min-width: 375px;
+  justify-self: center;
+  border-bottom: 2px solid ${({ theme }) => theme.lightGray};
+
+  @media (min-width: 1200px) {
+    min-width: 400px;
+    justify-self: center;
+  }
+`;
+
+const StyledWrapper = styled.div`
+  width: 100%;
 `;
 
 const StyledTabLink = styled.div`
-  border-bottom: 2px solid
-    ${({ theme, isActive }) => (isActive ? theme.primary : theme.lightGray)};
+  border-bottom: 5px solid
+    ${({ theme, isActive }) => (isActive ? theme.primary : 'transparent')};
   flex: 1;
   font-weight: 700;
   text-align: center;
-  line-height: 30px;
+  line-height: 40px;
   text-transform: uppercase;
+  transition: border-bottom 0.3s ease-in-out;
   cursor: pointer;
+
+  @media (min-width: 1200px) {
+    max-width: 130px;
+  }
 `;
 
 const StyledHeading = styled.h2`
@@ -44,7 +61,7 @@ const MenuTabs = ({
 }) => {
   const [activeTab, setTab] = useState('Lunch');
   return (
-    <Fragment>
+    <StyledWrapper>
       <StyledTabContainer>
         {tabs.map(tab => (
           <StyledTabLink
@@ -77,7 +94,7 @@ const MenuTabs = ({
             </StyledMenuSection>
           ))
       )}
-    </Fragment>
+    </StyledWrapper>
   );
 };
 

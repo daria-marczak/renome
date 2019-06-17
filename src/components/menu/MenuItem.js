@@ -8,6 +8,10 @@ const StyledContainer = styled.li`
   grid-template-columns: 1fr 3fr;
   align-items: start;
   margin-bottom: 15px;
+
+  @media (min-width: 1200px) {
+    grid-template-columns: 1fr 3fr 1fr;
+  }
 `;
 
 const StyledImage = styled(Img)`
@@ -45,8 +49,21 @@ const StyledPrice = styled.p`
   }
 `;
 
-const StyledPriceContainer = styled.div`
+const StyledPriceContainerMobile = styled.div`
   display: flex;
+
+  @media (min-width: 1200px) {
+    display: none;
+  }
+`;
+
+const StyledPriceContainerDesktop = styled.div`
+  display: flex;
+  justify-content: flex-end;
+
+  @media (max-width: 1200px) {
+    display: none;
+  }
 `;
 
 const MenuItem = ({ dish, photo }) => {
@@ -54,15 +71,19 @@ const MenuItem = ({ dish, photo }) => {
     <StyledContainer>
       <StyledPhotoColumn>
         {photo && <StyledImage fluid={photo.node.childImageSharp.fluid} />}
-        <StyledPriceContainer>
+        <StyledPriceContainerMobile>
           <StyledPrice>$</StyledPrice>
           <StyledPrice>{dish.price}</StyledPrice>
-        </StyledPriceContainer>
+        </StyledPriceContainerMobile>
       </StyledPhotoColumn>
       <StyledDescriptionColumn>
         <StyledHeading>{dish.name}</StyledHeading>
         <StyledDescription>{dish.description}</StyledDescription>
       </StyledDescriptionColumn>
+      <StyledPriceContainerDesktop>
+        <StyledPrice>$</StyledPrice>
+        <StyledPrice>{dish.price}</StyledPrice>
+      </StyledPriceContainerDesktop>
     </StyledContainer>
   );
 };
