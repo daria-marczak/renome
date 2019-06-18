@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import HomeTemplate from '../templates/HomeTemplate';
 import SEO from '../components/seo';
 import Header from '../components/common/Header';
+import Footer from '../components/common/Footer';
 import Online from '../components/reservations/Online';
 import ReservationForm from '../components/reservations/ReservationForm';
 
@@ -17,6 +18,7 @@ const Reservations = ({ data }) => (
     />
     <Online />
     <ReservationForm />
+    <Footer />
   </HomeTemplate>
 );
 
