@@ -13,7 +13,12 @@ const ReservationForm = () => {
   const nextTwoWeeks = new Date(Date.now() + 12096e5)
     .toISOString()
     .substr(0, 10);
+
+  const now = `${new Date().getHours()}:${new Date().getMinutes()}`;
+
   const [date, setDate] = useState(today);
+  const [time, setTime] = useState(now);
+  const [people, setPeopleAmount] = useState(0);
 
   return (
     <StyledWrapper>
@@ -29,6 +34,7 @@ const ReservationForm = () => {
             min={today}
             max={nextTwoWeeks}
             onChange={event => setDate(event.target.value)}
+            required
           />
         </label>
         <label htmlFor="reservationTime">
@@ -37,12 +43,23 @@ const ReservationForm = () => {
             type="time"
             id="reservationTime"
             name="reservation-time"
-            value="13:00"
-            step="1800"
+            min={time}
+            value={time}
+            onChange={event => setTime(event.target.value)}
+            required
           />
         </label>
         <label htmlFor="peopleAmount">
-          <input type="number" min="1" max="10" id="peopleAmount" />
+          People amount:
+          <input
+            type="number"
+            min="1"
+            max="10"
+            id="peopleAmount"
+            value={people}
+            onChange={event => setPeopleAmount(event.target.value)}
+            required
+          />
         </label>
       </form>
     </StyledWrapper>
