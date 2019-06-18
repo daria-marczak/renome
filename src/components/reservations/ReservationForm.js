@@ -1,6 +1,7 @@
-import React, { Fragment } from 'react';
+import React, { useState } from 'react';
 // import PropTypes from "prop-types";
 import styled from 'styled-components';
+import { StyledWrapper } from '../common/common';
 
 const StyledHeading = styled.h4`
   font-weight: 700;
@@ -8,11 +9,14 @@ const StyledHeading = styled.h4`
 `;
 
 const ReservationForm = () => {
-  const today = new Date();
-  const nextTwoWeeks = today.getDate() + 14;
+  const today = new Date().toISOString().substr(0, 10);
+  const nextTwoWeeks = new Date(Date.now() + 12096e5)
+    .toISOString()
+    .substr(0, 10);
+  const [date, setDate] = useState(today);
 
   return (
-    <Fragment>
+    <StyledWrapper>
       <StyledHeading>make a reservation</StyledHeading>
       <form>
         <label htmlFor="reservationDate">
@@ -21,9 +25,10 @@ const ReservationForm = () => {
             type="date"
             id="reservationDate"
             name="reservation-date"
-            value={today}
+            value={date}
             min={today}
             max={nextTwoWeeks}
+            onChange={event => setDate(event.target.value)}
           />
         </label>
         <label htmlFor="reservationTime">
@@ -36,8 +41,11 @@ const ReservationForm = () => {
             step="1800"
           />
         </label>
+        <label htmlFor="peopleAmount">
+          <input type="number" min="1" max="10" id="peopleAmount" />
+        </label>
       </form>
-    </Fragment>
+    </StyledWrapper>
   );
 };
 
