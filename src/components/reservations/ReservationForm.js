@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import 'react-dates/initialize';
-// import { DateRangePicker, SingleDatePicker, DayPickerRangeController } from 'react-dates';
+import moment from 'moment';
+import { SingleDatePicker } from 'react-dates';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { graphql, StaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
 import { StyledWrapper } from '../common/common';
+import { SingleDatePickerPhrases } from './phrases';
+import 'react-dates/lib/css/_datepicker.css';
+import '../../assets/styles/reactDatesOverrides.css';
 
 const StyledHeading = styled.h4`
   font-weight: 700;
@@ -15,7 +19,7 @@ const StyledHeading = styled.h4`
 `;
 
 const StyledReservationWrapper = styled(StyledWrapper)`
-  @media (min-width: 1200px) {
+  @media (min-width: 768px) {
     grid-template-columns: 1fr;
   }
 `;
@@ -52,7 +56,7 @@ const StyledFormWrapper = styled.div`
   flex-direction: column;
   flex: 1;
 
-  @media (min-width: 1200px) {
+  @media (min-width: 768px) {
     flex-direction: row;
     justify-content: center;
   }
@@ -72,6 +76,14 @@ const StyledInput = styled.input`
   flex: 1;
 `;
 
+const StyleDates = styled(SingleDatePicker)`
+  font-family: ${({ theme }) => theme.font.family.montserrat};
+  padding: 15px 10px;
+  border-bottom: 3px solid ${({ theme }) => theme.lightGray} !important;
+  margin-left: 10px;
+  flex: 1;
+`;
+
 const StyledLabel = styled.label`
   display: flex;
   align-items: center;
@@ -87,16 +99,14 @@ const StyledLabel = styled.label`
 `;
 
 const ReservationForm = ({ data }) => {
-  const today = new Date().toISOString().substr(0, 10);
-  const nextTwoWeeks = new Date(Date.now() + 12096e5)
-    .toISOString()
-    .substr(0, 10);
+  const today = moment().add(1, 'days');
 
   const now = `${new Date().getHours()}:${new Date().getMinutes()}`;
 
   const [date, setDate] = useState(today);
   const [time, setTime] = useState(now);
   const [people, setPeopleAmount] = useState(0);
+  const [isFocused, setFocus] = useState(false);
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -107,7 +117,7 @@ const ReservationForm = ({ data }) => {
       <StyledHeading>make a reservation</StyledHeading>
       <StyledForm onSubmit={handleSubmit}>
         <StyledFormWrapper>
-          <StyledLabel htmlFor="reservationDate">
+          {/* <StyledLabel htmlFor="reservationDate">
             <StyledImage fluid={data.calendar.childImageSharp.fluid} />
             <StyledInput
               type="date"
@@ -119,7 +129,21 @@ const ReservationForm = ({ data }) => {
               onChange={event => setDate(event.target.value)}
               required
             />
-          </StyledLabel>
+          </StyledLabel> */}
+          <StyleDates
+            date={date}
+            onDateChange={date => setDate(date)}
+            focused={isFocused}
+            onFocusChange={() => setFocus(!isFocused)}
+            id="reservation"
+            noBorder
+            small
+            phrases={SingleDatePickerPhrases}
+            screenReaderInputMessage="Select date of your reservation"
+            customInputIcon={
+              <StyledImage fluid={data.calendar.childImageSharp.fluid} />
+            }
+          />
           <StyledLabel htmlFor="reservationTime">
             <StyledImage fluid={data.hours.childImageSharp.fluid} />
             <StyledInput
