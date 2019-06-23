@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import HomeTemplate from '../templates/HomeTemplate';
 import SEO from '../components/seo';
 import Header from '../components/common/Header';
+import BlogSection from '../components/blog/BlogSection';
 
 import Footer from '../components/common/Footer';
 
@@ -15,6 +16,7 @@ const Blog = ({ data }) => (
       section="blog"
       title="news, recipes and much more"
     />
+    <BlogSection />
     <Footer />
   </HomeTemplate>
 );
