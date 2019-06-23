@@ -19,7 +19,7 @@ const GoalsColumn = styled(StyledColumn)`
   }
 `;
 
-const History = ({
+const Goals = ({
   data: {
     allFile: { edges },
   },
@@ -49,8 +49,16 @@ const History = ({
   );
 };
 
-History.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.shape()])).isRequired,
+Goals.propTypes = {
+  data: PropTypes.objectOf(
+    PropTypes.shape({
+      allFile: PropTypes.objectOf(
+        PropTypes.shape({
+          edges: PropTypes.array,
+        })
+      ),
+    })
+  ).isRequired,
 };
 
 export default props => (
@@ -72,6 +80,6 @@ export default props => (
         }
       }
     `}
-    render={data => <History data={data} {...props} />}
+    render={data => <Goals data={data} {...props} />}
   />
 );

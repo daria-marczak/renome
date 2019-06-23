@@ -46,7 +46,15 @@ const History = ({
 };
 
 History.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.shape()])).isRequired,
+  data: PropTypes.objectOf(
+    PropTypes.shape({
+      allFile: PropTypes.objectOf(
+        PropTypes.shape({
+          edges: PropTypes.array,
+        })
+      ),
+    })
+  ).isRequired,
 };
 
 export default props => (

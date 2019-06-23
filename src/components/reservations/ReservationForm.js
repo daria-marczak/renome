@@ -11,7 +11,7 @@ import { SingleDatePickerPhrases } from './phrases';
 import 'react-dates/lib/css/_datepicker.css';
 import '../../assets/styles/reactDatesOverrides.css';
 
-const StyledHeading = styled.h4`
+const StyledHeading = styled.h3`
   font-weight: 700;
   text-transform: uppercase;
   font-size: 20px;
@@ -63,8 +63,13 @@ const StyledFormWrapper = styled.div`
 `;
 
 const StyledImage = styled(Img)`
-  width: 24px;
-  height: 24px;
+  width: 21px;
+  height: 20px;
+
+  & > img {
+    object-fit: contain !important;
+    object-position: 0% 0% !important;
+  }
 `;
 
 const StyledInput = styled.input`
@@ -117,19 +122,6 @@ const ReservationForm = ({ data }) => {
       <StyledHeading>make a reservation</StyledHeading>
       <StyledForm onSubmit={handleSubmit}>
         <StyledFormWrapper>
-          {/* <StyledLabel htmlFor="reservationDate">
-            <StyledImage fluid={data.calendar.childImageSharp.fluid} />
-            <StyledInput
-              type="date"
-              id="reservationDate"
-              name="reservation-date"
-              value={date}
-              min={today}
-              max={nextTwoWeeks}
-              onChange={event => setDate(event.target.value)}
-              required
-            />
-          </StyledLabel> */}
           <StyleDates
             date={date}
             onDateChange={date => setDate(date)}
@@ -138,6 +130,7 @@ const ReservationForm = ({ data }) => {
             id="reservation"
             noBorder
             small
+            numberOfMonths={1}
             phrases={SingleDatePickerPhrases}
             screenReaderInputMessage="Select date of your reservation"
             customInputIcon={

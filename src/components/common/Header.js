@@ -25,6 +25,10 @@ const StyledHeader = styled.header`
   }
 `;
 
+const StyledHeading = styled.h1`
+  font-size: ${({ theme }) => theme.font.size.header};
+`;
+
 const StyledContainer = styled.div`
   display: flex;
   width: 100%;
@@ -58,7 +62,7 @@ const StyledNavigation = styled.nav`
   align-items: center;
 `;
 
-const StyledParagraph = styled.p`
+const StyledParagraph = styled.div`
   position: absolute;
   bottom: 1.5em;
   margin-left: 0.5em;
@@ -127,8 +131,7 @@ const Header = ({ cartItems, photo, title, section }) => {
         <StyledHero fluid={photo.childImageSharp.fluid} />
         <StyledFilter />
         <StyledParagraph>
-          {section ? section : 'made with love'}
-          <br />
+          <StyledHeading>{section ? section : 'made with love'}</StyledHeading>
           <StyledText>{title ? title : 'for you'}</StyledText>
         </StyledParagraph>
       </StyledHeader>
