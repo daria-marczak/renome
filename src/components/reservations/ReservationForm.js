@@ -57,6 +57,7 @@ const StyledFormWrapper = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
+  align-items: center;
 
   @media (min-width: 768px) {
     flex-direction: row;
