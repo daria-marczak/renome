@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'gatsby';
 import styled from 'styled-components';
 import Img from 'gatsby-image';
 import { StyledDescription, StyledParagraph } from '../common/common';
@@ -18,6 +19,13 @@ const StyledBlogDescription = styled(StyledDescription)`
   text-align: center;
 `;
 
+const StyledLink = styled(Link)`
+  color: ${({ theme }) => theme.primary};
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+`;
+
 const BlogItem = ({ post, photos }) => (
   <StyledArticle key={post.title}>
     <StyledHeading>{post.title}</StyledHeading>
@@ -29,6 +37,7 @@ const BlogItem = ({ post, photos }) => (
       }
     />
     <StyledParagraph>{post.text}</StyledParagraph>
+    <StyledLink to={`/${post.id}`}>Continue reading...</StyledLink>
   </StyledArticle>
 );
 

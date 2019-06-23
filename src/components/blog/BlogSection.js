@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { graphql, StaticQuery } from 'gatsby';
@@ -15,24 +15,90 @@ const StyledBlogDescription = styled(StyledDescription)`
   text-align: center;
 `;
 
+const StyledSectionHeader = styled.h2`
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 16px;
+`;
+
+const StyledAsideWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`;
+
+const StyledCategoryLink = styled.button`
+  border: none;
+  background: transparent;
+  flex-basis: 50%;
+  text-align: left;
+  font-weight: 600;
+  padding: 10px 0;
+  color: ${({ isActive, theme }) => (isActive ? theme.primary : theme.black)};
+  cursor: pointer;
+  font-family: ${({ theme }) => theme.font.family.montserrat};
+`;
+
 const BlogSection = ({
   photos: {
     allFile: { edges },
   },
-}) => (
-  <StyledSection title="blog">
-    <StyledWrapper>
-      {blogData.map(blogPart => (
+}) => {
+  const [activeCategory, setActive] = useState('all');
+
+  const renderBlog = () => {
+    if (activeCategory !== 'all') {
+      return blogData
+        .filter(data => data.category === activeCategory)
+        .map(blogPart => (
+          <StyledSection title={blogPart.category} key={blogPart.category}>
+            <StyledBlogDescription>{blogPart.category}</StyledBlogDescription>
+            {blogPart.posts.map(post => (
+              <BlogItem post={post} key={post.title} photos={edges} />
+            ))}
+          </StyledSection>
+        ));
+    } else {
+      return blogData.map(blogPart => (
         <StyledSection title={blogPart.category} key={blogPart.category}>
           <StyledBlogDescription>{blogPart.category}</StyledBlogDescription>
           {blogPart.posts.map(post => (
             <BlogItem post={post} key={post.title} photos={edges} />
           ))}
         </StyledSection>
-      ))}
-    </StyledWrapper>
-  </StyledSection>
-);
+      ));
+    }
+  };
+
+  const setCategory = category => {
+    if (activeCategory === category) {
+      setActive('all');
+    } else {
+      setActive(category);
+    }
+  };
+
+  return (
+    <StyledSection title="blog">
+      <StyledWrapper>
+        {renderBlog()}
+        <aside>
+          <StyledSectionHeader>Categories</StyledSectionHeader>
+          <StyledAsideWrapper>
+            {blogData.map(blogPart => (
+              <StyledCategoryLink
+                key={blogPart.category}
+                onClick={() => setCategory(blogPart.category)}
+                isActive={activeCategory === blogPart.category}
+              >
+                {blogPart.category}
+              </StyledCategoryLink>
+            ))}
+          </StyledAsideWrapper>
+        </aside>
+      </StyledWrapper>
+    </StyledSection>
+  );
+};
 
 BlogSection.propTypes = {
   photos: PropTypes.objectOf(
