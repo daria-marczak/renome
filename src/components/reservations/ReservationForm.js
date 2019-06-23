@@ -8,7 +8,6 @@ import { graphql, StaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
 import { StyledWrapper } from '../common/common';
 import { SingleDatePickerPhrases } from './phrases';
-// import 'react-dates/lib/css/_datepicker.css';
 import '../../assets/styles/reactDatesOverrides.css';
 
 const StyledHeading = styled.h3`
@@ -25,13 +24,16 @@ const StyledReservationWrapper = styled(StyledWrapper)`
 `;
 
 const StyledButton = styled.button`
-  background: #1e2633;
+  background: ${({ isSuccess, theme }) =>
+    isSuccess ? theme.primary : '#1e2633'};
   text-transform: uppercase;
   color: ${({ theme }) => theme.white};
   font-size: ${({ theme }) => theme.font.size.paragraph};
+  transition: background 0.3s ease-in;
   padding: 20px 20px;
   border: none;
   width: 100%;
+  cursor: pointer;
   margin: 15px 0 20px 0;
   font-family: ${({ theme }) => theme.font.family.montserrat};
   font-weight: 600;
@@ -112,9 +114,11 @@ const ReservationForm = ({ data }) => {
   const [time, setTime] = useState(now);
   const [people, setPeopleAmount] = useState(0);
   const [isFocused, setFocus] = useState(false);
+  const [isSuccess, setSuccess] = useState(false);
 
   const handleSubmit = event => {
     event.preventDefault();
+    setSuccess(true);
   };
 
   return (
@@ -175,9 +179,20 @@ const ReservationForm = ({ data }) => {
             />
           </StyledLabel>
         </StyledFormWrapper>
-        <StyledButton type="submit" aria-label="Make the reservation">
-          Find a table
-        </StyledButton>
+        {isSuccess ? (
+          <StyledButton
+            type="submit"
+            aria-label={`Reservation successfully made for ${date} at ${time} for ${people} people`}
+            isSuccess
+            disabled
+          >
+            Reservation made
+          </StyledButton>
+        ) : (
+          <StyledButton type="submit" aria-label="Make a reservation">
+            Find a table
+          </StyledButton>
+        )}
       </StyledForm>
     </StyledReservationWrapper>
   );
