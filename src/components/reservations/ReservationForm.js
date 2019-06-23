@@ -8,7 +8,7 @@ import { graphql, StaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
 import { StyledWrapper } from '../common/common';
 import { SingleDatePickerPhrases } from './phrases';
-import 'react-dates/lib/css/_datepicker.css';
+// import 'react-dates/lib/css/_datepicker.css';
 import '../../assets/styles/reactDatesOverrides.css';
 
 const StyledHeading = styled.h3`
@@ -82,7 +82,7 @@ const StyledInput = styled.input`
 `;
 
 const StyleDates = styled(SingleDatePicker)`
-  font-family: ${({ theme }) => theme.font.family.montserrat};
+  font-family: ${({ theme }) => theme.font.family.montserrat} !important;
   padding: 15px 10px;
   border-bottom: 3px solid ${({ theme }) => theme.lightGray} !important;
   margin-left: 10px;
@@ -137,33 +137,47 @@ const ReservationForm = ({ data }) => {
               <StyledImage fluid={data.calendar.childImageSharp.fluid} />
             }
           />
-          <StyledLabel htmlFor="reservationTime">
+          <StyledLabel
+            htmlFor="reservationTime"
+            aria-label="Select time of your reservation"
+          >
             <StyledImage fluid={data.hours.childImageSharp.fluid} />
             <StyledInput
               type="time"
               id="reservationTime"
               name="reservation-time"
               min="9:00"
+              aria-valuemin={9}
               max="17:00"
+              aria-valuemax={17}
               value={time}
+              aria-label={`Your reservation time is ${time}`}
               onChange={event => setTime(event.target.value)}
               required
             />
           </StyledLabel>
-          <StyledLabel htmlFor="peopleAmount">
+          <StyledLabel
+            htmlFor="peopleAmount"
+            aria-label="Select number of people for your reservation"
+          >
             <StyledImage fluid={data.people.childImageSharp.fluid} />
             <StyledInput
               type="number"
               min="1"
+              aria-valuemin={1}
               max="10"
+              aria-valuemax={10}
               id="peopleAmount"
               value={people}
+              aria-label={`Number of people for the reservation is ${people}`}
               onChange={event => setPeopleAmount(event.target.value)}
               required
             />
           </StyledLabel>
         </StyledFormWrapper>
-        <StyledButton type="submit">Find a table</StyledButton>
+        <StyledButton type="submit" aria-label="Make the reservation">
+          Find a table
+        </StyledButton>
       </StyledForm>
     </StyledReservationWrapper>
   );
