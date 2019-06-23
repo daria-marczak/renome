@@ -9,6 +9,7 @@ import {
   StyledWrapper,
 } from '../common/common';
 import blogData from './blogData';
+import PopularPosts from './PopularPosts';
 
 const StyledBlogDescription = styled(StyledDescription)`
   text-transform: uppercase;
@@ -21,12 +22,14 @@ const StyledSectionHeader = styled.h2`
   font-size: 16px;
 `;
 
-const StyledAsideWrapper = styled.div`
+const StyledAsideWrapper = styled.ul`
   display: flex;
   flex-wrap: wrap;
+  list-style-type: none;
+  padding-left: 0;
 `;
 
-const StyledCategoryLink = styled.button`
+const StyledCategoryLink = styled.li`
   border: none;
   background: transparent;
   flex-basis: 50%;
@@ -77,23 +80,35 @@ const BlogSection = ({
     }
   };
 
+  const filterPopularity = blogData => {
+    return blogData
+      .map(category => category.posts.filter(post => post.isPopular))
+      .flat();
+  };
+
   return (
     <StyledSection title="blog">
       <StyledWrapper>
         {renderBlog()}
         <aside>
-          <StyledSectionHeader>Categories</StyledSectionHeader>
-          <StyledAsideWrapper>
-            {blogData.map(blogPart => (
-              <StyledCategoryLink
-                key={blogPart.category}
-                onClick={() => setCategory(blogPart.category)}
-                isActive={activeCategory === blogPart.category}
-              >
-                {blogPart.category}
-              </StyledCategoryLink>
-            ))}
-          </StyledAsideWrapper>
+          <section title="Category choice">
+            <StyledSectionHeader>Categories</StyledSectionHeader>
+            <StyledAsideWrapper>
+              {blogData.map(blogPart => (
+                <StyledCategoryLink
+                  key={blogPart.category}
+                  onClick={() => setCategory(blogPart.category)}
+                  isActive={activeCategory === blogPart.category}
+                >
+                  {blogPart.category}
+                </StyledCategoryLink>
+              ))}
+            </StyledAsideWrapper>
+          </section>
+          <section title="Popular posts">
+            <StyledSectionHeader>Popular posts</StyledSectionHeader>
+            <PopularPosts posts={filterPopularity(blogData)} photos={edges} />
+          </section>
         </aside>
       </StyledWrapper>
     </StyledSection>
