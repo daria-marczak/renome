@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Img from 'gatsby-image';
+import { Link } from 'gatsby';
 
 const StyledPost = styled.article`
   display: flex;
@@ -29,6 +30,11 @@ const StyledWrapper = styled.div`
   align-self: flex-start;
 `;
 
+const StyledLink = styled(Link)`
+  color: ${({ theme }) => theme.black};
+  text-decoration: none;
+`;
+
 const PopularPosts = ({ posts, photos }) => (
   <Fragment>
     {posts.map(post => (
@@ -40,7 +46,11 @@ const PopularPosts = ({ posts, photos }) => (
           }
         />
         <StyledWrapper>
-          <StyledPostHeading>{post.title}</StyledPostHeading>
+          <StyledPostHeading>
+            <StyledLink to={`/${post.title.split(' ').join('')}`}>
+              {post.title}
+            </StyledLink>
+          </StyledPostHeading>
           <StyledDate>{post.date}</StyledDate>
         </StyledWrapper>
       </StyledPost>

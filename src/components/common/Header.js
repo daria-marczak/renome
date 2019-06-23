@@ -18,11 +18,6 @@ const StyledHeader = styled.header`
   letter-spacing: 0.04em;
   font-weight: 700;
   font-family: ${({ theme }) => theme.font.family.montserrat};
-
-  @media (min-width: 1200px) {
-    display: flex;
-    justify-content: flex-end;
-  }
 `;
 
 const StyledHeading = styled.h1`
@@ -34,7 +29,7 @@ const StyledContainer = styled.div`
   width: 100%;
 
   @media (min-width: 1200px) {
-    width: 90%;
+    width: 80%;
     margin: 0 auto;
     display: flex;
     align-items: center;
@@ -70,7 +65,7 @@ const StyledParagraph = styled.div`
 
   @media (min-width: 1200px) {
     flex: 1;
-    right: 85px;
+    left: 180px;
   }
 `;
 

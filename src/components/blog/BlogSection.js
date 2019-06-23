@@ -29,6 +29,35 @@ const StyledAsideWrapper = styled.ul`
   padding-left: 0;
 `;
 
+const StyledBlogWrapper = styled(StyledWrapper)`
+  @media (min-width: 1200px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const StyledBlogSection = styled(StyledSection)`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  @media (min-width: 1200px) {
+    flex-direction: row;
+    width: 80%;
+    margin: 0 auto;
+  }
+`;
+
+const StyledAside = styled.aside`
+  margin: 0 auto;
+  width: 90%;
+
+  @media (min-width: 1200px) {
+    margin-top: 70px;
+    margin-left: 100px;
+    width: 50%;
+  }
+`;
+
 const StyledCategoryLink = styled.li`
   border: none;
   background: transparent;
@@ -87,31 +116,29 @@ const BlogSection = ({
   };
 
   return (
-    <StyledSection title="blog">
-      <StyledWrapper>
-        {renderBlog()}
-        <aside>
-          <section title="Category choice">
-            <StyledSectionHeader>Categories</StyledSectionHeader>
-            <StyledAsideWrapper>
-              {blogData.map(blogPart => (
-                <StyledCategoryLink
-                  key={blogPart.category}
-                  onClick={() => setCategory(blogPart.category)}
-                  isActive={activeCategory === blogPart.category}
-                >
-                  {blogPart.category}
-                </StyledCategoryLink>
-              ))}
-            </StyledAsideWrapper>
-          </section>
-          <section title="Popular posts">
-            <StyledSectionHeader>Popular posts</StyledSectionHeader>
-            <PopularPosts posts={filterPopularity(blogData)} photos={edges} />
-          </section>
-        </aside>
-      </StyledWrapper>
-    </StyledSection>
+    <StyledBlogSection title="blog">
+      <StyledBlogWrapper>{renderBlog()}</StyledBlogWrapper>
+      <StyledAside>
+        <section title="Category choice">
+          <StyledSectionHeader>Categories</StyledSectionHeader>
+          <StyledAsideWrapper>
+            {blogData.map(blogPart => (
+              <StyledCategoryLink
+                key={blogPart.category}
+                onClick={() => setCategory(blogPart.category)}
+                isActive={activeCategory === blogPart.category}
+              >
+                {blogPart.category}
+              </StyledCategoryLink>
+            ))}
+          </StyledAsideWrapper>
+        </section>
+        <section title="Popular posts">
+          <StyledSectionHeader>Popular posts</StyledSectionHeader>
+          <PopularPosts posts={filterPopularity(blogData)} photos={edges} />
+        </section>
+      </StyledAside>
+    </StyledBlogSection>
   );
 };
 
