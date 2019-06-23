@@ -21,7 +21,7 @@ const GlobalStyle = createGlobalStyle`
     .gatsby-image-wrapper {
         margin-left: 0 !important;
         margin-right: 0 !important;
-      }
+    }
 `;
 
 export default GlobalStyle;

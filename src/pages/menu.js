@@ -8,7 +8,7 @@ import Discover from '../components/menu/Discover';
 import Menu from '../components/menu/Menu';
 import Footer from '../components/common/Footer';
 
-const IndexPage = ({ data }) => (
+const MenuPage = ({ data }) => (
   <HomeTemplate>
     <SEO title="Menu" keywords={[`renome`, `restaurant`]} />
     <Header
@@ -34,8 +34,8 @@ export const query = graphql`
   }
 `;
 
-IndexPage.propTypes = {
+MenuPage.propTypes = {
   data: PropTypes.shape().isRequired,
 };
 
-export default IndexPage;
+export default MenuPage;

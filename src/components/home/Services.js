@@ -46,6 +46,7 @@ const StyledLink = styled(StyledSectionLink)`
   left: 36%;
   cursor: pointer;
   z-index: 1;
+  font-family: ${({ theme }) => theme.font.family.montserrat};
 
   @media (min-width: 1200px) {
     left: 47%;

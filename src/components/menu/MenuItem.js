@@ -51,6 +51,7 @@ const StyledPrice = styled.p`
 
 const StyledPriceContainerMobile = styled.div`
   display: flex;
+  justify-content: center;
 
   @media (min-width: 1200px) {
     display: none;

@@ -70,7 +70,15 @@ const MoreAbout = ({
 };
 
 MoreAbout.propTypes = {
-  data: PropTypes.shape().isRequired,
+  data: PropTypes.objectOf(
+    PropTypes.shape({
+      allFile: PropTypes.objectOf(
+        PropTypes.shape({
+          edges: PropTypes.array,
+        })
+      ),
+    })
+  ).isRequired,
 };
 
 export default props => (
