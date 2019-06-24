@@ -1,22 +1,12 @@
 import React from 'react';
-import styled, { ThemeProvider } from 'styled-components';
+import { ThemeProvider } from 'styled-components';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import SEO from '../components/seo';
 import GlobalStyles from '../assets/styles/GlobalStyles';
 import { theme } from '../assets/styles/theme';
 import Header from '../components/common/Header';
-import { StyledDescription } from '../components/common/common';
-
-const StyledHeading = styled.h2`
-  text-transform: uppercase;
-  text-align: center;
-`;
-
-const StyledBlogDescription = styled(StyledDescription)`
-  text-align: center;
-  text-transform: uppercase;
-`;
+import BlogSection from '../components/blog/BlogSection';
 
 const PostTemplate = ({
   data: {
@@ -34,8 +24,7 @@ const PostTemplate = ({
       />
       <GlobalStyles />
       <main>
-        <StyledBlogDescription>{post.category}</StyledBlogDescription>
-        <StyledHeading>{post.title}</StyledHeading>
+        <BlogSection post={post} />
       </main>
     </>
   </ThemeProvider>
