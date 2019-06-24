@@ -18,10 +18,15 @@ const StyledBlogDescription = styled(StyledDescription)`
   text-transform: uppercase;
 `;
 
-const PostTemplate = ({ data: { markdownRemark: post, blogHeader } }) => (
+const PostTemplate = ({
+  data: {
+    markdownRemark: { frontmatter: post },
+    blogHeader,
+  },
+}) => (
   <ThemeProvider theme={theme}>
     <>
-      <SEO title="Blog" keywords={[`gatsby`, `application`, `react`]} />
+      <SEO title={post.title} keywords={[`gatsby`, `application`, `react`]} />
       <Header
         photo={blogHeader}
         section="blog"

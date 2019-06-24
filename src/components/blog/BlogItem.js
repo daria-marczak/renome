@@ -37,7 +37,7 @@ const BlogItem = ({ post, photos }) => (
       }
     />
     <StyledParagraph>{post.text}</StyledParagraph>
-    <StyledLink to={`/${post.title.split(' ').join('')}`}>
+    <StyledLink to={`/blog/${post.title.split(' ').join('')}`}>
       Continue reading...
     </StyledLink>
   </StyledArticle>

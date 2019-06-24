@@ -1,11 +1,11 @@
 ---
-title: "Summer specials"
-date: '2016-06-05'
-image: '../images/blogSection/summer specials.png'
-tags: ['salad', 'ceasar', 'promotion']
+title: "Our salads are award winning"
+date: '2016-06-25'
+image: '../images/blogSection/our salads are award winning.png'
+tags: ['salad', 'vegan', 'press']
 category: "Promotions"
-author: "Richard Miles"
-isPopular: true
+author: "Norma Davies"
+isPopular: false
 ---
 Percolator cup medium, organic doppio acerbic wings rich french press. Galão, brewed cultivar dark filter redeye medium mazagran. That and milk black, dripper, kopi-luwak, cup chicory shop extra viennese.
 

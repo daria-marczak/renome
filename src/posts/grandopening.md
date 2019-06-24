@@ -1,10 +1,10 @@
 ---
-title: "Summer specials"
-date: '2016-06-05'
-image: '../images/blogSection/summer specials.png'
-tags: ['salad', 'ceasar', 'promotion']
-category: "Promotions"
-author: "Richard Miles"
+title: "Grand opening"
+date: '2016-07-07'
+image: '../images/blogSection/grand opening.png'
+tags: ['events', 'party', 'opening']
+category: "Events"
+author: "Ginger Sprouts"
 isPopular: true
 ---
 Percolator cup medium, organic doppio acerbic wings rich french press. Galão, brewed cultivar dark filter redeye medium mazagran. That and milk black, dripper, kopi-luwak, cup chicory shop extra viennese.
