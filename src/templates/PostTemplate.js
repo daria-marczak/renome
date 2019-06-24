@@ -11,7 +11,6 @@ import BlogSection from '../components/blog/BlogSection';
 const PostTemplate = ({
   data: {
     markdownRemark: { frontmatter: post },
-    allMarkdownRemark,
     blogHeader,
   },
 }) => (
@@ -25,7 +24,7 @@ const PostTemplate = ({
       />
       <GlobalStyles />
       <main>
-        <BlogSection post={post} allPosts={allMarkdownRemark} />
+        <BlogSection post={post} />
       </main>
     </>
   </ThemeProvider>
@@ -55,22 +54,7 @@ export const query = graphql`
         author
       }
     }
-    {
-        allMarkdownRemark{
-           edges {
-             node {
-               excerpt(pruneLength: 250)
-               id
-               frontmatter {
-                 title
-                 category
-                 date(formatString: "MMMM DD, YYYY")
-                 isPopular
-               }
-             }
-           }
-         }
-     }
+
     blogHeader: file(relativePath: { eq: "images/headers/blog.png" }) {
       childImageSharp {
         fluid(maxWidth: 2000, quality: 100) {

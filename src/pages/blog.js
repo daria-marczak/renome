@@ -7,7 +7,7 @@ import Header from '../components/common/Header';
 import BlogSection from '../components/blog/BlogSection';
 import Footer from '../components/common/Footer';
 
-const Blog = ({ data }) => (
+const Blog = ({ data, allMarkdownRemark }) => (
   <HomeTemplate>
     <SEO title="Blog" keywords={[`renome`, `restaurant`]} />
     <Header
@@ -15,7 +15,7 @@ const Blog = ({ data }) => (
       section="blog"
       title="news, recipes and much more"
     />
-    <BlogSection />
+    <BlogSection allPosts={allMarkdownRemark} />
     <Footer />
   </HomeTemplate>
 );
@@ -29,11 +29,26 @@ export const query = graphql`
         }
       }
     }
+    allMarkdownRemark {
+      edges {
+        node {
+          excerpt(pruneLength: 250)
+          id
+          frontmatter {
+            title
+            category
+            date(formatString: "MMMM DD, YYYY")
+            isPopular
+          }
+        }
+      }
+    }
   }
 `;
 
 Blog.propTypes = {
   data: PropTypes.shape().isRequired,
+  allMarkdownRemark: PropTypes.shape().isRequired,
 };
 
 export default Blog;
