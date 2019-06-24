@@ -89,7 +89,9 @@ const Blog = ({
               <StyledBlogPost>
                 <StyledDate>{post.date}</StyledDate>
                 <StyledTitle>{post.title}</StyledTitle>
-                <StyledSectionLink to={`/${post.title}.split(" ").join("")`}>
+                <StyledSectionLink
+                  to={`/blog/${post.title.split(' ').join('')}`}
+                >
                   ...
                 </StyledSectionLink>
               </StyledBlogPost>
