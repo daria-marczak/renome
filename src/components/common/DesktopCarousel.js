@@ -28,7 +28,7 @@ const StyledButtonsContainer = styled.div`
 const StyledButton = styled.button`
   width: 40px;
   height: 40px;
-  background: #edeff2;
+  background-color: #edeff2;
   margin-top: 8px;
   cursor: pointer;
   border: none;
@@ -40,7 +40,7 @@ const StyledPriceTag = styled.div`
   position: absolute;
   top: 34px;
   right: 20px;
-  background: ${({ theme }) => theme.lightGray};
+  background-color: ${({ theme }) => theme.lightGray};
   font-family: ${({ theme }) => theme.font.family.montserrat};
   padding: 6px 8px;
 `;
@@ -65,7 +65,7 @@ const StyledDay = styled.p`
   font-family: ${({ theme }) => theme.font.family.playfair};
   text-transform: capitalize;
   font-size: ${({ theme }) => theme.font.size.jumbotron};
-  color: #dcdee0;
+  color: ${({ theme }) => theme.gray};
   margin-left: auto;
 `;
 

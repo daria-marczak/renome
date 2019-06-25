@@ -19,7 +19,7 @@ const StyledBlogSection = styled(StyledSection)`
 
 const StyledBlogPost = styled.div`
   position: absolute;
-  background: ${({ theme }) => theme.white};
+  background-color: ${({ theme }) => theme.white};
   transform: translateY(-128%) translateX(12%);
   width: 65%;
   height: 23%;
@@ -53,7 +53,7 @@ const StyledImage = styled(Img)`
 `;
 
 const StyledDate = styled.p`
-  color: #dcdee0;
+  color: ${({ theme }) => theme.gray};
   font-weight: 700;
 `;
 

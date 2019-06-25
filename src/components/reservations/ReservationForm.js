@@ -24,7 +24,7 @@ const StyledReservationWrapper = styled(StyledWrapper)`
 `;
 
 const StyledButton = styled.button`
-  background: ${({ isSuccess, theme }) =>
+  background-color: ${({ isSuccess, theme }) =>
     isSuccess ? theme.primary : '#1e2633'};
   text-transform: uppercase;
   color: ${({ theme }) => theme.white};

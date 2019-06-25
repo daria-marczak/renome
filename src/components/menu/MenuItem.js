@@ -41,7 +41,7 @@ const StyledDescriptionColumn = styled.div`
 const StyledPrice = styled.p`
   text-align: center;
   font-size: 18px;
-  color: #e1e2e4;
+  color: ${({ theme }) => theme.gray};
 
   &:first-letter {
     font-weight: 700;

@@ -60,7 +60,7 @@ const StyledAside = styled.aside`
 
 const StyledCategoryLink = styled.li`
   border: none;
-  background: transparent;
+  background-color: transparent;
   flex-basis: 50%;
   text-align: left;
   font-weight: 600;

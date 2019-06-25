@@ -27,7 +27,7 @@ const StyledAuthor = styled.p`
 `;
 
 const StyledQuoteSection = styled(StyledSection)`
-  background: ${({ theme }) => theme.lightGray};
+  background-color: ${({ theme }) => theme.lightGray};
   text-align: center;
 `;
 

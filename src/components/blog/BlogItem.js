@@ -15,7 +15,7 @@ const StyledHeading = styled.h2`
 `;
 
 const StyledBlogDescription = styled(StyledDescription)`
-  color: #bbbdbf;
+  color: ${({ theme }) => theme.gray};
   text-align: center;
 `;
 

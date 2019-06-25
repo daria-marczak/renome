@@ -37,7 +37,7 @@ const StyledContainer = styled.div`
 `;
 
 const StyledBar = styled.nav`
-  background: white;
+  background-color: white;
   height: 86px;
   position: fixed;
   top: 0;
@@ -94,7 +94,7 @@ const StyledHero = styled(Img)`
 `;
 
 const StyledFilter = styled.div`
-  background: #162642;
+  background-color: #162642;
   opacity: 0.6;
   width: 100%;
   height: 100%;

@@ -20,7 +20,7 @@ const StyledImage = styled(Img)`
 
 const StyledDate = styled.p`
   font-weight: 600;
-  color: #bbbdbf;
+  color: ${({ theme }) => theme.gray};
 `;
 
 const StyledWrapper = styled.div`

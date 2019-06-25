@@ -62,6 +62,12 @@ const StyledAside = styled.aside`
   }
 `;
 
+const StyledDate = styled.p`
+  font-weight: 600;
+  color: ${({ theme }) => theme.gray};
+  text-align: center;
+`;
+
 const filterPopularity = blogData => {
   return blogData && blogData.filter(item => item.node.frontmatter.isPopular);
 };
@@ -76,6 +82,7 @@ const BlogPost = ({
       <StyledBlogWrapper>
         <StyledBlogDescription>{postContent.category}</StyledBlogDescription>
         <StyledBlogTitle>{postContent.title}</StyledBlogTitle>
+        <StyledDate>{postContent.date}</StyledDate>
         <Img
           fluid={
             photos.find(
