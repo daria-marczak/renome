@@ -26,13 +26,6 @@ const StyledSectionHeader = styled.h3`
   font-size: 16px;
 `;
 
-const StyledAsideWrapper = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
-  list-style-type: none;
-  padding-left: 0;
-`;
-
 const StyledBlogWrapper = styled(StyledWrapper)`
   @media (min-width: 768px) {
     grid-template-columns: 1fr;
@@ -92,20 +85,6 @@ const BlogPost = ({
         />
       </StyledBlogWrapper>
       <StyledAside>
-        <section title="Category choice">
-          <StyledSectionHeader>Categories</StyledSectionHeader>
-          <StyledAsideWrapper>
-            {/* {blogData.map(blogPart => (
-              <StyledCategoryLink
-                key={blogPart.category}
-                onClick={() => setCategory(blogPart.category)}
-                isActive={activeCategory === blogPart.category}
-              >
-                {blogPart.category}
-              </StyledCategoryLink>
-            ))} */}
-          </StyledAsideWrapper>
-        </section>
         <section title="Popular posts">
           <StyledSectionHeader>Popular posts</StyledSectionHeader>
           <PopularPosts

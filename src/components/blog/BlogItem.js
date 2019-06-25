@@ -26,24 +26,32 @@ const StyledLink = styled(Link)`
   letter-spacing: 0.1em;
 `;
 
-const BlogItem = ({ post, photos }) => (
-  <StyledArticle key={post.title}>
-    <StyledHeading>{post.title}</StyledHeading>
-    <StyledBlogDescription>{post.date}</StyledBlogDescription>
-    <Img
-      fluid={
-        photos.find(edge => edge.node.name === post.title).node.childImageSharp
-          .fluid
-      }
-    />
-    <StyledParagraph>{post.text}</StyledParagraph>
-    <StyledLink to={`/blog/${post.title.split(' ').join('')}`}>
-      Continue reading...
-    </StyledLink>
-  </StyledArticle>
-);
+const BlogItem = ({ post, photos, text }) => {
+  return (
+    <StyledArticle key={post.title}>
+      <StyledHeading>{post.title}</StyledHeading>
+      <StyledBlogDescription>{post.date}</StyledBlogDescription>
+      <Img
+        fluid={
+          photos.find(edge => edge.node.name === post.title.toLowerCase()).node
+            .childImageSharp.fluid
+        }
+      />
+      <StyledParagraph>{text}</StyledParagraph>
+      <StyledLink
+        to={`/blog/${post.title
+          .split(' ')
+          .join('')
+          .toLowerCase()}`}
+      >
+        Continue reading...
+      </StyledLink>
+    </StyledArticle>
+  );
+};
 
 BlogItem.propTypes = {
+  text: PropTypes.string.isRequired,
   post: PropTypes.shape().isRequired,
   photos: PropTypes.arrayOf(PropTypes.shape()).isRequired,
 };

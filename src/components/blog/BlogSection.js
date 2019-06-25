@@ -8,7 +8,7 @@ import {
   StyledSection,
   StyledWrapper,
 } from '../common/common';
-import blogData from './blogData';
+// import blogData from './blogData';
 import PopularPosts from './PopularPosts';
 
 const StyledBlogDescription = styled(StyledDescription)`
@@ -74,28 +74,41 @@ const BlogSection = ({
   photos: {
     allFile: { edges },
   },
+  allPosts: { edges: blogData },
 }) => {
   const [activeCategory, setActive] = useState('all');
-
   const renderBlog = () => {
     if (activeCategory !== 'all') {
       return blogData
-        .filter(data => data.category === activeCategory)
+        .filter(data => data.node.frontmatter.category === activeCategory)
         .map(blogPart => (
-          <StyledSection title={blogPart.category} key={blogPart.category}>
-            <StyledBlogDescription>{blogPart.category}</StyledBlogDescription>
-            {blogPart.posts.map(post => (
+          <StyledSection
+            title={blogPart.node.frontmatter.category}
+            key={blogPart.node.id}
+          >
+            <StyledBlogDescription>
+              {blogPart.node.frontmatter.category}
+            </StyledBlogDescription>
+            {/* {blogPart.map(post => (
               <BlogItem post={post} key={post.title} photos={edges} />
-            ))}
+            ))} */}
           </StyledSection>
         ));
     } else {
       return blogData.map(blogPart => (
-        <StyledSection title={blogPart.category} key={blogPart.category}>
-          <StyledBlogDescription>{blogPart.category}</StyledBlogDescription>
-          {blogPart.posts.map(post => (
-            <BlogItem post={post} key={post.title} photos={edges} />
-          ))}
+        <StyledSection
+          title={blogPart.node.frontmatter.category}
+          key={blogPart.node.id}
+        >
+          <StyledBlogDescription>
+            {blogPart.node.frontmatter.category}
+          </StyledBlogDescription>
+          <BlogItem
+            post={blogPart.node.frontmatter}
+            text={blogPart.node.excerpt}
+            key={blogPart.id}
+            photos={edges}
+          />
         </StyledSection>
       ));
     }
@@ -110,9 +123,7 @@ const BlogSection = ({
   };
 
   const filterPopularity = blogData => {
-    return blogData
-      .map(category => category.posts.filter(post => post.isPopular))
-      .flat();
+    return blogData && blogData.filter(item => item.node.frontmatter.isPopular);
   };
 
   return (
@@ -124,11 +135,11 @@ const BlogSection = ({
           <StyledAsideWrapper>
             {blogData.map(blogPart => (
               <StyledCategoryLink
-                key={blogPart.category}
-                onClick={() => setCategory(blogPart.category)}
-                isActive={activeCategory === blogPart.category}
+                key={blogPart.node.id}
+                onClick={() => setCategory(blogPart.node.frontmatter.category)}
+                isActive={activeCategory === blogPart.node.frontmatter.category}
               >
-                {blogPart.category}
+                {blogPart.node.frontmatter.category}
               </StyledCategoryLink>
             ))}
           </StyledAsideWrapper>
@@ -150,6 +161,11 @@ BlogSection.propTypes = {
           edges: PropTypes.array,
         })
       ),
+    })
+  ).isRequired,
+  allPosts: PropTypes.objectOf(
+    PropTypes.shape({
+      edges: PropTypes.array,
     })
   ).isRequired,
 };

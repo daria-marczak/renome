@@ -63,7 +63,7 @@ const StyledBlogWrapper = styled.div`
   text-align: center;
 `;
 
-const Blog = ({
+const BlogHome = ({
   data: {
     allFile: { edges },
   },
@@ -103,7 +103,7 @@ const Blog = ({
   );
 };
 
-Blog.propTypes = {
+BlogHome.propTypes = {
   data: PropTypes.shape().isRequired,
 };
 
@@ -126,6 +126,6 @@ export default props => (
         }
       }
     `}
-    render={data => <Blog data={data} {...props} />}
+    render={data => <BlogHome data={data} {...props} />}
   />
 );

@@ -7,7 +7,7 @@ import Header from '../components/common/Header';
 import BlogSection from '../components/blog/BlogSection';
 import Footer from '../components/common/Footer';
 
-const Blog = ({ data, allMarkdownRemark }) => (
+const Blog = ({ data }) => (
   <HomeTemplate>
     <SEO title="Blog" keywords={[`renome`, `restaurant`]} />
     <Header
@@ -15,8 +15,7 @@ const Blog = ({ data, allMarkdownRemark }) => (
       section="blog"
       title="news, recipes and much more"
     />
-    console.log(allMarkdownRemark)
-    <BlogSection allPosts={allMarkdownRemark} />
+    <BlogSection allPosts={data.allMarkdownRemark} />
     <Footer />
   </HomeTemplate>
 );
@@ -49,7 +48,6 @@ export const query = graphql`
 
 Blog.propTypes = {
   data: PropTypes.shape().isRequired,
-  allMarkdownRemark: PropTypes.shape().isRequired,
 };
 
 export default Blog;
