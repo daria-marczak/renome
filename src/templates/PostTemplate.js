@@ -6,6 +6,7 @@ import SEO from '../components/seo';
 import GlobalStyles from '../assets/styles/GlobalStyles';
 import { theme } from '../assets/styles/theme';
 import Header from '../components/common/Header';
+import Footer from '../components/common/Footer';
 import BlogPost from '../components/blog/BlogPost';
 
 const PostTemplate = ({
@@ -30,6 +31,7 @@ const PostTemplate = ({
           photos={allFile.edges}
         />
       </main>
+      <Footer />
     </>
   </ThemeProvider>
 );
@@ -49,6 +51,7 @@ export const query = graphql`
         tags
         category
         author
+        aboutAuthor
       }
     }
 

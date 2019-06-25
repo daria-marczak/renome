@@ -2,11 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Img from 'gatsby-image';
+import { graphql, StaticQuery } from 'gatsby';
 import PopularPosts from './PopularPosts';
 import {
   StyledSection,
   StyledDescription,
   StyledWrapper,
+  StyledParagraph,
 } from '../common/common';
 
 const StyledBlogDescription = styled(StyledDescription)`
@@ -29,6 +31,10 @@ const StyledSectionHeader = styled.h3`
 const StyledBlogWrapper = styled(StyledWrapper)`
   @media (min-width: 768px) {
     grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 1200px) {
+    margin-top: 70px;
   }
 `;
 
@@ -55,20 +61,64 @@ const StyledAside = styled.aside`
   }
 `;
 
+const StyledTagLink = styled.a`
+  text-transform: uppercase;
+  color: ${({ theme }) => theme.gray};
+  text-decoration: none;
+  font-weight: 600;
+  width: 100px;
+`;
+
+const StyledShareLink = styled.a`
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-left: auto;
+  text-decoration: none;
+  color: ${({ theme }) => theme.black};
+`;
+
 const StyledDate = styled.p`
   font-weight: 600;
   color: ${({ theme }) => theme.gray};
   text-align: center;
 `;
 
+const StyledAuthor = styled.p`
+  font-weight: 600;
+  margin-top: 0;
+`;
+
+const StyledPostFooter = styled.div`
+  display: flex;
+`;
+
+const StyledAuthorDescription = styled(StyledParagraph)`
+  font-size: 14px;
+`;
+
+const AuthorSection = styled.div`
+  display: grid;
+  grid-template-columns: 2fr 10fr;
+  margin-top: 20px;
+`;
+
+const StyledImage = styled(Img)`
+  width: 100px;
+  height: 100px;
+`;
+
+// const StyledAuthorWrapper = styled.div``;
+
 const filterPopularity = blogData => {
   return blogData && blogData.filter(item => item.node.frontmatter.isPopular);
 };
 
 const BlogPost = ({
+  post,
   post: { frontmatter: postContent },
   allPosts: { edges: allPostsContent },
   photos,
+  data,
 }) => {
   return (
     <StyledBlogSection title="blog">
@@ -83,6 +133,25 @@ const BlogPost = ({
             ).node.childImageSharp.fluid
           }
         />
+        {/* eslint-disable-next-line react/no-danger */}
+        <div dangerouslySetInnerHTML={{ __html: post.html }} />
+        <StyledPostFooter>
+          {postContent.tags.map(tag => (
+            <StyledTagLink href="#" key={tag}>
+              {tag}
+            </StyledTagLink>
+          ))}
+          <StyledShareLink href="#">Share</StyledShareLink>
+        </StyledPostFooter>
+        <AuthorSection>
+          <StyledImage fluid={data.file.childImageSharp.fluid} />
+          <div>
+            <StyledAuthor>{postContent.author}</StyledAuthor>
+            <StyledAuthorDescription>
+              {postContent.aboutAuthor}
+            </StyledAuthorDescription>
+          </div>
+        </AuthorSection>
       </StyledBlogWrapper>
       <StyledAside>
         <section title="Popular posts">
@@ -100,7 +169,23 @@ const BlogPost = ({
 BlogPost.propTypes = {
   post: PropTypes.shape().isRequired,
   allPosts: PropTypes.shape().isRequired,
+  data: PropTypes.shape().isRequired,
   photos: PropTypes.arrayOf(PropTypes.shape()).isRequired,
 };
 
-export default BlogPost;
+export default props => (
+  <StaticQuery
+    query={graphql`
+      query {
+        file(name: { regex: "/author/" }) {
+          childImageSharp {
+            fluid(quality: 100) {
+              ...GatsbyImageSharpFluid_withWebp_tracedSVG
+            }
+          }
+        }
+      }
+    `}
+    render={data => <BlogPost data={data} {...props} />}
+  />
+);

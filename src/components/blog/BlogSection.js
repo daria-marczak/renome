@@ -154,20 +154,8 @@ const BlogSection = ({
 };
 
 BlogSection.propTypes = {
-  photos: PropTypes.objectOf(
-    PropTypes.shape({
-      allFile: PropTypes.objectOf(
-        PropTypes.shape({
-          edges: PropTypes.array,
-        })
-      ),
-    })
-  ).isRequired,
-  allPosts: PropTypes.objectOf(
-    PropTypes.shape({
-      edges: PropTypes.array,
-    })
-  ).isRequired,
+  photos: PropTypes.shape().isRequired,
+  allPosts: PropTypes.shape().isRequired,
 };
 
 export default props => (
