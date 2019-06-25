@@ -1,5 +1,6 @@
 ---
 title: "Summer specials"
+id: "123123123126"
 date: '2016-06-05'
 image: '../images/blogSection/summer specials.png'
 tags: ['salad', 'ceasar', 'promotion']

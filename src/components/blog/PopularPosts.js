@@ -38,20 +38,27 @@ const StyledLink = styled(Link)`
 const PopularPosts = ({ posts, photos }) => (
   <Fragment>
     {posts.map(post => (
-      <StyledPost key={post.id}>
+      <StyledPost key={post.node.id}>
         <StyledImage
           fluid={
-            photos.find(photo => photo.node.name === post.title.toLowerCase())
-              .node.childImageSharp.fluid
+            photos.find(
+              photo =>
+                photo.node.name === post.node.frontmatter.title.toLowerCase()
+            ).node.childImageSharp.fluid
           }
         />
         <StyledWrapper>
           <StyledPostHeading>
-            <StyledLink to={`/blog/${post.title.split(' ').join('')}`}>
-              {post.title}
+            <StyledLink
+              to={`/blog/${post.node.frontmatter.title
+                .split(' ')
+                .join('')
+                .toLowerCase()}`}
+            >
+              {post.node.frontmatter.title}
             </StyledLink>
           </StyledPostHeading>
-          <StyledDate>{post.date}</StyledDate>
+          <StyledDate>{post.node.frontmatter.date}</StyledDate>
         </StyledWrapper>
       </StyledPost>
     ))}

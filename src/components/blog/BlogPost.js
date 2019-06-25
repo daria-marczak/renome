@@ -7,7 +7,6 @@ import {
   StyledSection,
   StyledDescription,
   StyledWrapper,
-  StyledHeading,
 } from '../common/common';
 
 const StyledBlogDescription = styled(StyledDescription)`
@@ -15,7 +14,13 @@ const StyledBlogDescription = styled(StyledDescription)`
   text-align: center;
 `;
 
-const StyledSectionHeader = styled.h2`
+const StyledBlogTitle = styled.h2`
+  text-transform: uppercase;
+  font-weight: 600;
+  text-align: center;
+`;
+
+const StyledSectionHeader = styled.h3`
   text-transform: uppercase;
   font-weight: 600;
   font-size: 16px;
@@ -58,13 +63,7 @@ const StyledAside = styled.aside`
 `;
 
 const filterPopularity = blogData => {
-  return (
-    blogData &&
-    blogData
-      .map(item => item.node.frontmatter)
-      .filter(post => post.isPopular)
-      .flat()
-  );
+  return blogData && blogData.filter(item => item.node.frontmatter.isPopular);
 };
 
 const BlogPost = ({
@@ -75,8 +74,8 @@ const BlogPost = ({
   return (
     <StyledBlogSection title="blog">
       <StyledBlogWrapper>
-        <StyledHeading>{postContent.title}</StyledHeading>
-        <StyledBlogDescription>{postContent.date}</StyledBlogDescription>
+        <StyledBlogDescription>{postContent.category}</StyledBlogDescription>
+        <StyledBlogTitle>{postContent.title}</StyledBlogTitle>
         <Img
           fluid={
             photos.find(
@@ -113,25 +112,9 @@ const BlogPost = ({
 };
 
 BlogPost.propTypes = {
-  post: PropTypes.objectOf(
-    PropTypes.shape({
-      allFile: PropTypes.objectOf(
-        PropTypes.shape({
-          edges: PropTypes.array,
-        })
-      ),
-    })
-  ).isRequired,
-  allPosts: PropTypes.objectOf(PropTypes.shape()).isRequired,
-  photos: PropTypes.objectOf(
-    PropTypes.shape({
-      allFile: PropTypes.objectOf(
-        PropTypes.shape({
-          edges: PropTypes.array,
-        })
-      ),
-    })
-  ).isRequired,
+  post: PropTypes.shape().isRequired,
+  allPosts: PropTypes.shape().isRequired,
+  photos: PropTypes.arrayOf(PropTypes.shape()).isRequired,
 };
 
 export default BlogPost;

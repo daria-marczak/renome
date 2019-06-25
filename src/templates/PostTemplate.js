@@ -35,15 +35,7 @@ const PostTemplate = ({
 );
 
 PostTemplate.propTypes = {
-  data: PropTypes.objectOf(
-    PropTypes.shape({
-      markdownRemark: PropTypes.objectOf(
-        PropTypes.shape({
-          frontmatter: PropTypes.shape(),
-        })
-      ),
-    })
-  ).isRequired,
+  data: PropTypes.objectOf(PropTypes.shape()).isRequired,
 };
 
 export const query = graphql`
@@ -52,6 +44,7 @@ export const query = graphql`
       html
       frontmatter {
         title
+        id
         date
         tags
         category
