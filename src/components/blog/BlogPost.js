@@ -61,20 +61,27 @@ const StyledAside = styled.aside`
   }
 `;
 
-const StyledTagLink = styled.a`
+const StyledTagLink = styled.li`
   text-transform: uppercase;
   color: ${({ theme }) => theme.gray};
-  text-decoration: none;
+  list-style-type: none;
   font-weight: 600;
-  width: 100px;
+  flex: 1;
+
+  @media (min-width: 1200px) {
+    width: 100px;
+  }
 `;
 
 const StyledShareLink = styled.a`
   text-transform: uppercase;
   font-weight: 600;
-  margin-left: auto;
   text-decoration: none;
   color: ${({ theme }) => theme.black};
+
+  @media (min-width: 1200px) {
+    margin-left: auto;
+  }
 `;
 
 const StyledDate = styled.p`
@@ -90,6 +97,14 @@ const StyledAuthor = styled.p`
 
 const StyledPostFooter = styled.div`
   display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  @media (min-width: 1200px) {
+    flex-direction: row;
+    text-align: left;
+    align-items: center;
+  }
 `;
 
 const StyledAuthorDescription = styled(StyledParagraph)`
@@ -97,17 +112,28 @@ const StyledAuthorDescription = styled(StyledParagraph)`
 `;
 
 const AuthorSection = styled.div`
-  display: grid;
-  grid-template-columns: 2fr 10fr;
+  display: flex;
+  flex-direction: column;
   margin-top: 20px;
+  align-items: center;
+  text-align: center;
+
+  @media (min-width: 1200px) {
+    flex-direction: row;
+    text-align: left;
+  }
+`;
+
+const StyledList = styled.ul`
+  width: 100%;
+  padding-left: 0;
+  display: flex;
 `;
 
 const StyledImage = styled(Img)`
   width: 100px;
   height: 100px;
 `;
-
-// const StyledAuthorWrapper = styled.div``;
 
 const filterPopularity = blogData => {
   return blogData && blogData.filter(item => item.node.frontmatter.isPopular);
@@ -136,11 +162,13 @@ const BlogPost = ({
         {/* eslint-disable-next-line react/no-danger */}
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
         <StyledPostFooter>
-          {postContent.tags.map(tag => (
-            <StyledTagLink href="#" key={tag}>
-              {tag}
-            </StyledTagLink>
-          ))}
+          <StyledList>
+            {postContent.tags.map(tag => (
+              <StyledTagLink href="#" key={tag}>
+                {tag}
+              </StyledTagLink>
+            ))}
+          </StyledList>
           <StyledShareLink href="#">Share</StyledShareLink>
         </StyledPostFooter>
         <AuthorSection>
