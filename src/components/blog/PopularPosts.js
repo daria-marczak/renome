@@ -41,13 +41,13 @@ const PopularPosts = ({ posts, photos }) => (
       <StyledPost key={post.id}>
         <StyledImage
           fluid={
-            photos.find(edge => edge.node.name === post.title).node
-              .childImageSharp.fluid
+            photos.find(photo => photo.node.name === post.title.toLowerCase())
+              .node.childImageSharp.fluid
           }
         />
         <StyledWrapper>
           <StyledPostHeading>
-            <StyledLink to={`/${post.title.split(' ').join('')}`}>
+            <StyledLink to={`/blog/${post.title.split(' ').join('')}`}>
               {post.title}
             </StyledLink>
           </StyledPostHeading>

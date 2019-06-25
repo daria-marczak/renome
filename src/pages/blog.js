@@ -15,6 +15,7 @@ const Blog = ({ data, allMarkdownRemark }) => (
       section="blog"
       title="news, recipes and much more"
     />
+    console.log(allMarkdownRemark)
     <BlogSection allPosts={allMarkdownRemark} />
     <Footer />
   </HomeTemplate>

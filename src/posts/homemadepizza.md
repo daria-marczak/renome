@@ -1,5 +1,5 @@
 ---
-title: "Home made pizza"
+title: "Homemade pizza"
 date: '2016-07-07'
 image: '../images/blogSection/homemade pizza.png'
 tags: ['pizza', 'vegan', 'recipes']

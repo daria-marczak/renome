@@ -30,7 +30,7 @@ const StyledAsideWrapper = styled.ul`
 `;
 
 const StyledBlogWrapper = styled(StyledWrapper)`
-  @media (min-width: 1200px) {
+  @media (min-width: 768px) {
     grid-template-columns: 1fr;
   }
 `;

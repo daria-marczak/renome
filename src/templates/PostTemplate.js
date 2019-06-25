@@ -6,17 +6,17 @@ import SEO from '../components/seo';
 import GlobalStyles from '../assets/styles/GlobalStyles';
 import { theme } from '../assets/styles/theme';
 import Header from '../components/common/Header';
-import BlogSection from '../components/blog/BlogSection';
+import BlogPost from '../components/blog/BlogPost';
 
 const PostTemplate = ({
-  data: {
-    markdownRemark: { frontmatter: post },
-    blogHeader,
-  },
+  data: { markdownRemark: post, allMarkdownRemark, allFile, blogHeader },
 }) => (
   <ThemeProvider theme={theme}>
     <>
-      <SEO title={post.title} keywords={[`gatsby`, `application`, `react`]} />
+      <SEO
+        title={post.frontmatter.title}
+        keywords={[`gatsby`, `application`, `react`]}
+      />
       <Header
         photo={blogHeader}
         section="blog"
@@ -24,7 +24,11 @@ const PostTemplate = ({
       />
       <GlobalStyles />
       <main>
-        <BlogSection post={post} />
+        <BlogPost
+          post={post}
+          allPosts={allMarkdownRemark}
+          photos={allFile.edges}
+        />
       </main>
     </>
   </ThemeProvider>
@@ -59,6 +63,35 @@ export const query = graphql`
       childImageSharp {
         fluid(maxWidth: 2000, quality: 100) {
           ...GatsbyImageSharpFluid_noBase64
+        }
+      }
+    }
+
+    allMarkdownRemark {
+      edges {
+        node {
+          excerpt(pruneLength: 250)
+          id
+          frontmatter {
+            title
+            category
+            date(formatString: "MMMM DD, YYYY")
+            isPopular
+          }
+        }
+      }
+    }
+
+    allFile(filter: { absolutePath: { regex: "/blogSection/" } }) {
+      edges {
+        node {
+          id
+          name
+          childImageSharp {
+            fluid(quality: 100) {
+              ...GatsbyImageSharpFluid_withWebp_tracedSVG
+            }
+          }
         }
       }
     }

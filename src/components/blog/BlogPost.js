@@ -1,0 +1,137 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import Img from 'gatsby-image';
+import PopularPosts from './PopularPosts';
+import {
+  StyledSection,
+  StyledDescription,
+  StyledWrapper,
+  StyledHeading,
+} from '../common/common';
+
+const StyledBlogDescription = styled(StyledDescription)`
+  text-transform: uppercase;
+  text-align: center;
+`;
+
+const StyledSectionHeader = styled.h2`
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 16px;
+`;
+
+const StyledAsideWrapper = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  padding-left: 0;
+`;
+
+const StyledBlogWrapper = styled(StyledWrapper)`
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const StyledBlogSection = styled(StyledSection)`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  @media (min-width: 1200px) {
+    flex-direction: row;
+    width: 80%;
+    margin: 0 auto;
+  }
+`;
+
+const StyledAside = styled.aside`
+  margin: 0 auto;
+  width: 90%;
+
+  @media (min-width: 1200px) {
+    margin-top: 70px;
+    margin-left: 100px;
+    width: 50%;
+  }
+`;
+
+const filterPopularity = blogData => {
+  return (
+    blogData &&
+    blogData
+      .map(item => item.node.frontmatter)
+      .filter(post => post.isPopular)
+      .flat()
+  );
+};
+
+const BlogPost = ({
+  post: { frontmatter: postContent },
+  allPosts: { edges: allPostsContent },
+  photos,
+}) => {
+  return (
+    <StyledBlogSection title="blog">
+      <StyledBlogWrapper>
+        <StyledHeading>{postContent.title}</StyledHeading>
+        <StyledBlogDescription>{postContent.date}</StyledBlogDescription>
+        <Img
+          fluid={
+            photos.find(
+              edge => edge.node.name === postContent.title.toLowerCase()
+            ).node.childImageSharp.fluid
+          }
+        />
+      </StyledBlogWrapper>
+      <StyledAside>
+        <section title="Category choice">
+          <StyledSectionHeader>Categories</StyledSectionHeader>
+          <StyledAsideWrapper>
+            {/* {blogData.map(blogPart => (
+              <StyledCategoryLink
+                key={blogPart.category}
+                onClick={() => setCategory(blogPart.category)}
+                isActive={activeCategory === blogPart.category}
+              >
+                {blogPart.category}
+              </StyledCategoryLink>
+            ))} */}
+          </StyledAsideWrapper>
+        </section>
+        <section title="Popular posts">
+          <StyledSectionHeader>Popular posts</StyledSectionHeader>
+          <PopularPosts
+            posts={filterPopularity(allPostsContent)}
+            photos={photos}
+          />
+        </section>
+      </StyledAside>
+    </StyledBlogSection>
+  );
+};
+
+BlogPost.propTypes = {
+  post: PropTypes.objectOf(
+    PropTypes.shape({
+      allFile: PropTypes.objectOf(
+        PropTypes.shape({
+          edges: PropTypes.array,
+        })
+      ),
+    })
+  ).isRequired,
+  allPosts: PropTypes.objectOf(PropTypes.shape()).isRequired,
+  photos: PropTypes.objectOf(
+    PropTypes.shape({
+      allFile: PropTypes.objectOf(
+        PropTypes.shape({
+          edges: PropTypes.array,
+        })
+      ),
+    })
+  ).isRequired,
+};
+
+export default BlogPost;
