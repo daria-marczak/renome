@@ -125,11 +125,17 @@ const BlogSection = props => {
   };
 
   const setCategory = category => {
-    if (activeCategory === category) {
-      setActive('all');
-    } else {
-      setActive(category);
-    }
+    const chosenCategory = activeCategory === category ? 'all' : category;
+    const headerHeight = document.querySelector('header');
+    const height =
+      document.querySelector('section[title="blog"]').offsetHeight -
+      headerHeight;
+
+    setActive(chosenCategory);
+    window.scrollTo({
+      top: -height,
+      behavior: 'smooth',
+    });
   };
 
   const filterPopularity = blogData => {
