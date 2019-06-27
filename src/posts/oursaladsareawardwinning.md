@@ -4,7 +4,7 @@ id: "123123123125"
 date: '2016-06-25'
 image: '../images/blogSection/our salads are award winning.png'
 tags: ['salad', 'vegan', 'press']
-category: "Promotions"
+category: "Press"
 author: "Norma Davies"
 aboutAuthor: "Percolator cup medium, organic doppio acerbic wings rich french press. Galão, brewed cultivar dark filter redeye medium mazagran. That and milk black, dripper, kopi-luwak, cup chicory shop extra viennese."
 isPopular: false

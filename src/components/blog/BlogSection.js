@@ -70,32 +70,42 @@ const StyledCategoryLink = styled.li`
   font-family: ${({ theme }) => theme.font.family.montserrat};
 `;
 
-const BlogSection = ({
-  photos: {
-    allFile: { edges },
-  },
-  allPosts: { edges: blogData },
-}) => {
+const BlogSection = props => {
+  const {
+    photos: {
+      allFile: { edges },
+    },
+    allPosts: { edges: blogData },
+  } = props;
   const [activeCategory, setActive] = useState('all');
+
+  const data =
+    activeCategory !== 'all'
+      ? blogData.filter(
+          data => data.node.frontmatter.category == activeCategory
+        )
+      : blogData;
+
   const renderBlog = () => {
     if (activeCategory !== 'all') {
-      return blogData
-        .filter(data => data.node.frontmatter.category === activeCategory)
-        .map(blogPart => (
-          <StyledSection
-            title={blogPart.node.frontmatter.category}
-            key={blogPart.node.id}
-          >
-            <StyledBlogDescription>
-              {blogPart.node.frontmatter.category}
-            </StyledBlogDescription>
-            {/* {blogPart.map(post => (
-              <BlogItem post={post} key={post.title} photos={edges} />
-            ))} */}
-          </StyledSection>
-        ));
+      return data.map(blogPart => (
+        <StyledSection
+          title={blogPart.node.frontmatter.category}
+          key={blogPart.node.id}
+        >
+          <StyledBlogDescription>
+            {blogPart.node.frontmatter.category}
+          </StyledBlogDescription>
+          <BlogItem
+            post={blogPart.node.frontmatter}
+            text={blogPart.node.excerpt}
+            key={blogPart.id}
+            photos={edges}
+          />
+        </StyledSection>
+      ));
     } else {
-      return blogData.map(blogPart => (
+      return data.map(blogPart => (
         <StyledSection
           title={blogPart.node.frontmatter.category}
           key={blogPart.node.id}
