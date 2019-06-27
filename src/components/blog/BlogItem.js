@@ -36,6 +36,7 @@ const BlogItem = ({ post, photos, text }) => {
           photos.find(edge => edge.node.name === post.title.toLowerCase()).node
             .childImageSharp.fluid
         }
+        alt=""
       />
       <StyledParagraph>{text}</StyledParagraph>
       <StyledLink

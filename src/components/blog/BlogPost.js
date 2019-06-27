@@ -47,6 +47,7 @@ const StyledBlogSection = styled(StyledSection)`
     flex-direction: row;
     width: 80%;
     margin: 0 auto;
+    margin-bottom: 20px;
   }
 `;
 
@@ -93,6 +94,10 @@ const StyledDate = styled.p`
 const StyledAuthor = styled.p`
   font-weight: 600;
   margin-top: 0;
+
+  @media (min-width: 1200px) {
+    margin-bottom: 0;
+  }
 `;
 
 const StyledPostFooter = styled.div`
@@ -109,6 +114,10 @@ const StyledPostFooter = styled.div`
 
 const StyledAuthorDescription = styled(StyledParagraph)`
   font-size: 14px;
+
+  @media (min-width: 1200px) {
+    margin-top: 0;
+  }
 `;
 
 const AuthorSection = styled.div`
@@ -121,6 +130,10 @@ const AuthorSection = styled.div`
   @media (min-width: 1200px) {
     flex-direction: row;
     text-align: left;
+
+    & > div {
+      margin-left: 20px;
+    }
   }
 `;
 
@@ -128,11 +141,20 @@ const StyledList = styled.ul`
   width: 100%;
   padding-left: 0;
   display: flex;
+
+  @media (min-width: 1200px) {
+    width: 50%;
+  }
 `;
 
 const StyledImage = styled(Img)`
   width: 100px;
-  height: 100px;
+  height: auto;
+
+  @media (min-width: 1200px) {
+    width: 300px;
+    align-self: baseline;
+  }
 `;
 
 const filterPopularity = blogData => {
@@ -172,7 +194,7 @@ const BlogPost = ({
           <StyledShareLink href="#">Share</StyledShareLink>
         </StyledPostFooter>
         <AuthorSection>
-          <StyledImage fluid={data.file.childImageSharp.fluid} />
+          <StyledImage fluid={data.file.childImageSharp.fluid} alt="" />
           <div>
             <StyledAuthor>{postContent.author}</StyledAuthor>
             <StyledAuthorDescription>

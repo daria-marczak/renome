@@ -8,7 +8,6 @@ import {
   StyledSection,
   StyledWrapper,
 } from '../common/common';
-// import blogData from './blogData';
 import PopularPosts from './PopularPosts';
 
 const StyledBlogDescription = styled(StyledDescription)`
