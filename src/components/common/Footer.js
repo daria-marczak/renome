@@ -7,7 +7,7 @@ import Google from '../../assets/icons/gplus.png';
 import Twitter from '../../assets/icons/twitter.png';
 
 const StyledFooter = styled.footer`
-  background: ${({ theme }) => theme.lightGray};
+  background-color: ${({ theme }) => theme.lightGray};
   text-align: center;
   padding: 20px 0;
 
@@ -40,7 +40,7 @@ const StyledIcon = styled.button`
   border-radius: 100%;
   display: flex;
   justify-content: center;
-  background: transparent;
+  background-color: transparent;
   align-items: center;
   border: 2px solid ${({ theme }) => theme.black};
   margin-right: 10px;

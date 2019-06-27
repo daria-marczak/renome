@@ -14,7 +14,7 @@ import {
 
 const StyledAdvantage = styled.div`
   width: 100%;
-  background: ${({ theme }) => theme.lightGray};
+  background-color: ${({ theme }) => theme.lightGray};
   padding: 30px 20px;
   font-family: ${({ theme }) => theme.font.family.montserrat};
   text-align: center;
@@ -36,7 +36,7 @@ const StyledAdvantage = styled.div`
 `;
 
 const StyledLink = styled(StyledSectionLink)`
-  background: #1e2633;
+  background-color: #1e2633;
   text-transform: uppercase;
   color: ${({ theme }) => theme.white};
   font-size: ${({ theme }) => theme.font.size.paragraph};

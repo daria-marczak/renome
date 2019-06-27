@@ -3,6 +3,7 @@ export const theme = {
   black: '#000',
   white: '#fff',
   lightGray: '#f7f7f7',
+  gray: '#545459',
   font: {
     family: {
       lato: 'Lato, sans-serif',

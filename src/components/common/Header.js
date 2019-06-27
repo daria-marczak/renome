@@ -18,11 +18,6 @@ const StyledHeader = styled.header`
   letter-spacing: 0.04em;
   font-weight: 700;
   font-family: ${({ theme }) => theme.font.family.montserrat};
-
-  @media (min-width: 1200px) {
-    display: flex;
-    justify-content: flex-end;
-  }
 `;
 
 const StyledHeading = styled.h1`
@@ -34,7 +29,7 @@ const StyledContainer = styled.div`
   width: 100%;
 
   @media (min-width: 1200px) {
-    width: 90%;
+    width: 80%;
     margin: 0 auto;
     display: flex;
     align-items: center;
@@ -42,7 +37,7 @@ const StyledContainer = styled.div`
 `;
 
 const StyledBar = styled.nav`
-  background: white;
+  background-color: white;
   height: 86px;
   position: fixed;
   top: 0;
@@ -70,7 +65,7 @@ const StyledParagraph = styled.div`
 
   @media (min-width: 1200px) {
     flex: 1;
-    right: 85px;
+    left: 180px;
   }
 `;
 
@@ -99,7 +94,7 @@ const StyledHero = styled(Img)`
 `;
 
 const StyledFilter = styled.div`
-  background: #162642;
+  background-color: #162642;
   opacity: 0.6;
   width: 100%;
   height: 100%;

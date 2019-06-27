@@ -22,6 +22,22 @@ const GlobalStyle = createGlobalStyle`
         margin-left: 0 !important;
         margin-right: 0 !important;
     }
+
+    p {
+      line-height: 2em;
+      margin-left: 5px;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    h2 {
+      text-transform: uppercase;
+      margin-left: 5px;
+    }
+
+    blockquote {
+      border-left: 6px solid #edeff2;
+      font-weight: 600;
+    }
 `;
 
 export default GlobalStyle;

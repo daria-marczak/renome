@@ -12,7 +12,7 @@ const StyledList = styled.ul`
   margin-top: 0;
   display: flex;
   justify-content: center;
-  background: ${({ theme }) => theme.white};
+  background-color: ${({ theme }) => theme.white};
   transition: transform 0.3s ease-in;
   transform: translateX(${({ isOpen }) => (isOpen ? '0%' : '-100%')});
 `;

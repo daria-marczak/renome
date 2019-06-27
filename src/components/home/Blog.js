@@ -19,7 +19,7 @@ const StyledBlogSection = styled(StyledSection)`
 
 const StyledBlogPost = styled.div`
   position: absolute;
-  background: ${({ theme }) => theme.white};
+  background-color: ${({ theme }) => theme.white};
   transform: translateY(-128%) translateX(12%);
   width: 65%;
   height: 23%;
@@ -53,7 +53,7 @@ const StyledImage = styled(Img)`
 `;
 
 const StyledDate = styled.p`
-  color: #dcdee0;
+  color: ${({ theme }) => theme.gray};
   font-weight: 700;
 `;
 
@@ -63,7 +63,7 @@ const StyledBlogWrapper = styled.div`
   text-align: center;
 `;
 
-const Blog = ({
+const BlogHome = ({
   data: {
     allFile: { edges },
   },
@@ -89,7 +89,9 @@ const Blog = ({
               <StyledBlogPost>
                 <StyledDate>{post.date}</StyledDate>
                 <StyledTitle>{post.title}</StyledTitle>
-                <StyledSectionLink to={`/${post.title}.split(" ").join("")`}>
+                <StyledSectionLink
+                  to={`/blog/${post.title.split(' ').join('')}`}
+                >
                   ...
                 </StyledSectionLink>
               </StyledBlogPost>
@@ -101,7 +103,7 @@ const Blog = ({
   );
 };
 
-Blog.propTypes = {
+BlogHome.propTypes = {
   data: PropTypes.shape().isRequired,
 };
 
@@ -124,6 +126,6 @@ export default props => (
         }
       }
     `}
-    render={data => <Blog data={data} {...props} />}
+    render={data => <BlogHome data={data} {...props} />}
   />
 );

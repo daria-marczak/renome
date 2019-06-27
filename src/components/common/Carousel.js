@@ -32,7 +32,7 @@ const StyledPriceTag = styled.div`
   position: absolute;
   top: 24px;
   right: 20px;
-  background: ${({ theme }) => theme.lightGray};
+  background-color: ${({ theme }) => theme.lightGray};
   font-family: ${({ theme }) => theme.font.family.montserrat};
   padding: 6px 8px;
 `;
@@ -47,7 +47,7 @@ const StyledDay = styled.p`
   font-family: ${({ theme }) => theme.font.family.playfair};
   text-transform: capitalize;
   font-size: ${({ theme }) => theme.font.size.jumbotron};
-  color: #dcdee0;
+  color: ${({ theme }) => theme.gray};
 `;
 
 const Carousel = ({ data }) => {
@@ -72,7 +72,7 @@ const Carousel = ({ data }) => {
           <StyledButton
             key={day.day}
             style={{
-              background: node.name === day.day ? 'white' : 'transparent',
+              backgroundColor: node.name === day.day ? 'white' : 'transparent',
             }}
             type="button"
             onClick={() => setIndex(index)}

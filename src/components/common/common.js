@@ -23,9 +23,13 @@ export const StyledParagraph = styled.p`
 `;
 
 export const StyledSection = styled.section`
-  margin-top: 70px;
   text-align: ${({ align }) => (align ? 'right' : 'left')};
+  margin-top: 20px;
   margin-bottom: 30px;
+
+  @media (min-width: 1200px) {
+    margin-top: 70px;
+  }
 `;
 
 export const StyledSectionLink = styled(Link)`
