@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Img from 'gatsby-image';
 import { graphql, StaticQuery } from 'gatsby';
 import PopularPosts from './PopularPosts';
+import BlogComments from './BlogComments';
 import {
   StyledSection,
   StyledDescription,
@@ -202,6 +203,7 @@ const BlogPost = ({
             </StyledAuthorDescription>
           </div>
         </AuthorSection>
+        <BlogComments />
       </StyledBlogWrapper>
       <StyledAside>
         <section title="Popular posts">
