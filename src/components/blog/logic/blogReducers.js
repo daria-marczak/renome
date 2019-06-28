@@ -3,7 +3,7 @@ import * as blogActions from './blogConstants';
 
 export default (state = initialState.blog, action) => {
   switch (action.type) {
-    case blogActions.CREATE_COMMENT_INVOKE:
+    case blogActions.CREATE_COMMENT.INVOKE:
       return {
         ...state,
         fetching: {

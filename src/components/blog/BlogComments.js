@@ -107,10 +107,6 @@ const StyledInput = styled.input`
   font-weight: 600;
   width: 100%;
 
-  &:last-of-type {
-    margin-bottom: 20px;
-  }
-
   @media (min-width: 1200px) {
     margin-left: 10px;
     width: ${({ placeholder }) => (placeholder === 'Message' ? '100%' : '50%')};
@@ -131,7 +127,7 @@ const StyledButton = styled.button`
   border: none;
   width: 100%;
   cursor: pointer;
-  margin: 15px 0 20px 0;
+  margin: 20px 0 20px 0;
   font-family: ${({ theme }) => theme.font.family.montserrat};
   font-weight: 600;
   align-self: center;
@@ -188,10 +184,7 @@ class BlogComments extends PureComponent {
             </StyledCommentAuthor>
           </StyledComment>
         ))}
-        <StyledForm
-          onChange={event => this.onChange(event)}
-          onSubmit={this.onSubmit}
-        >
+        <StyledForm onSubmit={this.onSubmit}>
           <StyledSectionHeader>Leave a reply</StyledSectionHeader>
           <StyledFormWrapper>
             <StyledInput
@@ -199,6 +192,7 @@ class BlogComments extends PureComponent {
               required
               placeholder="Name"
               value={author}
+              onChange={event => this.onChange(event)}
               name="author"
             />
             <StyledInput
@@ -206,6 +200,7 @@ class BlogComments extends PureComponent {
               required
               placeholder="Email"
               value={email}
+              onChange={event => this.onChange(event)}
               name="email"
             />
           </StyledFormWrapper>
@@ -214,6 +209,7 @@ class BlogComments extends PureComponent {
             required
             placeholder="Message"
             value={message}
+            onChange={event => this.onChange(event)}
             name="message"
           />
           <StyledButton type="submit">Post comment</StyledButton>
