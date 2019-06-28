@@ -69,7 +69,7 @@ const BlogHome = ({
   },
 }) => {
   const blogPosts = [
-    { date: '10/03', title: 'grand opening!' },
+    { date: '10/03', title: 'grand opening' },
     { date: '07/03', title: 'mini chilli pretzels' },
     { date: '05/06', title: 'summer specials' },
   ];

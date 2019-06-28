@@ -11,6 +11,15 @@ export default (state = initialState.blog, action) => {
         },
       };
 
+    case blogActions.CREATE_COMMENT.SUCCESS:
+      return {
+        ...state,
+        fetching: {
+          fetchingComments: false,
+        },
+        comments: [...state.comments, action.comment],
+      };
+
     default:
       return state;
   }

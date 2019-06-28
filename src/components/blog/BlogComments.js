@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import * as blogActions from './logic/blogActions';
+import formatDate from '../../utils/formatDate';
 import { StyledParagraph } from '../common/common';
-import commentsData from './logic/commentsData';
 
 const StyledCommentSection = styled.ul`
   padding-left: 0;
@@ -163,21 +163,23 @@ class BlogComments extends PureComponent {
 
   render() {
     const { author, email, message } = this.state;
+    const { comments } = this.props;
+
     const title =
-      commentsData.length !== 1
-        ? `${commentsData.length} comments`
-        : `${commentsData.length} comment`;
+      comments.length !== 1
+        ? `${comments.length} comments`
+        : `${comments.length} comment`;
 
     return (
       <StyledCommentSection>
         <StyledSectionHeader>{title}</StyledSectionHeader>
-        {commentsData.map(comment => (
+        {comments.map(comment => (
           <StyledComment key={comment.id}>
             <StyledCommentAuthor>
               <StyledMobileComment>
                 <StyledAvatar />
                 <StyledMobileParagraph>{comment.author}</StyledMobileParagraph>
-                <StyledDate>{comment.date}</StyledDate>
+                <StyledDate>{formatDate(comment.date)}</StyledDate>
               </StyledMobileComment>
               <StyledAuthorParagraph>{comment.author}</StyledAuthorParagraph>
               <StyledCommentContent>{comment.content}</StyledCommentContent>
@@ -221,7 +223,16 @@ class BlogComments extends PureComponent {
 
 BlogComments.propTypes = {
   createComment: PropTypes.func.isRequired,
+  comments: PropTypes.arrayOf(PropTypes.object),
 };
+
+BlogComments.defaultProps = {
+  comments: [],
+};
+
+const mapStateToProps = state => ({
+  comments: state.blog.comments,
+});
 
 const mapDispatchToProps = dispatch => {
   return bindActionCreators(
@@ -233,6 +244,6 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(BlogComments);
