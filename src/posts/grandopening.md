@@ -2,7 +2,6 @@
 title: "Grand opening"
 id: "123123123123"
 date: '2016-07-07'
-image: '../images/blogSection/grand opening.png'
 tags: ['events', 'party', 'opening']
 category: "Events"
 author: "Ginger Sprouts"

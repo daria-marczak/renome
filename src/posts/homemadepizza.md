@@ -2,7 +2,6 @@
 title: "Homemade pizza"
 id: "123123123124"
 date: '2016-07-07'
-image: '../images/blogSection/homemade pizza.png'
 tags: ['pizza', 'vegan', 'recipes']
 category: "Recipes"
 author: "Roberta Sprout"

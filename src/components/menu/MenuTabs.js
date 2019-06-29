@@ -19,6 +19,8 @@ const StyledTabContainer = styled.div`
 
 const StyledWrapper = styled.div`
   width: 100%;
+  display: flex;
+  flex-direction: column;
 `;
 
 const StyledTabLink = styled.div`
