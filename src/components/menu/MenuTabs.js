@@ -2,41 +2,13 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { graphql, StaticQuery } from 'gatsby';
-
+import Tabs from '../common/Tabs';
 import MenuItem from './MenuItem';
-
-const StyledTabContainer = styled.div`
-  display: flex;
-  min-width: 375px;
-  justify-self: center;
-  border-bottom: 2px solid ${({ theme }) => theme.lightGray};
-
-  @media (min-width: 1200px) {
-    min-width: 400px;
-    justify-self: center;
-  }
-`;
 
 const StyledWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-`;
-
-const StyledTabLink = styled.div`
-  border-bottom: 5px solid
-    ${({ theme, isActive }) => (isActive ? theme.primary : 'transparent')};
-  flex: 1;
-  font-weight: 700;
-  text-align: center;
-  line-height: 40px;
-  text-transform: uppercase;
-  transition: border-bottom 0.3s ease-in-out;
-  cursor: pointer;
-
-  @media (min-width: 1200px) {
-    max-width: 130px;
-  }
 `;
 
 const StyledHeading = styled.h2`
@@ -64,17 +36,7 @@ const MenuTabs = ({
   const [activeTab, setTab] = useState('Lunch');
   return (
     <StyledWrapper>
-      <StyledTabContainer>
-        {tabs.map(tab => (
-          <StyledTabLink
-            key={tab}
-            onClick={() => setTab(tab)}
-            isActive={activeTab === tab}
-          >
-            {tab}
-          </StyledTabLink>
-        ))}
-      </StyledTabContainer>
+      <Tabs setTab={setTab} tabs={tabs} activeTab={activeTab} />
       {menu.map(
         meal =>
           meal.type === activeTab &&
