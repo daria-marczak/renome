@@ -19,6 +19,16 @@ const GoalsColumn = styled(StyledColumn)`
   }
 `;
 
+const StyledSwitched = styled(StyledColumn)`
+  @media (min-width: 1500px) {
+    transform: translateX(-200px);
+  }
+
+  @media (min-width: 1200px) {
+    transform: translateX(-200px);
+  }
+`;
+
 const Goals = ({
   data: {
     allFile: { edges },
@@ -26,15 +36,15 @@ const Goals = ({
 }) => {
   const [firstPhoto, secondPhoto] = edges;
   return (
-    <StyledSection title="goals">
+    <StyledSection title="goals" align>
       <StyledWrapper>
-        <StyledColumn right>
+        <StyledSwitched right>
           <PhotoComponent
             firstPhoto={firstPhoto.node}
             secondPhoto={secondPhoto.node}
           />
-        </StyledColumn>
-        <GoalsColumn left isDescription>
+        </StyledSwitched>
+        <GoalsColumn isDescription left>
           <StyledHeading>goals</StyledHeading>
           <StyledDescription>what we want to achieve</StyledDescription>
           <StyledParagraph>
