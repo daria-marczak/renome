@@ -5,6 +5,9 @@ const initialState = {
     fetching: {},
     comments: commentsData,
   },
+  cart: {
+    cartItems: [],
+  },
 };
 
 export default initialState;
