@@ -4,40 +4,45 @@ import PropTypes from 'prop-types';
 import HomeTemplate from '../templates/HomeTemplate';
 import SEO from '../components/seo';
 import Header from '../components/common/Header';
-import BlogSection from '../components/blog/BlogSection';
+import ShopSection from '../components/shop/ShopSection';
 import Footer from '../components/common/Footer';
 
-const Blog = ({ data }) => (
+const ShopPage = ({ data }) => (
   <HomeTemplate>
-    <SEO title="Blog" keywords={[`renome`, `restaurant`]} />
+    <SEO title="Shop" keywords={[`renome`, `restaurant`]} />
     <Header
-      photo={data.blogHeader}
-      section="blog"
-      title="news, recipes and much more"
+      photo={data.menuHeader}
+      section="shop"
+      title="order dishes online"
     />
-    <BlogSection allPosts={data.allMarkdownRemark} />
+    <ShopSection
+      dishes={data.allMarkdownRemark.edges.filter(
+        product => product.node.frontmatter.type === 'shop'
+      )}
+    />
     <Footer />
   </HomeTemplate>
 );
 
 export const query = graphql`
   query {
-    blogHeader: file(relativePath: { eq: "images/headers/blog.png" }) {
+    menuHeader: file(relativePath: { eq: "images/headers/shop.png" }) {
       childImageSharp {
         fluid(maxWidth: 2000, quality: 100) {
           ...GatsbyImageSharpFluid_noBase64
         }
       }
     }
+
     allMarkdownRemark {
       edges {
         node {
-          excerpt(pruneLength: 250)
-          id
           frontmatter {
             title
-            type
             category
+            type
+            id
+            price
           }
         }
       }
@@ -45,8 +50,8 @@ export const query = graphql`
   }
 `;
 
-Blog.propTypes = {
+ShopPage.propTypes = {
   data: PropTypes.shape().isRequired,
 };
 
-export default Blog;
+export default ShopPage;

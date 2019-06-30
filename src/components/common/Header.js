@@ -126,8 +126,8 @@ const Header = ({ cartItems, photo, title, section }) => {
         <StyledHero fluid={photo.childImageSharp.fluid} />
         <StyledFilter />
         <StyledParagraph>
-          <StyledHeading>{section ? section : 'made with love'}</StyledHeading>
-          <StyledText>{title ? title : 'for you'}</StyledText>
+          <StyledHeading>{section}</StyledHeading>
+          <StyledText>{title}</StyledText>
         </StyledParagraph>
       </StyledHeader>
     </>

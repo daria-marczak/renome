@@ -17,7 +17,7 @@ import Footer from '../components/common/Footer';
 const IndexPage = ({ data }) => (
   <HomeTemplate>
     <SEO title="Home" keywords={[`renome`, `restaurant`]} />
-    <Header photo={data.homeHeader} />
+    <Header photo={data.homeHeader} section="made with love" title="for you" />
     <About />
     <LunchOfDay />
     <MenuSection />

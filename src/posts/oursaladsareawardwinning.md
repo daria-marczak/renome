@@ -2,7 +2,7 @@
 title: "Our salads are award winning"
 id: "123123123125"
 date: '2016-06-25'
-image: '../images/blogSection/our salads are award winning.png'
+type: "blog"
 tags: ['salad', 'vegan', 'press']
 category: "Press"
 author: "Norma Davies"

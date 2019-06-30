@@ -14,6 +14,11 @@ import {
   StyledColumn,
 } from '../common/common';
 
+const StyledMenuSection = styled(StyledSection)`
+  margin-top: 40px;
+  margin-bottom: 40px;
+`;
+
 const MenuColumn = styled(StyledColumn)`
   @media (min-width: 1200px) {
     justify-self: end;
@@ -38,7 +43,7 @@ const MenuSection = ({
   const [firstPhoto, secondPhoto] = edges;
 
   return (
-    <StyledSection title="menu" align>
+    <StyledMenuSection title="menu" align>
       <StyledWrapper>
         <StyledSwitched right>
           <PhotoComponent
@@ -59,7 +64,7 @@ const MenuSection = ({
           <StyledSectionLink to="/menu">...</StyledSectionLink>
         </MenuColumn>
       </StyledWrapper>
-    </StyledSection>
+    </StyledMenuSection>
   );
 };
 

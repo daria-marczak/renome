@@ -10,7 +10,7 @@ import { theme } from '../assets/styles/theme';
 const HomeTemplate = ({ children }) => (
   <ThemeProvider theme={theme}>
     <>
-      <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
+      <SEO title="Home" keywords={[`renome`, `restaurant`, `food`]} />
       <GlobalStyles />
       <main>{children}</main>
     </>

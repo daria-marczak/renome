@@ -27,17 +27,14 @@ const StyledLink = styled(Link)`
 `;
 
 const BlogItem = ({ post, photos, text }) => {
+  const photo =
+    photos && photos.find(edge => edge.node.name === post.title.toLowerCase());
+
   return (
     <StyledArticle key={post.title}>
       <StyledHeading>{post.title}</StyledHeading>
       <StyledBlogDescription>{post.date}</StyledBlogDescription>
-      <Img
-        fluid={
-          photos.find(edge => edge.node.name === post.title.toLowerCase()).node
-            .childImageSharp.fluid
-        }
-        alt=""
-      />
+      <Img fluid={photo.node.childImageSharp.fluid} alt="" />
       <StyledParagraph>{text}</StyledParagraph>
       <StyledLink
         to={`/blog/${post.title

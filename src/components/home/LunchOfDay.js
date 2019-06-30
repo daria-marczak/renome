@@ -21,7 +21,7 @@ const StyledSection = styled.section`
   flex-direction: column;
 
   @media (min-width: 768px) and (max-width: 1280px) {
-    height: 34vh;
+    height: 44vh;
   }
 
   @media (min-width: 1281px) {
