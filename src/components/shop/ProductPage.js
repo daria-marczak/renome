@@ -13,8 +13,8 @@ import {
   StyledDescription,
 } from '../common/common';
 import * as shopActions from './logic/shopActions';
-import reviews from './logic/reviewsData';
 import ProductReviews from './ProductReviews';
+import ReviewForm from './ReviewForm';
 
 const StyledShopHeading = styled(StyledLevelTwoHeading)`
   text-transform: lowercase;
@@ -81,10 +81,10 @@ const StyledImage = styled(Img)`
   height: 400px;
 `;
 
-const ProductPage = ({ photo, product, addToCart }) => {
+const ProductPage = ({ photo, product, addToCart, reviews }) => {
   const [quantity, setQuantity] = useState(1);
 
-  const handleSubmit = event => {
+  const handleAddToCart = event => {
     event.preventDefault();
     addToCart({ quantity, itemId: product.frontmatter.id });
   };
@@ -107,7 +107,7 @@ const ProductPage = ({ photo, product, addToCart }) => {
           </StyledReview>
           <StyledPrice>{product.frontmatter.price}</StyledPrice>
           <StyledParagraph>{product.frontmatter.description}</StyledParagraph>
-          <StyledForm onSubmit={handleSubmit}>
+          <StyledForm onSubmit={handleAddToCart}>
             <StyledInput
               type="number"
               min="1"
@@ -127,6 +127,7 @@ const ProductPage = ({ photo, product, addToCart }) => {
           {reviews.map(review => (
             <ProductReviews review={review} key={review.id} />
           ))}
+          <ReviewForm />
         </StyledColumn>
       </StyledWrapper>
     </StyledSection>
@@ -137,10 +138,11 @@ ProductPage.propTypes = {
   photo: PropTypes.shape().isRequired,
   product: PropTypes.shape().isRequired,
   addToCart: PropTypes.func.isRequired,
+  reviews: PropTypes.arrayOf(PropTypes.shape()).isRequired,
 };
 
 const mapStateToProps = state => ({
-  comments: state.blog.comments,
+  reviews: state.shop.reviews,
 });
 
 const mapDispatchToProps = dispatch => {

@@ -1,4 +1,5 @@
 import commentsData from '../components/blog/logic/commentsData';
+import reviews from '../components/shop/logic/reviewsData';
 
 const initialState = {
   blog: {
@@ -8,7 +9,7 @@ const initialState = {
   cart: {
     fetching: {},
     cartItems: [],
-    reviews: [],
+    reviews: reviews,
   },
 };
 

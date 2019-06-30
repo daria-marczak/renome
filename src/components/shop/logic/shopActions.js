@@ -7,6 +7,6 @@ export const addToCart = ({ quantity, itemId }) => ({
 });
 
 export const addReview = reviewContent => ({
-  type: shopActions.addReview,
+  type: shopActions.ADD_REVIEW.INVOKE,
   reviewContent,
 });

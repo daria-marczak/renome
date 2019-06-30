@@ -37,19 +37,19 @@ function* addReview({ reviewContent }) {
       const commentContent = {
         id: Math.random(),
         author: reviewContent.author,
-        stars: reviewContent.stars,
+        stars: reviewContent.rating,
         content: reviewContent.message,
       };
 
       yield delay(1500);
       yield put({
-        type: shopActions.CREATE_COMMENT.SUCCESS,
+        type: shopActions.ADD_REVIEW.SUCCESS,
         comment: commentContent,
       });
     } else {
-      yield put({ type: shopActions.CREATE_COMMENT.FAILURE });
+      yield put({ type: shopActions.ADD_REVIEW.FAILURE });
     }
   } catch (error) {
-    yield put({ type: shopActions.CREATE_COMMENT.FAILURE });
+    yield put({ type: shopActions.ADD_REVIEW.FAILURE });
   }
 }

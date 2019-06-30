@@ -26,7 +26,7 @@ export default (state = initialState.cart, action) => {
           fetchingReviews: false,
         },
 
-        reviews: [...state.reviews, action.reviewContent],
+        reviews: [...state.reviews, action.comment],
       };
 
     case shopActions.ADD_REVIEW.FAILURE:
