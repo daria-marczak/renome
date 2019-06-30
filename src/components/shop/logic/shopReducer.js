@@ -7,7 +7,33 @@ export default (state = initialState.cart, action) => {
       return {
         ...state,
         fetching: {
-          fetchingComments: true,
+          fetchingCart: true,
+        },
+      };
+
+    case shopActions.ADD_REVIEW.INVOKE:
+      return {
+        ...state,
+        fetching: {
+          fetchingReviews: true,
+        },
+      };
+
+    case shopActions.ADD_REVIEW.SUCCESS:
+      return {
+        ...state,
+        fetching: {
+          fetchingReviews: false,
+        },
+
+        reviews: [...state.reviews, action.reviewContent],
+      };
+
+    case shopActions.ADD_REVIEW.FAILURE:
+      return {
+        ...state,
+        fetching: {
+          fetchingReviews: false,
         },
       };
 
@@ -15,7 +41,7 @@ export default (state = initialState.cart, action) => {
       return {
         ...state,
         fetching: {
-          fetchingComments: false,
+          fetchingCart: false,
         },
         cartItems: [...state.cartItems, action.cartItem],
       };

@@ -8,6 +8,7 @@ const initialState = {
   cart: {
     fetching: {},
     cartItems: [],
+    reviews: [],
   },
 };
 

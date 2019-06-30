@@ -5,3 +5,8 @@ export const addToCart = ({ quantity, itemId }) => ({
   quantity,
   itemId,
 });
+
+export const addReview = reviewContent => ({
+  type: shopActions.addReview,
+  reviewContent,
+});
