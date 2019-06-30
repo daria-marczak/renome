@@ -2,6 +2,7 @@
 title: "Mini chili pretzels"
 id: "1231231231234"
 date: '2016-04-07'
+type: "blog"
 tags: ['pretzels', 'vegan', 'recipes']
 category: "Recipes"
 author: "Roberta Sprout"

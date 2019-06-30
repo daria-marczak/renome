@@ -6,6 +6,7 @@ const shopData = [
         name: 'Scrambled eggs',
         description: 'Best scrabled eggs you can imagine',
         price: '3.54',
+        stars: 3,
         reviews: [
           {
             author: 'John Doe',
@@ -25,6 +26,7 @@ const shopData = [
         name: 'Bagel with spinach, egg and tofu',
         description: 'Best scrabled eggs you can imagine',
         price: '3.54',
+        stars: 3,
         reviews: [
           {
             author: 'John Doe',
@@ -44,6 +46,7 @@ const shopData = [
         name: 'Toast with roasted beetroot and eggs',
         description: 'Best scrabled eggs you can imagine',
         price: '3.54',
+        stars: 3,
         reviews: [
           {
             author: 'John Doe',
@@ -63,6 +66,7 @@ const shopData = [
         name: 'Scrambled tofu',
         description: 'Best scrabled eggs you can imagine',
         price: '3.54',
+        stars: 3,
         reviews: [
           {
             author: 'John Doe',
@@ -82,6 +86,7 @@ const shopData = [
         name: 'Bagel with spinach and tofu',
         description: 'Best scrabled eggs you can imagine',
         price: '3.54',
+        stars: 3,
         reviews: [
           {
             author: 'John Doe',
@@ -101,6 +106,7 @@ const shopData = [
         name: 'Toast with roasted beetroot',
         description: 'Best scrabled eggs you can imagine',
         price: '3.54',
+        stars: 3,
         reviews: [
           {
             author: 'John Doe',
@@ -125,6 +131,7 @@ const shopData = [
         name: 'Chicken livers',
         description: 'Best scrabled eggs you can imagine',
         price: '3.54',
+        stars: 3,
         reviews: [
           {
             author: 'John Doe',
@@ -144,6 +151,7 @@ const shopData = [
         name: 'Steak with vegetables',
         description: 'Best scrabled eggs you can imagine',
         price: '3.54',
+        stars: 3,
         reviews: [
           {
             author: 'John Doe',
@@ -163,6 +171,7 @@ const shopData = [
         name: 'Beef with pineapples',
         description: 'Best scrabled eggs you can imagine',
         price: '3.54',
+        stars: 3,
         reviews: [
           {
             author: 'John Doe',
@@ -182,6 +191,7 @@ const shopData = [
         name: 'Waffles with coffee',
         description: 'Best scrabled eggs you can imagine',
         price: '3.54',
+        stars: 3,
         reviews: [
           {
             author: 'John Doe',
@@ -201,6 +211,7 @@ const shopData = [
         name: 'Apple pie',
         description: 'Best scrabled eggs you can imagine',
         price: '3.54',
+        stars: 3,
         reviews: [
           {
             author: 'John Doe',
@@ -220,6 +231,7 @@ const shopData = [
         name: 'Egg baguette',
         description: 'Best scrabled eggs you can imagine',
         price: '3.54',
+        stars: 3,
         reviews: [
           {
             author: 'John Doe',
@@ -244,6 +256,7 @@ const shopData = [
         name: 'Lava cake',
         description: 'Best scrabled eggs you can imagine',
         price: '3.54',
+        stars: 3,
         reviews: [
           {
             author: 'John Doe',
@@ -263,6 +276,7 @@ const shopData = [
         name: 'Peanut butter cake',
         description: 'Best scrabled eggs you can imagine',
         price: '3.54',
+        stars: 3,
         reviews: [
           {
             author: 'John Doe',
@@ -282,6 +296,7 @@ const shopData = [
         name: 'Rhubarb pie',
         description: 'Best scrabled eggs you can imagine',
         price: '3.54',
+        stars: 3,
         reviews: [
           {
             author: 'John Doe',
@@ -301,6 +316,7 @@ const shopData = [
         name: 'Strawberry ice cream',
         description: 'Best scrabled eggs you can imagine',
         price: '3.54',
+        stars: 3,
         reviews: [
           {
             author: 'John Doe',
@@ -320,6 +336,7 @@ const shopData = [
         name: 'Apple pie',
         description: 'Best scrabled eggs you can imagine',
         price: '3.54',
+        stars: 3,
         reviews: [
           {
             author: 'John Doe',
@@ -339,6 +356,7 @@ const shopData = [
         name: 'Fruit salad',
         description: 'Best scrabled eggs you can imagine',
         price: '3.54',
+        stars: 3,
         reviews: [
           {
             author: 'John Doe',

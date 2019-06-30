@@ -1,6 +1,7 @@
 ---
 title: "Grand opening"
 id: "123123123123"
+type: "blog"
 date: '2016-07-07'
 tags: ['events', 'party', 'opening']
 category: "Events"

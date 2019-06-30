@@ -159,22 +159,34 @@ const StyledImage = styled(Img)`
 `;
 
 const filterPopularity = blogData => {
-  return blogData && blogData.filter(item => item.node.frontmatter.isPopular);
+  return (
+    blogData &&
+    blogData.filter(
+      item =>
+        item.node.frontmatter.isPopular && item.node.frontmatter.type === 'blog'
+    )
+  );
 };
 
 const BlogPost = ({
   post,
   post: { frontmatter: postContent },
-  allPosts: { edges: allPostsContent },
+  allPosts,
   photos,
   data,
 }) => {
+  if (!postContent) {
+    return <div />;
+  }
+
   return (
     <StyledBlogSection title="blog">
       <StyledBlogWrapper>
-        <StyledBlogDescription>{postContent.category}</StyledBlogDescription>
-        <StyledBlogTitle>{postContent.title}</StyledBlogTitle>
-        <StyledDate>{postContent.date}</StyledDate>
+        <StyledBlogDescription>
+          {postContent && postContent.category}
+        </StyledBlogDescription>
+        <StyledBlogTitle>{postContent && postContent.title}</StyledBlogTitle>
+        <StyledDate>{postContent && postContent.date}</StyledDate>
         <Img
           fluid={
             photos.find(
@@ -186,20 +198,21 @@ const BlogPost = ({
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
         <StyledPostFooter>
           <StyledList>
-            {postContent.tags.map(tag => (
-              <StyledTagLink href="#" key={tag}>
-                {tag}
-              </StyledTagLink>
-            ))}
+            {postContent &&
+              postContent.tags.map(tag => (
+                <StyledTagLink href="#" key={tag}>
+                  {tag}
+                </StyledTagLink>
+              ))}
           </StyledList>
           <StyledShareLink href="#">Share</StyledShareLink>
         </StyledPostFooter>
         <AuthorSection>
           <StyledImage fluid={data.file.childImageSharp.fluid} alt="" />
           <div>
-            <StyledAuthor>{postContent.author}</StyledAuthor>
+            <StyledAuthor>{postContent && postContent.author}</StyledAuthor>
             <StyledAuthorDescription>
-              {postContent.aboutAuthor}
+              {postContent && postContent.aboutAuthor}
             </StyledAuthorDescription>
           </div>
         </AuthorSection>
@@ -208,10 +221,7 @@ const BlogPost = ({
       <StyledAside>
         <section title="Popular posts">
           <StyledSectionHeader>Popular posts</StyledSectionHeader>
-          <PopularPosts
-            posts={filterPopularity(allPostsContent)}
-            photos={photos}
-          />
+          <PopularPosts posts={filterPopularity(allPosts)} photos={photos} />
         </section>
       </StyledAside>
     </StyledBlogSection>
@@ -220,7 +230,7 @@ const BlogPost = ({
 
 BlogPost.propTypes = {
   post: PropTypes.shape().isRequired,
-  allPosts: PropTypes.shape().isRequired,
+  allPosts: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   data: PropTypes.shape().isRequired,
   photos: PropTypes.arrayOf(PropTypes.shape()).isRequired,
 };

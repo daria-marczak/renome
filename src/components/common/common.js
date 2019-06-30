@@ -68,3 +68,9 @@ export const StyledThreeColumnGrid = styled.div`
     margin-top: 60px;
   }
 `;
+
+export const StyledLevelTwoHeading = styled.h2`
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 600;
+`;
