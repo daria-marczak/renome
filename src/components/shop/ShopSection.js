@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { graphql, StaticQuery } from 'gatsby';
 import { StyledSection, StyledWrapper } from '../common/common';
 import Tabs from '../common/Tabs';
-import shopData from './logic/shopData';
 import ShopItem from './ShopItem';
 
 const StyledShopWrapper = styled(StyledWrapper)`
@@ -33,28 +32,27 @@ const ShopSection = ({
   photos: {
     allFile: { edges },
   },
+  dishes,
 }) => {
   const [activeTab, setTab] = useState('mains');
-
   return (
     <StyledSection title="shop">
       <StyledShopWrapper>
         <Tabs tabs={tabs} setTab={setTab} activeTab={activeTab} />
         <StyledShopItemsWrapper>
-          {shopData.map(
+          {dishes.map(
             meal =>
-              meal.type === activeTab &&
-              meal &&
-              meal.dishes.map(dish => (
+              meal.node.frontmatter.category === activeTab && (
                 <ShopItem
-                  dish={dish}
-                  key={dish.name}
+                  dish={meal}
+                  key={meal.node.frontmatter.id}
                   photo={edges.find(
                     edge =>
-                      edge.node.name.toLowerCase() === dish.name.toLowerCase()
+                      edge.node.name.toLowerCase() ===
+                      meal.node.frontmatter.title.toLowerCase()
                   )}
                 />
-              ))
+              )
           )}
         </StyledShopItemsWrapper>
       </StyledShopWrapper>
@@ -64,6 +62,7 @@ const ShopSection = ({
 
 ShopSection.propTypes = {
   photos: PropTypes.shape().isRequired,
+  dishes: PropTypes.arrayOf(PropTypes.shape()).isRequired,
 };
 
 export default props => (

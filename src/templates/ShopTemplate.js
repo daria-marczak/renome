@@ -16,7 +16,7 @@ const ShopTemplate = ({
     <>
       <SEO
         title={product.frontmatter.title}
-        keywords={[`gatsby`, `application`, `react`]}
+        keywords={[`renome`, `restaurant`, `food`]}
       />
       <Header photo={shopHeader} section="shop" title="order dishes online" />
       <GlobalStyles />
@@ -51,6 +51,7 @@ export const query = graphql`
         type
         stars
         customers
+        category
         price
         description
       }
@@ -60,21 +61,6 @@ export const query = graphql`
       childImageSharp {
         fluid(maxWidth: 2000, quality: 100) {
           ...GatsbyImageSharpFluid_noBase64
-        }
-      }
-    }
-
-    allMarkdownRemark {
-      edges {
-        node {
-          excerpt(pruneLength: 250)
-          id
-          frontmatter {
-            title
-            category
-            date(formatString: "MMMM DD, YYYY")
-            isPopular
-          }
         }
       }
     }

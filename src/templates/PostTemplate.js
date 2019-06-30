@@ -16,7 +16,7 @@ const PostTemplate = ({
     <>
       <SEO
         title={post.frontmatter.title}
-        keywords={[`gatsby`, `application`, `react`]}
+        keywords={[`renome`, `restaurant`, `food`]}
       />
       <Header
         photo={blogHeader}

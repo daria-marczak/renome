@@ -30,8 +30,6 @@ const BlogItem = ({ post, photos, text }) => {
   const photo =
     photos && photos.find(edge => edge.node.name === post.title.toLowerCase());
 
-  // console.log(post, photos);
-
   return (
     <StyledArticle key={post.title}>
       <StyledHeading>{post.title}</StyledHeading>

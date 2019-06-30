@@ -11,9 +11,9 @@ import {
   StyledColumn,
   StyledParagraph,
   StyledDescription,
-  StyledHeading,
 } from '../common/common';
 import * as shopActions from './logic/shopActions';
+import reviews from './logic/reviewsData';
 
 const StyledShopHeading = styled(StyledLevelTwoHeading)`
   text-transform: lowercase;
@@ -59,6 +59,13 @@ const StyledButton = styled.button`
   }
 `;
 
+const StyledSectionHeader = styled.h2`
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 16px;
+  margin-top: 20px;
+`;
+
 const StyledInput = styled.input`
   border: none;
   font-family: ${({ theme }) => theme.font.family.montserrat};
@@ -66,6 +73,65 @@ const StyledInput = styled.input`
   border-bottom: 3px solid ${({ theme }) => theme.lightGray};
   margin-left: 10px;
   flex: 1;
+`;
+
+const StyledComment = styled.li`
+  list-style-type: none;
+  margin-top: 10px;
+`;
+
+const StyledCommentAuthor = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const StyledMobileComment = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  @media (min-width: 1200px) {
+    align-items: initial;
+    justify-content: flex-start;
+  }
+`;
+
+const StyledAuthorParagraph = styled.p`
+  font-weight: 600;
+  text-transform: uppercase;
+
+  @media (min-width: 1200px) {
+    display: none;
+    margin: 0;
+  }
+`;
+
+const StyledMobileParagraph = styled.p`
+  font-weight: 600;
+  text-transform: uppercase;
+  display: none;
+
+  @media (min-width: 1200px) {
+    display: flex;
+    margin: 0;
+  }
+`;
+
+const StyledImage = styled(Img)`
+  width: 400px;
+  height: 400px;
+`;
+
+const StyledAvatar = styled.div`
+  background: ${({ theme }) => theme.lightGray};
+  width: 100px;
+  height: 100px;
+  margin-right: 20px;
+`;
+
+const StyledCommentContent = styled(StyledParagraph)`
+  font-size: 14px;
 `;
 
 const ProductPage = ({ photo, product, addToCart }) => {
@@ -80,7 +146,7 @@ const ProductPage = ({ photo, product, addToCart }) => {
     <StyledSection title="shop">
       <StyledWrapper>
         <StyledColumn>
-          <Img fluid={photo.childImageSharp.fluid} />
+          <StyledImage fluid={photo.childImageSharp.fluid} />
         </StyledColumn>
         <StyledColumn>
           <StyledShopHeading>{product.frontmatter.title}</StyledShopHeading>
@@ -110,7 +176,26 @@ const ProductPage = ({ photo, product, addToCart }) => {
               Add to cart
             </StyledButton>
           </StyledForm>
-          <StyledHeading>Reviews</StyledHeading>
+          <StyledSectionHeader>Reviews</StyledSectionHeader>
+          {reviews.map(comment => (
+            <StyledComment key={comment.id}>
+              <StyledCommentAuthor>
+                <StyledMobileComment>
+                  <StyledAvatar />
+                  <StyledMobileParagraph>
+                    {comment.author}
+                  </StyledMobileParagraph>
+                  <StyledReview>
+                    {Array(parseInt(comment.stars)).fill(
+                      <StyledStar>&#9733;</StyledStar>
+                    )}
+                  </StyledReview>
+                </StyledMobileComment>
+                <StyledAuthorParagraph>{comment.author}</StyledAuthorParagraph>
+                <StyledCommentContent>{comment.content}</StyledCommentContent>
+              </StyledCommentAuthor>
+            </StyledComment>
+          ))}
         </StyledColumn>
       </StyledWrapper>
     </StyledSection>

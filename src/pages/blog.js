@@ -36,9 +36,8 @@ export const query = graphql`
           id
           frontmatter {
             title
+            type
             category
-            date(formatString: "MMMM DD, YYYY")
-            isPopular
           }
         }
       }

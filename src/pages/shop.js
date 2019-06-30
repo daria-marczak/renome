@@ -15,7 +15,11 @@ const ShopPage = ({ data }) => (
       section="shop"
       title="order dishes online"
     />
-    <ShopSection />
+    <ShopSection
+      dishes={data.allMarkdownRemark.edges.filter(
+        product => product.node.frontmatter.type === 'shop'
+      )}
+    />
     <Footer />
   </HomeTemplate>
 );
@@ -26,6 +30,20 @@ export const query = graphql`
       childImageSharp {
         fluid(maxWidth: 2000, quality: 100) {
           ...GatsbyImageSharpFluid_noBase64
+        }
+      }
+    }
+
+    allMarkdownRemark {
+      edges {
+        node {
+          frontmatter {
+            title
+            category
+            type
+            id
+            price
+          }
         }
       }
     }

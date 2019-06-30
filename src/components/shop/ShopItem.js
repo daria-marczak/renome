@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { Link } from 'gatsby';
 import Img from 'gatsby-image';
 
 const StyledItem = styled.li`
@@ -20,11 +21,25 @@ const StyledImage = styled(Img)`
   height: 300px;
 `;
 
+const StyledLink = styled(Link)`
+  color: ${({ theme }) => theme.black};
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+`;
+
 const ShopItem = ({ dish, photo }) => (
   <StyledItem>
     {photo && <StyledImage fluid={photo.node.childImageSharp.fluid} />}
-    <StyledHeading>{dish.name}</StyledHeading>
-    <StyledHeading>{dish.price}</StyledHeading>
+    <StyledLink
+      to={`/shop/${dish.node.frontmatter.title
+        .split(' ')
+        .join('')
+        .toLowerCase()}`}
+    >
+      <StyledHeading>{dish.node.frontmatter.title}</StyledHeading>
+    </StyledLink>
+    <StyledHeading>{dish.node.frontmatter.price}</StyledHeading>
   </StyledItem>
 );
 

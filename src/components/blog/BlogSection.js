@@ -149,7 +149,7 @@ const BlogSection = props => {
           <StyledSectionHeader>Categories</StyledSectionHeader>
           <StyledAsideWrapper>
             {blogData
-              .filter(blog => blog.node.type !== 'product')
+              .filter(blog => blog.node.frontmatter.type === 'blog')
               .map(blogPart => (
                 <StyledCategoryLink
                   key={blogPart.node.id}
