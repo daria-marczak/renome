@@ -6,6 +6,7 @@ const initialState = {
     comments: commentsData,
   },
   cart: {
+    fetching: {},
     cartItems: [],
   },
 };
