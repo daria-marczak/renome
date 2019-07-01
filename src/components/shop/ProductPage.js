@@ -71,7 +71,11 @@ const StyledReviewsSection = styled.section`
   display: grid;
   grid-template-columns: 1fr;
   margin: 0 auto;
-  width: 55%;
+  width: 90%;
+
+  @media (min-width: 1200px) {
+    width: 55%;
+  }
 `;
 
 const StyledInput = styled.input`
@@ -83,9 +87,14 @@ const StyledInput = styled.input`
 `;
 
 const StyledImage = styled(Img)`
-  width: 400px;
-  height: 400px;
-  transform: translateX(320px);
+  width: 300px;
+  height: 300px;
+
+  @media (min-width: 1200px) {
+    width: 400px;
+    height: 400px;
+    transform: translateX(320px);
+  }
 `;
 
 const ProductPage = ({ photo, product, addToCart, reviews }) => {
