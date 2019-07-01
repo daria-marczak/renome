@@ -125,7 +125,7 @@ class ReviewForm extends Component {
           onChange={event => this.onChange(event)}
           name="message"
         />
-        <StyledButton type="submit">Post comment</StyledButton>
+        <StyledButton type="submit">Post review</StyledButton>
       </StyledForm>
     );
   }

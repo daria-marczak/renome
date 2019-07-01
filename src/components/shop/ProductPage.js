@@ -67,18 +67,25 @@ const StyledSectionHeader = styled.h2`
   margin-top: 20px;
 `;
 
+const StyledReviewsSection = styled.section`
+  display: grid;
+  grid-template-columns: 1fr;
+  margin: 0 auto;
+  width: 55%;
+`;
+
 const StyledInput = styled.input`
   border: none;
   font-family: ${({ theme }) => theme.font.family.montserrat};
   padding: 15px 10px;
   border-bottom: 3px solid ${({ theme }) => theme.lightGray};
   margin-left: 10px;
-  flex: 1;
 `;
 
 const StyledImage = styled(Img)`
   width: 400px;
   height: 400px;
+  transform: translateX(320px);
 `;
 
 const ProductPage = ({ photo, product, addToCart, reviews }) => {
@@ -95,7 +102,7 @@ const ProductPage = ({ photo, product, addToCart, reviews }) => {
         <StyledColumn>
           <StyledImage fluid={photo.childImageSharp.fluid} />
         </StyledColumn>
-        <StyledColumn>
+        <StyledColumn isDescription>
           <StyledShopHeading>{product.frontmatter.title}</StyledShopHeading>
           <StyledReview>
             <StyledParagraph>{`${
@@ -123,13 +130,15 @@ const ProductPage = ({ photo, product, addToCart, reviews }) => {
               Add to cart
             </StyledButton>
           </StyledForm>
-          <StyledSectionHeader>Reviews</StyledSectionHeader>
-          {reviews.map(review => (
-            <ProductReviews review={review} key={review.id} />
-          ))}
-          <ReviewForm />
         </StyledColumn>
       </StyledWrapper>
+      <StyledReviewsSection>
+        <StyledSectionHeader>Reviews</StyledSectionHeader>
+        {reviews.map(review => (
+          <ProductReviews review={review} key={review.id} />
+        ))}
+        <ReviewForm />
+      </StyledReviewsSection>
     </StyledSection>
   );
 };
