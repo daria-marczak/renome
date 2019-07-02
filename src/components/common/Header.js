@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
-
+import { Link } from 'gatsby';
+import { connect } from 'react-redux';
 import logo from '../../assets/images/logo.png';
 import cartIcon from '../../assets/icons/cart.png';
-
 import Hamburger from './Hamburger';
 import MobileMenu from './MobileMenu';
 import Navigation from './Navigation';
@@ -113,10 +113,12 @@ const Header = ({ cartItems, photo, title, section }) => {
     <>
       <StyledBar>
         <StyledContainer>
-          <StyledImage src={logo} alt="Renome logo" />
+          <Link to="/">
+            <StyledImage src={logo} alt="Renome logo" />
+          </Link>
           <StyledNavigation>
             <Navigation />
-            <StyledImage src={cartIcon} alt="cart" /> | {cartItems}
+            <StyledImage src={cartIcon} alt="cart" /> | {cartItems.length}
             <Hamburger onClick={toggleMobileNavigation} isOpen={isMenuOpen} />
           </StyledNavigation>
         </StyledContainer>
@@ -136,15 +138,19 @@ const Header = ({ cartItems, photo, title, section }) => {
 
 Header.propTypes = {
   photo: PropTypes.shape().isRequired,
-  cartItems: PropTypes.number,
+  cartItems: PropTypes.arrayOf(PropTypes.shape()),
   title: PropTypes.string,
   section: PropTypes.string,
 };
 
 Header.defaultProps = {
-  cartItems: 0,
+  cartItems: [],
   title: '',
   section: '',
 };
 
-export default Header;
+const mapStateToProps = state => ({
+  cartItems: state.shop.cartItems,
+});
+
+export default connect(mapStateToProps)(Header);

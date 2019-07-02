@@ -83,7 +83,7 @@ const ProductReviews = ({ review }) => (
 );
 
 ProductReviews.propTypes = {
-  review: PropTypes.objectOf(PropTypes.string).isRequired,
+  review: PropTypes.shape().isRequired,
 };
 
 export default ProductReviews;
