@@ -93,6 +93,11 @@ const StyledHero = styled(Img)`
   }
 `;
 
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: ${({ theme }) => theme.black};
+`;
+
 const StyledFilter = styled.div`
   background-color: #162642;
   opacity: 0.6;
@@ -118,7 +123,9 @@ const Header = ({ cartItems, photo, title, section }) => {
           </Link>
           <StyledNavigation>
             <Navigation />
-            <StyledImage src={cartIcon} alt="cart" /> | {cartItems.length}
+            <StyledLink to="/cart">
+              <StyledImage src={cartIcon} alt="cart" /> | {cartItems.length}
+            </StyledLink>
             <Hamburger onClick={toggleMobileNavigation} isOpen={isMenuOpen} />
           </StyledNavigation>
         </StyledContainer>

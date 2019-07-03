@@ -25,7 +25,7 @@ class CheckoutSection extends Component {
   }
 
   onSubmit = (data, type) => {
-    this.props.checkoutProducts(data, type);
+    this.props.addOrderDetails(data, type);
   };
 
   onChange = event => {
@@ -60,8 +60,7 @@ class CheckoutSection extends Component {
 }
 
 CheckoutSection.propTypes = {
-  // eslint-disable-next-line react/require-default-props
-  checkoutProducts: PropTypes.func,
+  addOrderDetails: PropTypes.func,
 };
 
 const mapStateToProps = state => ({
@@ -72,6 +71,7 @@ const mapDispatchToProps = dispatch => {
   return bindActionCreators(
     {
       checkoutProducts: checkoutActions.checkoutProducts,
+      addOrderDetails: checkoutActions.addOrderDetails,
     },
     dispatch
   );

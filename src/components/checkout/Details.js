@@ -87,7 +87,7 @@ const Details = ({ createAccount, password, shippingAddress, onChange }) => {
               type="text"
               id="password"
               value={password}
-              name="account"
+              name="password"
               onChange={event => onChange(event)}
             />
           </StyledLabel>
