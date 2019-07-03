@@ -8,7 +8,7 @@ const initialState = {
   },
   cart: {
     fetching: {},
-    cartItems: [],
+    cartItems: ['123123123124', '123123123128964534863'],
     reviews: reviews,
   },
 };

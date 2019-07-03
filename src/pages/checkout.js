@@ -11,7 +11,7 @@ const Checkout = ({ data }) => (
   <HomeTemplate>
     <SEO title="Checkout" keywords={[`renome`, `restaurant`]} />
     <Header photo={data.menuHeader} section="checkout" title="our products" />
-    <CheckoutSection />
+    <CheckoutSection allProducts={data.allMarkdownRemark.edges} />
     <Footer />
   </HomeTemplate>
 );

@@ -145,7 +145,7 @@ const Header = ({ cartItems, photo, title, section }) => {
 
 Header.propTypes = {
   photo: PropTypes.shape().isRequired,
-  cartItems: PropTypes.arrayOf(PropTypes.shape()),
+  cartItems: PropTypes.arrayOf(PropTypes.string),
   title: PropTypes.string,
   section: PropTypes.string,
 };

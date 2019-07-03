@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import * as checkoutActions from './logic/checkoutActions';
 import AddressForm from './AddressForm';
 import Details from './Details';
+import OrderDetails from './OrderDetails';
 
 const StyledWrapper = styled.div`
   width: 80%;
@@ -38,8 +39,17 @@ class CheckoutSection extends Component {
   };
 
   render() {
+    const filteredCartItems = this.props.products
+      .map(product =>
+        this.props.allProducts.filter(
+          mdProduct => mdProduct.node.frontmatter.id === product
+        )
+      )
+      .flat();
+
     return (
       <StyledWrapper>
+        <OrderDetails products={filteredCartItems} />
         <AddressForm
           type="Billing address"
           onSubmit={this.onSubmit}
@@ -61,10 +71,12 @@ class CheckoutSection extends Component {
 
 CheckoutSection.propTypes = {
   addOrderDetails: PropTypes.func,
+  products: PropTypes.arrayOf(PropTypes.string),
+  allProducts: PropTypes.arrayOf(PropTypes.shape()),
 };
 
 const mapStateToProps = state => ({
-  comments: state.blog.comments,
+  products: state.shop.cartItems,
 });
 
 const mapDispatchToProps = dispatch => {
