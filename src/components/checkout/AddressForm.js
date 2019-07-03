@@ -12,6 +12,7 @@ const StyledButton = styled.button`
   padding: 20px 20px;
   border: none;
   width: 100%;
+  display: ${({ type }) => (type === 'Shipping address' ? 'block' : 'none')};
   cursor: pointer;
   margin: 15px 0 20px 0;
   font-family: ${({ theme }) => theme.font.family.montserrat};
@@ -29,7 +30,7 @@ const StyledHeading = styled.h2`
   font-size: 18px;
 `;
 
-const StyledFormWrapper = styled.form`
+const StyledFormWrapper = styled.div`
   width: 80%;
   margin: 0 auto;
 `;
@@ -50,6 +51,7 @@ const StyledLabel = styled.label`
   flex-direction: column;
   margin: 0 0 30px 5px;
   text-transform: uppercase;
+  font-size: 14px;
   width: ${({ fullWidth }) => (fullWidth ? '100%' : '50%')};
 `;
 
@@ -99,6 +101,7 @@ class AddressForm extends Component {
       addressLine1,
       addressLine2,
     } = this.state;
+
     const { type } = this.props;
 
     return (
@@ -256,7 +259,7 @@ class AddressForm extends Component {
               />
             </StyledLabel>
           </StyledOneLine>
-          <StyledButton>Place order</StyledButton>
+          <StyledButton type={type}>Place order</StyledButton>
         </StyledForm>
       </StyledFormWrapper>
     );

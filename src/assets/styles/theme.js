@@ -2,7 +2,7 @@ export const theme = {
   primary: '#985e5b',
   black: '#000',
   white: '#fff',
-  lightGray: '#f7f7f7',
+  lightGray: '#dadada',
   gray: '#545459',
   font: {
     family: {
