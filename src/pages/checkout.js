@@ -4,15 +4,14 @@ import PropTypes from 'prop-types';
 import HomeTemplate from '../templates/HomeTemplate';
 import SEO from '../components/seo';
 import Header from '../components/common/Header';
-import AddressForm from '../components/checkout/AddressForm';
+import CheckoutSection from '../components/checkout/CheckoutSection';
 import Footer from '../components/common/Footer';
 
 const Checkout = ({ data }) => (
   <HomeTemplate>
     <SEO title="Checkout" keywords={[`renome`, `restaurant`]} />
     <Header photo={data.menuHeader} section="checkout" title="our products" />
-    <AddressForm type="Billing address" />
-    <AddressForm type="Shipping address" />
+    <CheckoutSection />
     <Footer />
   </HomeTemplate>
 );

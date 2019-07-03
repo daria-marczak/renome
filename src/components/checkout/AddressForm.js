@@ -12,7 +12,6 @@ const StyledButton = styled.button`
   padding: 20px 20px;
   border: none;
   width: 100%;
-  display: ${({ type }) => (type === 'Shipping address' ? 'block' : 'none')};
   cursor: pointer;
   margin: 15px 0 20px 0;
   font-family: ${({ theme }) => theme.font.family.montserrat};
@@ -87,6 +86,11 @@ class AddressForm extends Component {
     });
   };
 
+  handleSubmit = event => {
+    event.preventDefault();
+    this.props.onSubmit(this.state, this.props.type);
+  };
+
   render() {
     const {
       country,
@@ -102,11 +106,11 @@ class AddressForm extends Component {
       addressLine2,
     } = this.state;
 
-    const { type } = this.props;
+    const { type, shouldShowSubmitButton } = this.props;
 
     return (
       <StyledFormWrapper>
-        <StyledForm>
+        <StyledForm onSubmit={event => this.handleSubmit(event)}>
           <StyledHeading>{type}</StyledHeading>
           <StyledLabel
             fullWidth
@@ -145,7 +149,6 @@ class AddressForm extends Component {
                 name="lastName"
                 value={lastName}
                 onChange={event => this.onChange(event)}
-                required
               />
             </StyledLabel>
           </StyledOneLine>
@@ -175,7 +178,7 @@ class AddressForm extends Component {
               type="text"
               id="address"
               placeholder="Street name"
-              name="companyName"
+              name="addressLine1"
               fullWidth
               value={addressLine1}
               onChange={event => this.onChange(event)}
@@ -184,7 +187,7 @@ class AddressForm extends Component {
             <StyledInput
               type="text"
               id="address"
-              name="address"
+              name="addressLine2"
               placeholder="Apartment, suite, unite, etc."
               fullWidth
               value={addressLine2}
@@ -259,7 +262,7 @@ class AddressForm extends Component {
               />
             </StyledLabel>
           </StyledOneLine>
-          <StyledButton type={type}>Place order</StyledButton>
+          {shouldShowSubmitButton && <StyledButton>Place order</StyledButton>}
         </StyledForm>
       </StyledFormWrapper>
     );
@@ -268,6 +271,12 @@ class AddressForm extends Component {
 
 AddressForm.propTypes = {
   type: PropTypes.string.isRequired,
+  shouldShowSubmitButton: PropTypes.bool,
+  onSubmit: PropTypes.func.isRequired,
+};
+
+AddressForm.defaultProps = {
+  shouldShowSubmitButton: true,
 };
 
 export default AddressForm;
