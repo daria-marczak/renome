@@ -39,12 +39,6 @@ const Label = styled.label`
 const Input = styled.input`
   opacity: 0;
   position: absolute;
-
-  &:checked + ${Label} {
-    &:before {
-      background-color: red;
-    }
-  }
 `;
 
 const StyledLabel = styled.label`

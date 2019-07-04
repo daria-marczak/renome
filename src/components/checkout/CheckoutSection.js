@@ -7,6 +7,7 @@ import * as checkoutActions from './logic/checkoutActions';
 import AddressForm from './AddressForm';
 import Details from './Details';
 import OrderDetails from './OrderDetails';
+import PaymentOptions from './PaymentOptions';
 
 const StyledWrapper = styled.div`
   width: 80%;
@@ -22,6 +23,7 @@ class CheckoutSection extends Component {
       createAccount: false,
       shippingAddress: false,
       password: '',
+      paymentMethod: 'paypal',
     };
   }
 
@@ -50,6 +52,10 @@ class CheckoutSection extends Component {
     return (
       <StyledWrapper>
         <OrderDetails products={filteredCartItems} />
+        <PaymentOptions
+          paymentMethod={this.state.paymentMethod}
+          onChange={this.onChange}
+        />
         <AddressForm
           type="Billing address"
           onSubmit={this.onSubmit}
