@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import formatPrice from '../../utils/formatPrice';
 
-const StyledWrapper = styled.div`
+const StyledWrapper = styled.article`
   width: 80%;
   margin: 0 auto;
   margin-bottom: 40px;
@@ -36,39 +37,63 @@ const StyledHeadTableCell = styled.td`
   font-weight: 600;
 `;
 
-const OrderDetails = ({ products }) => (
-  <StyledWrapper>
-    <StyledHeading>Your order</StyledHeading>
-    <StyledTable>
-      <thead>
-        <StyledTableRow>
-          <StyledHeadTableCell>Product</StyledHeadTableCell>
-          <StyledHeadTableCell>Price</StyledHeadTableCell>
-        </StyledTableRow>
-      </thead>
-      <tbody>
-        {products.map(product => (
-          <StyledTableRow key={product.node.frontmatter.id}>
-            <StyledTableCell>{product.node.frontmatter.title}</StyledTableCell>
-            <StyledTableCell>{product.node.frontmatter.price}</StyledTableCell>
+const calculatePrice = (products, shipping) => {
+  const price = products.reduce(
+    (accumulator, currentValue) =>
+      (accumulator += parseInt(currentValue.node.frontmatter.price)),
+    0
+  );
+  return shipping !== 'FREE' ? price : price + shipping;
+};
+
+const verifyIfShippingCanBeFree = price => (price > 30 ? 'FREE' : 10);
+
+const OrderDetails = ({ products }) => {
+  const subTotal = calculatePrice(products);
+  const shippingPrice = verifyIfShippingCanBeFree(subTotal);
+
+  return (
+    <StyledWrapper>
+      <StyledHeading>Your order</StyledHeading>
+      <StyledTable>
+        <thead>
+          <StyledTableRow>
+            <StyledHeadTableCell>Product</StyledHeadTableCell>
+            <StyledHeadTableCell>Price</StyledHeadTableCell>
           </StyledTableRow>
-        ))}
-        <StyledTableRow>
-          <StyledTableCell>Subtotal</StyledTableCell>
-          <StyledTableCell>43$</StyledTableCell>
-        </StyledTableRow>
-        <StyledTableRow>
-          <StyledTableCell>Shipping</StyledTableCell>
-          <StyledTableCell>FREE</StyledTableCell>
-        </StyledTableRow>
-        <StyledTableRow>
-          <StyledTableCell>Total</StyledTableCell>
-          <StyledTableCell>34$</StyledTableCell>
-        </StyledTableRow>
-      </tbody>
-    </StyledTable>
-  </StyledWrapper>
-);
+        </thead>
+        <tbody>
+          {products.map(product => (
+            <StyledTableRow key={product.node.frontmatter.id}>
+              <StyledTableCell>
+                {product.node.frontmatter.title}
+              </StyledTableCell>
+              <StyledTableCell>
+                {formatPrice.format(product.node.frontmatter.price)}
+              </StyledTableCell>
+            </StyledTableRow>
+          ))}
+          <StyledTableRow>
+            <StyledTableCell>Subtotal</StyledTableCell>
+            <StyledTableCell>{formatPrice.format(subTotal)}</StyledTableCell>
+          </StyledTableRow>
+          <StyledTableRow>
+            <StyledTableCell>Shipping</StyledTableCell>
+            <StyledTableCell>
+              {formatPrice.format(shippingPrice)}
+            </StyledTableCell>
+          </StyledTableRow>
+          <StyledTableRow>
+            <StyledTableCell>Total</StyledTableCell>
+            <StyledTableCell>
+              {formatPrice.format(subTotal + shippingPrice)}
+            </StyledTableCell>
+          </StyledTableRow>
+        </tbody>
+      </StyledTable>
+    </StyledWrapper>
+  );
+};
 
 OrderDetails.propTypes = {
   products: PropTypes.arrayOf(PropTypes.shape()),
