@@ -1,7 +1,7 @@
 import { takeLatest, put, delay, select } from 'redux-saga/effects';
 import * as checkoutActions from './checkoutConstants';
 
-const productSelector = state => state.shop.cartItems;
+const productSelector = state => state.cart.cartItems;
 const paymentSelector = state => state.checkout.paymentMethod;
 
 export function* checkoutSagas() {

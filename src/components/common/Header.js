@@ -157,7 +157,7 @@ Header.defaultProps = {
 };
 
 const mapStateToProps = state => ({
-  cartItems: state.shop.cartItems,
+  cartItems: state.cart.cartItems,
 });
 
 export default connect(mapStateToProps)(Header);

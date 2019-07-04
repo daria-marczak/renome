@@ -55,7 +55,7 @@ class CheckoutSection extends Component {
     const filteredCartItems = this.props.products
       .map(product =>
         this.props.allProducts.filter(
-          mdProduct => mdProduct.node.frontmatter.id === product
+          mdProduct => mdProduct.node.frontmatter.id === product.productId
         )
       )
       .flat();
@@ -89,12 +89,12 @@ class CheckoutSection extends Component {
 CheckoutSection.propTypes = {
   addOrderDetails: PropTypes.func,
   changePaymentMethod: PropTypes.func,
-  products: PropTypes.arrayOf(PropTypes.string),
+  products: PropTypes.arrayOf(PropTypes.shape()),
   allProducts: PropTypes.arrayOf(PropTypes.shape()),
 };
 
 const mapStateToProps = state => ({
-  products: state.shop.cartItems,
+  products: state.cart.cartItems,
 });
 
 const mapDispatchToProps = dispatch => {
