@@ -23,7 +23,7 @@ class CheckoutSection extends Component {
       createAccount: false,
       shippingAddress: false,
       password: '',
-      paymentMethod: 'paypal',
+      paymentMethod: 'bankTransfer',
     };
   }
 
@@ -40,6 +40,17 @@ class CheckoutSection extends Component {
     });
   };
 
+  changePaymentMethod = event => {
+    this.setState(
+      {
+        [event.target.name]: event.target.value,
+      },
+      () => {
+        this.props.changePaymentMethod(this.state.paymentMethod);
+      }
+    );
+  };
+
   render() {
     const filteredCartItems = this.props.products
       .map(product =>
@@ -54,7 +65,7 @@ class CheckoutSection extends Component {
         <OrderDetails products={filteredCartItems} />
         <PaymentOptions
           paymentMethod={this.state.paymentMethod}
-          onChange={this.onChange}
+          onChange={this.changePaymentMethod}
         />
         <AddressForm
           type="Billing address"
@@ -77,6 +88,7 @@ class CheckoutSection extends Component {
 
 CheckoutSection.propTypes = {
   addOrderDetails: PropTypes.func,
+  changePaymentMethod: PropTypes.func,
   products: PropTypes.arrayOf(PropTypes.string),
   allProducts: PropTypes.arrayOf(PropTypes.shape()),
 };
@@ -90,6 +102,7 @@ const mapDispatchToProps = dispatch => {
     {
       checkoutProducts: checkoutActions.checkoutProducts,
       addOrderDetails: checkoutActions.addOrderDetails,
+      changePaymentMethod: checkoutActions.changePaymentMethod,
     },
     dispatch
   );

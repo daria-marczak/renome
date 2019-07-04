@@ -43,6 +43,11 @@ const StyledForm = styled.form`
 
 const StyledOneLine = styled.div`
   display: flex;
+  flex-direction: column;
+
+  @media (min-width: 1200px) {
+    flex-direction: row;
+  }
 `;
 
 const StyledLabel = styled.label`
@@ -51,7 +56,10 @@ const StyledLabel = styled.label`
   margin: 0 0 30px 5px;
   text-transform: uppercase;
   font-size: 14px;
-  width: ${({ fullWidth }) => (fullWidth ? '100%' : '50%')};
+
+  @media (min-width: 1200px) {
+    width: ${({ fullWidth }) => (fullWidth ? '100%' : '50%')};
+  }
 `;
 
 const StyledInput = styled.input`

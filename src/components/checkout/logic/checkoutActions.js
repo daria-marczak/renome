@@ -9,3 +9,8 @@ export const addOrderDetails = (address, kind) => ({
   address,
   kind,
 });
+
+export const changePaymentMethod = paymentMethod => ({
+  type: checkoutActions.CHANGE_PAYMENT_METHOD,
+  paymentMethod,
+});

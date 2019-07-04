@@ -11,6 +11,9 @@ const initialState = {
     cartItems: ['123123123124', '123123123128964534863'],
     reviews: reviews,
   },
+  checkout: {
+    paymentMethod: 'paypal',
+  },
 };
 
 export default initialState;
