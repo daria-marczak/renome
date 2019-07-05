@@ -62,7 +62,10 @@ class CheckoutSection extends Component {
 
     return (
       <StyledWrapper>
-        <OrderDetails products={filteredCartItems} />
+        <OrderDetails
+          products={filteredCartItems}
+          cartItems={this.props.products}
+        />
         <PaymentOptions
           paymentMethod={this.state.paymentMethod}
           onChange={this.changePaymentMethod}

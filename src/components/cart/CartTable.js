@@ -6,6 +6,7 @@ import formatPrice from '../../utils/formatPrice';
 const StyledWrapper = styled.article`
   margin: 0 auto;
   margin-bottom: 40px;
+  width: 100%;
 `;
 
 const StyledTable = styled.table`
@@ -23,12 +24,20 @@ const StyledTableCell = styled.td`
   padding: 15px 0;
   text-transform: capitalize;
   cursor: ${({ clickable }) => (clickable ? 'pointer' : '')};
+
+  @media (min-width: 1200px) {
+    padding: 20px;
+  }
 `;
 
 const StyledHeadTableCell = styled.td`
   padding: 15px 0;
   text-transform: uppercase;
   font-weight: 600;
+
+  @media (min-width: 1200px) {
+    padding: 20px;
+  }
 `;
 
 const CartTable = ({ products, cartItems, removeItem }) => {
@@ -50,7 +59,7 @@ const CartTable = ({ products, cartItems, removeItem }) => {
               <StyledTableCell>
                 {product.node.frontmatter.title}
               </StyledTableCell>
-              <StyledTableCell>
+              <StyledTableCell number>
                 {
                   cartItems.find(
                     cartItem =>
@@ -59,15 +68,15 @@ const CartTable = ({ products, cartItems, removeItem }) => {
                 }
               </StyledTableCell>
               <StyledTableCell>
+                {formatPrice.format(product.node.frontmatter.price)}
+              </StyledTableCell>
+              <StyledTableCell>
                 {formatPrice.format(
                   cartItems.find(
                     cartItem =>
                       cartItem.productId === product.node.frontmatter.id
                   ).quantity * product.node.frontmatter.price
                 )}
-              </StyledTableCell>
-              <StyledTableCell>
-                {formatPrice.format(product.node.frontmatter.price)}
               </StyledTableCell>
               <StyledTableCell
                 onClick={() => removeItem(product.node.frontmatter.id)}

@@ -6,7 +6,13 @@ import formatPrice from '../../utils/formatPrice';
 const StyledWrapper = styled.article`
   margin: 0 auto;
   margin-bottom: 40px;
+  width: 100%;
   font-family: ${({ theme }) => theme.font.family.montserrat};
+
+  @media (min-width: 1200px) {
+    width: 50%;
+    margin-left: 0;
+  }
 `;
 
 const StyledTableRow = styled.div`
@@ -22,24 +28,21 @@ const StyledTableCell = styled.div`
 `;
 
 const calculatePrice = (products, cartItems, shipping) => {
-  const price = products.reduce(
-    (accumulator, currentValue) =>
-      (accumulator += parseInt(
-        currentValue.node.frontmatter.price *
-          cartItems.find(
-            cartItem => cartItem.productId === currentValue.node.frontmatter.id
-          ).quantity
-      )),
-    0
-  );
-  return shipping !== 'FREE' ? price : price + shipping;
+  let price = products.reduce((accumulator, currentValue) => {
+    const quantity = cartItems.find(
+      cartItem => cartItem.productId === currentValue.node.frontmatter.id
+    ).quantity;
+    return (accumulator += currentValue.node.frontmatter.price * quantity);
+  }, 0);
+
+  return shipping !== 'FREE' ? price : (price += shipping);
 };
 
-const verifyIfShippingCanBeFree = price => (price > 30 ? 'FREE' : 10);
+const verifyIfShippingCanBeFree = price => (price > 30 ? 0 : 10);
 
 const TotalSection = ({ products, cartItems }) => {
   const subTotal = calculatePrice(products, cartItems);
-  const shippingPrice = verifyIfShippingCanBeFree(subTotal);
+  const shippingPrice = verifyIfShippingCanBeFree(parseInt(subTotal));
 
   return (
     <StyledWrapper>

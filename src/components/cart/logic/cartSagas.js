@@ -4,6 +4,7 @@ import * as cartActions from './cartConstants';
 export function* cartSagas() {
   yield takeLatest(cartActions.ADD_TO_CART.INVOKE, addToCart);
   yield takeLatest(cartActions.REMOVE_ITEM.INVOKE, removeItem);
+  yield takeLatest(cartActions.APPLY_COUPON.INVOKE, applyCoupon);
 }
 
 function* addToCart({ quantity, itemId }) {
@@ -44,5 +45,24 @@ function* removeItem({ productId }) {
     }
   } catch (error) {
     yield put({ type: cartActions.REMOVE_ITEM.FAILURE });
+  }
+}
+
+function* applyCoupon({ applyCoupon }) {
+  yield put({ type: cartActions.APPLY_COUPON.REQUEST, applyCoupon });
+
+  try {
+    const response = { isSuccess: true };
+
+    if (response.isSuccess) {
+      yield delay(1500);
+      yield put({
+        type: cartActions.APPLY_COUPON.SUCCESS,
+      });
+    } else {
+      yield put({ type: cartActions.APPLY_COUPON.FAILURE });
+    }
+  } catch (error) {
+    yield put({ type: cartActions.APPLY_COUPON.FAILURE });
   }
 }

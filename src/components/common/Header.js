@@ -114,6 +114,11 @@ const Header = ({ cartItems, photo, title, section }) => {
     toggleMenu(!isMenuOpen);
   };
 
+  const cartItemQuantity = cartItems.reduce(
+    (acc, curr) => (acc += curr.quantity),
+    0
+  );
+
   return (
     <>
       <StyledBar>
@@ -124,7 +129,7 @@ const Header = ({ cartItems, photo, title, section }) => {
           <StyledNavigation>
             <Navigation />
             <StyledLink to="/cart">
-              <StyledImage src={cartIcon} alt="cart" /> | {cartItems.length}
+              <StyledImage src={cartIcon} alt="cart" /> | {cartItemQuantity}
             </StyledLink>
             <Hamburger onClick={toggleMobileNavigation} isOpen={isMenuOpen} />
           </StyledNavigation>
@@ -145,7 +150,7 @@ const Header = ({ cartItems, photo, title, section }) => {
 
 Header.propTypes = {
   photo: PropTypes.shape().isRequired,
-  cartItems: PropTypes.arrayOf(PropTypes.string),
+  cartItems: PropTypes.arrayOf(PropTypes.shape()),
   title: PropTypes.string,
   section: PropTypes.string,
 };

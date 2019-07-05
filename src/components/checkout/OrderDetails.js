@@ -37,20 +37,22 @@ const StyledHeadTableCell = styled.td`
   font-weight: 600;
 `;
 
-const calculatePrice = (products, shipping) => {
-  const price = products.reduce(
-    (accumulator, currentValue) =>
-      (accumulator += parseInt(currentValue.node.frontmatter.price)),
-    0
-  );
-  return shipping !== 'FREE' ? price : price + shipping;
+const calculatePrice = (products, cartItems, shipping) => {
+  let price = products.reduce((accumulator, currentValue) => {
+    const quantity = cartItems.find(
+      cartItem => cartItem.productId === currentValue.node.frontmatter.id
+    ).quantity;
+    return (accumulator += currentValue.node.frontmatter.price * quantity);
+  }, 0);
+
+  return shipping !== 'FREE' ? price : (price += shipping);
 };
 
-const verifyIfShippingCanBeFree = price => (price > 30 ? 'FREE' : 10);
+const verifyIfShippingCanBeFree = price => (price > 30 ? 0 : 10);
 
-const OrderDetails = ({ products }) => {
-  const subTotal = calculatePrice(products);
-  const shippingPrice = verifyIfShippingCanBeFree(subTotal);
+const OrderDetails = ({ products, cartItems }) => {
+  const subTotal = calculatePrice(products, cartItems);
+  const shippingPrice = verifyIfShippingCanBeFree(parseInt(subTotal));
 
   return (
     <StyledWrapper>
@@ -97,6 +99,7 @@ const OrderDetails = ({ products }) => {
 
 OrderDetails.propTypes = {
   products: PropTypes.arrayOf(PropTypes.shape()),
+  cartItems: PropTypes.arrayOf(PropTypes.shape()),
 };
 
 export default OrderDetails;

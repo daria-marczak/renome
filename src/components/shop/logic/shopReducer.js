@@ -1,7 +1,7 @@
 import initialState from '../../../appLogic/initialState';
 import * as shopActions from './shopConstants';
 
-export default (state = initialState.cart, action) => {
+export default (state = initialState.shop, action) => {
   switch (action.type) {
     case shopActions.ADD_REVIEW.INVOKE:
       return {

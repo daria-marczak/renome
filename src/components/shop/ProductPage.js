@@ -12,7 +12,7 @@ import {
   StyledParagraph,
   StyledDescription,
 } from '../common/common';
-import * as shopActions from './logic/shopActions';
+import * as cartActions from '../cart/logic/cartActions';
 import ProductReviews from './ProductReviews';
 import ReviewForm from './ReviewForm';
 
@@ -166,7 +166,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => {
   return bindActionCreators(
     {
-      addToCart: shopActions.addToCart,
+      addToCart: cartActions.addToCart,
     },
     dispatch
   );
