@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
-
+import { Link } from 'gatsby';
+import { connect } from 'react-redux';
 import logo from '../../assets/images/logo.png';
 import cartIcon from '../../assets/icons/cart.png';
-
 import Hamburger from './Hamburger';
 import MobileMenu from './MobileMenu';
 import Navigation from './Navigation';
@@ -93,6 +93,11 @@ const StyledHero = styled(Img)`
   }
 `;
 
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: ${({ theme }) => theme.black};
+`;
+
 const StyledFilter = styled.div`
   background-color: #162642;
   opacity: 0.6;
@@ -109,14 +114,23 @@ const Header = ({ cartItems, photo, title, section }) => {
     toggleMenu(!isMenuOpen);
   };
 
+  const cartItemQuantity = cartItems.reduce(
+    (acc, curr) => (acc += curr.quantity),
+    0
+  );
+
   return (
     <>
       <StyledBar>
         <StyledContainer>
-          <StyledImage src={logo} alt="Renome logo" />
+          <Link to="/">
+            <StyledImage src={logo} alt="Renome logo" />
+          </Link>
           <StyledNavigation>
             <Navigation />
-            <StyledImage src={cartIcon} alt="cart" /> | {cartItems}
+            <StyledLink to="/cart">
+              <StyledImage src={cartIcon} alt="cart" /> | {cartItemQuantity}
+            </StyledLink>
             <Hamburger onClick={toggleMobileNavigation} isOpen={isMenuOpen} />
           </StyledNavigation>
         </StyledContainer>
@@ -136,15 +150,19 @@ const Header = ({ cartItems, photo, title, section }) => {
 
 Header.propTypes = {
   photo: PropTypes.shape().isRequired,
-  cartItems: PropTypes.number,
+  cartItems: PropTypes.arrayOf(PropTypes.shape()),
   title: PropTypes.string,
   section: PropTypes.string,
 };
 
 Header.defaultProps = {
-  cartItems: 0,
+  cartItems: [],
   title: '',
   section: '',
 };
 
-export default Header;
+const mapStateToProps = state => ({
+  cartItems: state.cart.cartItems,
+});
+
+export default connect(mapStateToProps)(Header);

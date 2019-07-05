@@ -8,8 +8,17 @@ const initialState = {
   },
   cart: {
     fetching: {},
-    cartItems: [],
+    cartItems: [
+      { quantity: 1, productId: '123123123124' },
+      { quantity: 1, productId: '123123123128964534863' },
+    ],
+  },
+  shop: {
     reviews: reviews,
+    fetching: {},
+  },
+  checkout: {
+    paymentMethod: 'paypal',
   },
 };
 

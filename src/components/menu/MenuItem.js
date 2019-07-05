@@ -28,6 +28,7 @@ const StyledHeading = styled.h3`
 const StyledDescription = styled.p`
   font-family: ${({ theme }) => theme.font.family.montserrat};
   font-size: 14px;
+  margin-left: 0;
 `;
 
 const StyledPhotoColumn = styled.div`

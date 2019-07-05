@@ -86,7 +86,7 @@ const Services = ({ data }) => {
         ))}
       </StyledThreeColumnGrid>
       <StyledImage fluid={data.file.childImageSharp.fluid} />
-      <StyledLink to="/order">order now</StyledLink>
+      <StyledLink to="/shop">order now</StyledLink>
     </StyledServices>
   );
 };

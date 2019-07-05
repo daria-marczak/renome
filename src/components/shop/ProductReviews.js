@@ -16,7 +16,7 @@ const StyledCommentContent = styled(StyledParagraph)`
 
 const StyledComment = styled.li`
   list-style-type: none;
-  margin-top: 10px;
+  margin-top: 30px;
 `;
 
 const StyledCommentAuthor = styled.div`
@@ -63,6 +63,7 @@ const StyledStar = styled.p`
 const StyledReview = styled.div`
   display: flex;
   align-items: center;
+  margin-left: auto;
 `;
 
 const ProductReviews = ({ review }) => (
@@ -82,7 +83,7 @@ const ProductReviews = ({ review }) => (
 );
 
 ProductReviews.propTypes = {
-  review: PropTypes.objectOf(PropTypes.string).isRequired,
+  review: PropTypes.shape().isRequired,
 };
 
 export default ProductReviews;
