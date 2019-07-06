@@ -20,6 +20,9 @@ const initialState = {
   checkout: {
     paymentMethod: 'paypal',
   },
+  contact: {
+    fetching: {},
+  },
 };
 
 export default initialState;
