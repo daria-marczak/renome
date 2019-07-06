@@ -7,6 +7,7 @@ import Header from '../components/common/Header';
 import ContactSection from '../components/contact/ContactSection';
 import ContactInfo from '../components/contact/ContactInfo';
 import Footer from '../components/common/Footer';
+import BackgroundImage from '../components/common/BackgroundImage';
 
 const ContactPage = ({ data }) => (
   <HomeTemplate>
@@ -18,6 +19,7 @@ const ContactPage = ({ data }) => (
     />
     <ContactSection />
     <ContactInfo />
+    <BackgroundImage photo={data.map} />
     <Footer />
   </HomeTemplate>
 );
@@ -25,6 +27,13 @@ const ContactPage = ({ data }) => (
 export const query = graphql`
   query {
     contactHeader: file(relativePath: { eq: "images/headers/contact.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 2000, quality: 100) {
+          ...GatsbyImageSharpFluid_noBase64
+        }
+      }
+    }
+    map: file(relativePath: { eq: "images/map.png" }) {
       childImageSharp {
         fluid(maxWidth: 2000, quality: 100) {
           ...GatsbyImageSharpFluid_noBase64
