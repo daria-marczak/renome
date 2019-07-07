@@ -6,7 +6,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { graphql, StaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
-import { StyledWrapper } from '../common/common';
+import { StyledWrapper, StyledButton } from '../common/common';
+import Loader from '../common/Loader';
 import { SingleDatePickerPhrases } from './phrases';
 import '../../assets/styles/reactDatesOverrides.css';
 
@@ -20,27 +21,6 @@ const StyledHeading = styled.h3`
 const StyledReservationWrapper = styled(StyledWrapper)`
   @media (min-width: 768px) {
     grid-template-columns: 1fr;
-  }
-`;
-
-const StyledButton = styled.button`
-  background-color: ${({ isSuccess, theme }) =>
-    isSuccess ? theme.primary : '#1e2633'};
-  text-transform: uppercase;
-  color: ${({ theme }) => theme.white};
-  font-size: ${({ theme }) => theme.font.size.paragraph};
-  transition: background 0.3s ease-in;
-  padding: 20px 20px;
-  border: none;
-  width: 100%;
-  cursor: pointer;
-  margin: 15px 0 20px 0;
-  font-family: ${({ theme }) => theme.font.family.montserrat};
-  font-weight: 600;
-  align-self: center;
-
-  @media (min-width: 1200px) {
-    width: auto;
   }
 `;
 
@@ -82,6 +62,7 @@ const StyledInput = styled.input`
   border-bottom: 3px solid ${({ theme }) => theme.lightGray};
   margin-left: 10px;
   flex: 1;
+  width: 100%;
 `;
 
 const StyleDates = styled(SingleDatePicker)`
@@ -90,11 +71,13 @@ const StyleDates = styled(SingleDatePicker)`
   border-bottom: 3px solid ${({ theme }) => theme.lightGray} !important;
   margin-left: 10px;
   flex: 1;
+  width: 100%;
 `;
 
 const StyledLabel = styled.label`
   display: flex;
   align-items: center;
+  width: 100%;
 
   @media (min-width: 1200px) {
     width: 200px;
@@ -106,20 +89,18 @@ const StyledLabel = styled.label`
   }
 `;
 
-const ReservationForm = ({ data }) => {
+const ReservationForm = ({ data, isFetching, addReservation }) => {
   const today = moment().add(1, 'days');
-
   const now = `${new Date().getHours()}:${new Date().getMinutes()}`;
 
   const [date, setDate] = useState(today);
   const [time, setTime] = useState(now);
   const [people, setPeopleAmount] = useState(0);
   const [isFocused, setFocus] = useState(false);
-  const [isSuccess, setSuccess] = useState(false);
 
   const handleSubmit = event => {
     event.preventDefault();
-    setSuccess(true);
+    addReservation(date, time, people);
   };
 
   return (
@@ -180,20 +161,10 @@ const ReservationForm = ({ data }) => {
             />
           </StyledLabel>
         </StyledFormWrapper>
-        {isSuccess ? (
-          <StyledButton
-            type="submit"
-            aria-label={`Reservation successfully made for ${date} at ${time} for ${people} people`}
-            isSuccess
-            disabled
-          >
-            Reservation made
-          </StyledButton>
-        ) : (
-          <StyledButton type="submit" aria-label="Make a reservation">
-            Find a table
-          </StyledButton>
-        )}
+        <StyledButton type="submit" isSuccess disabled={isFetching}>
+          {isFetching && <Loader />}
+          {!isFetching && 'Make reservation'}
+        </StyledButton>
       </StyledForm>
     </StyledReservationWrapper>
   );
@@ -201,6 +172,8 @@ const ReservationForm = ({ data }) => {
 
 ReservationForm.propTypes = {
   data: PropTypes.shape().isRequired,
+  isFetching: PropTypes.bool,
+  addReservation: PropTypes.func,
 };
 
 export default props => (

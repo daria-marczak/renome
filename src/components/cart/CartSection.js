@@ -65,7 +65,7 @@ class CartSection extends Component {
           cartItems={this.props.products}
           removeItem={this.onRemove}
         />
-        <Coupon onSubmit={this.onSubmit} />
+        <Coupon onSubmit={this.onSubmit} isFetching={this.props.isFetching} />
         <TotalSection
           products={filteredCartItems}
           cartItems={this.props.products}
@@ -81,10 +81,12 @@ CartSection.propTypes = {
   allProducts: PropTypes.arrayOf(PropTypes.shape()),
   removeItem: PropTypes.func,
   applyCoupon: PropTypes.func,
+  isFetching: PropTypes.bool,
 };
 
 const mapStateToProps = state => ({
   products: state.cart.cartItems,
+  isFetching: state.cart.fetching.fetchingCoupon,
 });
 
 const mapDispatchToProps = dispatch => {

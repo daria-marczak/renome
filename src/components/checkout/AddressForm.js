@@ -1,27 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-
-const StyledButton = styled.button`
-  background-color: ${({ isSuccess, theme }) =>
-    isSuccess ? theme.primary : '#1e2633'};
-  text-transform: uppercase;
-  color: ${({ theme }) => theme.white};
-  font-size: ${({ theme }) => theme.font.size.paragraph};
-  transition: background 0.3s ease-in;
-  padding: 20px 20px;
-  border: none;
-  width: 100%;
-  cursor: pointer;
-  margin: 15px 0 20px 0;
-  font-family: ${({ theme }) => theme.font.family.montserrat};
-  font-weight: 600;
-  align-self: center;
-
-  @media (min-width: 1200px) {
-    width: auto;
-  }
-`;
+import { StyledButton } from '../common/common';
+import Loader from '../common/Loader';
 
 const StyledHeading = styled.h2`
   font-weight: 700;
@@ -115,7 +96,7 @@ class AddressForm extends Component {
       addressLine2,
     } = this.state;
 
-    const { type, shouldShowSubmitButton } = this.props;
+    const { type, shouldShowSubmitButton, isFetching } = this.props;
 
     return (
       <StyledFormWrapper>
@@ -271,7 +252,12 @@ class AddressForm extends Component {
               />
             </StyledLabel>
           </StyledOneLine>
-          {shouldShowSubmitButton && <StyledButton>Place order</StyledButton>}
+          {shouldShowSubmitButton && (
+            <StyledButton disabled={isFetching}>
+              {isFetching && <Loader />}
+              {!isFetching && 'Place order'}
+            </StyledButton>
+          )}
         </StyledForm>
       </StyledFormWrapper>
     );
@@ -281,6 +267,7 @@ class AddressForm extends Component {
 AddressForm.propTypes = {
   type: PropTypes.string.isRequired,
   shouldShowSubmitButton: PropTypes.bool,
+  isFetching: PropTypes.bool,
   onSubmit: PropTypes.func.isRequired,
 };
 

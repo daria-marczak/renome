@@ -20,12 +20,12 @@ function* createComment({ comment }) {
         date: new Date(),
         content: comment.message,
       };
+      yield delay(2500);
       yield put({
         type: appActions.TRIGGER_MESSAGE,
         kind: 'success',
         message: 'Your comment has been added',
       });
-      yield delay(1500);
       yield put({
         type: blogActions.CREATE_COMMENT.SUCCESS,
         comment: commentContent,

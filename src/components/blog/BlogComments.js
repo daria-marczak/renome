@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import * as blogActions from './logic/blogActions';
 import formatDate from '../../utils/formatDate';
-import { StyledParagraph } from '../common/common';
+import { StyledParagraph, StyledButton } from '../common/common';
+import Loader from '../common/Loader';
 
 const StyledCommentSection = styled.ul`
   padding-left: 0;
@@ -116,27 +117,6 @@ const StyledInput = styled.input`
   }
 `;
 
-const StyledButton = styled.button`
-  background-color: ${({ isSuccess, theme }) =>
-    isSuccess ? theme.primary : '#1e2633'};
-  text-transform: uppercase;
-  color: ${({ theme }) => theme.white};
-  font-size: ${({ theme }) => theme.font.size.paragraph};
-  transition: background 0.3s ease-in;
-  padding: 20px 20px;
-  border: none;
-  width: 100%;
-  cursor: pointer;
-  margin: 20px 0 20px 0;
-  font-family: ${({ theme }) => theme.font.family.montserrat};
-  font-weight: 600;
-  align-self: center;
-
-  @media (min-width: 1200px) {
-    width: auto;
-  }
-`;
-
 class BlogComments extends PureComponent {
   constructor(props) {
     super(props);
@@ -163,7 +143,7 @@ class BlogComments extends PureComponent {
 
   render() {
     const { author, email, message } = this.state;
-    const { comments } = this.props;
+    const { comments, isFetching } = this.props;
 
     const title =
       comments.length !== 1
@@ -214,7 +194,10 @@ class BlogComments extends PureComponent {
             onChange={event => this.onChange(event)}
             name="message"
           />
-          <StyledButton type="submit">Post comment</StyledButton>
+          <StyledButton type="submit" disabled={isFetching}>
+            {isFetching && <Loader />}
+            {!isFetching && 'Post comment'}
+          </StyledButton>
         </StyledForm>
       </StyledCommentSection>
     );
@@ -224,14 +207,17 @@ class BlogComments extends PureComponent {
 BlogComments.propTypes = {
   createComment: PropTypes.func.isRequired,
   comments: PropTypes.arrayOf(PropTypes.object),
+  isFetching: PropTypes.bool,
 };
 
 BlogComments.defaultProps = {
   comments: [],
+  isFetching: false,
 };
 
 const mapStateToProps = state => ({
   comments: state.blog.comments,
+  isFetching: state.blog.fetching.fetchingComments,
 });
 
 const mapDispatchToProps = dispatch => {

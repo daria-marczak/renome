@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import styled from 'styled-components';
 import * as contactActions from './logic/contactActions';
-import { StyledWrapper } from '../common/common';
+import { StyledWrapper, StyledButton } from '../common/common';
+import Loader from '../common/Loader';
 
 const StyledHeading = styled.h3`
   font-weight: 700;
@@ -17,27 +18,6 @@ const StyledContactWrapper = styled(StyledWrapper)`
   @media (min-width: 768px) {
     grid-template-columns: 1fr;
     width: 100%;
-  }
-`;
-
-const StyledButton = styled.button`
-  background-color: ${({ isSuccess, theme }) =>
-    isSuccess ? theme.primary : theme.lightGray};
-  text-transform: uppercase;
-  color: ${({ theme }) => theme.black};
-  font-size: ${({ theme }) => theme.font.size.paragraph};
-  transition: background 0.3s ease-in;
-  padding: 20px 20px;
-  border: none;
-  width: 100%;
-  cursor: pointer;
-  margin: 15px 0 20px 0;
-  font-family: ${({ theme }) => theme.font.family.montserrat};
-  font-weight: 600;
-  align-self: center;
-
-  @media (min-width: 1200px) {
-    width: auto;
   }
 `;
 
@@ -166,7 +146,10 @@ class ContactForm extends Component {
               fullWidth
             />
           </StyledLabel>
-          <StyledButton type="submit">Send</StyledButton>
+          <StyledButton type="submit" disabled={this.props.isFetching}>
+            {this.props.isFetching && <Loader />}
+            {!this.props.isFetching && 'Send'}
+          </StyledButton>
         </StyledForm>
       </StyledContactWrapper>
     );
@@ -175,7 +158,12 @@ class ContactForm extends Component {
 
 ContactForm.propTypes = {
   sendMessage: PropTypes.func,
+  isFetching: PropTypes.bool,
 };
+
+const mapStateToProps = state => ({
+  isFetching: state.contact.fetching.fetchingMessage,
+});
 
 const mapDispatchToProps = dispatch => {
   return bindActionCreators(
@@ -187,6 +175,6 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(ContactForm);

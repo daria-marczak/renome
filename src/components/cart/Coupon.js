@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { StyledButton } from '../common/common';
+import Loader from '../common/Loader';
 
 const StyledInput = styled.input`
   border: none;
@@ -14,34 +16,14 @@ const StyledInput = styled.input`
   }
 `;
 
-const StyledButton = styled.button`
-  background-color: ${({ isSuccess, theme }) =>
-    isSuccess ? theme.primary : '#1e2633'};
-  text-transform: uppercase;
-  color: ${({ theme }) => theme.white};
-  font-size: ${({ theme }) => theme.font.size.paragraph};
-  transition: background 0.3s ease-in;
-  padding: 20px 20px;
-  border: none;
-  width: 100%;
-  cursor: pointer;
-  margin: 15px 0 20px 0;
-  font-family: ${({ theme }) => theme.font.family.montserrat};
-  font-weight: 600;
-  align-self: center;
-
-  @media (min-width: 1200px) {
-    width: auto;
-    display: block;
-  }
-`;
-
-const Coupon = ({ onSubmit }) => {
+const Coupon = ({ onSubmit, isFetching }) => {
   const [couponCode, setCouponCode] = useState('');
 
   const handleSubmit = event => {
     event.preventDefault();
     onSubmit(couponCode);
+
+    setCouponCode('');
   };
 
   return (
@@ -54,13 +36,17 @@ const Coupon = ({ onSubmit }) => {
         name="coupon"
         aria-label="If you have a coupon code you'd like to use, type it here"
       />
-      <StyledButton type="submit">Apply coupon</StyledButton>
+      <StyledButton type="submit" disabled={isFetching}>
+        {isFetching && <Loader />}
+        {!isFetching && 'Apply coupon'}
+      </StyledButton>
     </form>
   );
 };
 
 Coupon.propTypes = {
   onSubmit: PropTypes.func,
+  isFetching: PropTypes.bool,
 };
 
 export default Coupon;

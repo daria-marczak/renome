@@ -13,11 +13,15 @@ const initialState = {
       { quantity: 1, productId: '123123123128964534863' },
     ],
   },
+  reservation: {
+    fetching: {},
+  },
   shop: {
     reviews: reviews,
     fetching: {},
   },
   checkout: {
+    fetching: {},
     paymentMethod: 'paypal',
   },
   contact: {

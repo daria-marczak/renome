@@ -46,7 +46,12 @@ const StyledClose = styled.div`
 `;
 
 const Snackbar = ({ message, type, isActive, closeMessage }) => (
-  <StyledWrapper type={type} isOpen={isActive}>
+  <StyledWrapper
+    type={type}
+    isOpen={isActive}
+    role="alert"
+    aria-live="assertive"
+  >
     {message}
     <StyledClose onClick={closeMessage} />
   </StyledWrapper>

@@ -74,3 +74,26 @@ export const StyledLevelTwoHeading = styled.h2`
   text-align: center;
   font-weight: 600;
 `;
+
+export const StyledButton = styled.button`
+  background-color: ${({ disabled, theme }) =>
+    !disabled ? '#1e2633' : theme.lightGray};
+  text-transform: uppercase;
+  color: ${({ theme }) => theme.white};
+  font-size: ${({ theme }) => theme.font.size.paragraph};
+  transition: background 0.3s ease-in;
+  padding: 20px 20px;
+  border: none;
+  width: 100%;
+  min-height: 58px;
+  position: relative;
+  cursor: pointer;
+  margin: 20px 0 20px 0;
+  font-family: ${({ theme }) => theme.font.family.montserrat};
+  font-weight: 600;
+  align-self: center;
+
+  @media (min-width: 1200px) {
+    width: auto;
+  }
+`;
