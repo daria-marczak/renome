@@ -141,6 +141,17 @@ const BlogSection = props => {
     return blogData && blogData.filter(item => item.node.frontmatter.isPopular);
   };
 
+  const filterCategories = blogData => {
+    const allCategories = blogData
+      .filter(blog => blog.node.frontmatter.type === 'blog')
+      .map(blogPart => blogPart.node.frontmatter.category);
+    const uniqueCategories = allCategories.filter(
+      (category, index) => allCategories.indexOf(category) === index
+    );
+
+    return uniqueCategories;
+  };
+
   return (
     <StyledBlogSection title="blog">
       <StyledBlogWrapper>{renderBlog()}</StyledBlogWrapper>
@@ -148,21 +159,15 @@ const BlogSection = props => {
         <section title="Category choice">
           <StyledSectionHeader>Categories</StyledSectionHeader>
           <StyledAsideWrapper>
-            {blogData
-              .filter(blog => blog.node.frontmatter.type === 'blog')
-              .map(blogPart => (
-                <StyledCategoryLink
-                  key={blogPart.node.id}
-                  onClick={() =>
-                    setCategory(blogPart.node.frontmatter.category)
-                  }
-                  isActive={
-                    activeCategory === blogPart.node.frontmatter.category
-                  }
-                >
-                  {blogPart.node.frontmatter.category}
-                </StyledCategoryLink>
-              ))}
+            {filterCategories(blogData).map(category => (
+              <StyledCategoryLink
+                key={category}
+                onClick={() => setCategory(category)}
+                isActive={activeCategory === category}
+              >
+                {category}
+              </StyledCategoryLink>
+            ))}
           </StyledAsideWrapper>
         </section>
         <section title="Popular posts">

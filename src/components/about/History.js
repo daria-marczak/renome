@@ -25,6 +25,7 @@ const History = ({
           <PhotoComponent
             firstPhoto={firstPhoto.node}
             secondPhoto={secondPhoto.node}
+            left
           />
         </StyledColumn>
         <StyledColumn isDescription>
