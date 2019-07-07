@@ -11,10 +11,12 @@ import {
   StyledColumn,
   StyledParagraph,
   StyledDescription,
+  StyledButton,
 } from '../common/common';
 import * as cartActions from '../cart/logic/cartActions';
 import ProductReviews from './ProductReviews';
 import ReviewForm from './ReviewForm';
+import Loader from '../common/Loader';
 
 const StyledShopHeading = styled(StyledLevelTwoHeading)`
   text-transform: lowercase;
@@ -37,27 +39,6 @@ const StyledPrice = styled(StyledDescription)`
 const StyledForm = styled.form`
   font-family: ${({ theme }) => theme.font.family.montserrat};
   display: flex;
-`;
-
-const StyledButton = styled.button`
-  background-color: ${({ isSuccess, theme }) =>
-    isSuccess ? theme.primary : '#1e2633'};
-  text-transform: uppercase;
-  color: ${({ theme }) => theme.white};
-  font-size: ${({ theme }) => theme.font.size.paragraph};
-  transition: background 0.3s ease-in;
-  padding: 20px 20px;
-  border: none;
-  width: 100%;
-  cursor: pointer;
-  margin: 15px 0 20px 0;
-  font-family: ${({ theme }) => theme.font.family.montserrat};
-  font-weight: 600;
-  align-self: center;
-
-  @media (min-width: 1200px) {
-    width: auto;
-  }
 `;
 
 const StyledSectionHeader = styled.h2`
@@ -97,7 +78,7 @@ const StyledImage = styled(Img)`
   }
 `;
 
-const ProductPage = ({ photo, product, addToCart, reviews }) => {
+const ProductPage = ({ photo, product, addToCart, reviews, isFetching }) => {
   const [quantity, setQuantity] = useState(1);
 
   const handleAddToCart = event => {
@@ -135,8 +116,9 @@ const ProductPage = ({ photo, product, addToCart, reviews }) => {
               onChange={event => setQuantity(event.target.value)}
               required
             />
-            <StyledButton type="submit" aria-label="Buy">
-              Add to cart
+            <StyledButton type="submit" aria-label="Buy" disabled={isFetching}>
+              {isFetching && <Loader />}
+              {!isFetching && 'Add to cart'}
             </StyledButton>
           </StyledForm>
         </StyledColumn>
@@ -156,11 +138,13 @@ ProductPage.propTypes = {
   photo: PropTypes.shape().isRequired,
   product: PropTypes.shape().isRequired,
   addToCart: PropTypes.func.isRequired,
+  isFetching: PropTypes.bool,
   reviews: PropTypes.arrayOf(PropTypes.shape()).isRequired,
 };
 
 const mapStateToProps = state => ({
   reviews: state.shop.reviews,
+  isFetching: state.cart.fetching.fetchingCart,
 });
 
 const mapDispatchToProps = dispatch => {
