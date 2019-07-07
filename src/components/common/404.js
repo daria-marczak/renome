@@ -140,7 +140,7 @@ const Invalid = ({ cartItems, photo, title, section }) => {
       </StyledBar>
       <StyledHeader>
         <MobileMenu isOpen={isMenuOpen} />
-        <StyledHero fluid={photo.childImageSharp.fluid} />
+        <StyledHero fluid={photo.childImageSharp.fluid} role="presentation" />
         <StyledFilter />
         <StyledParagraph>
           <StyledHeading>{section}</StyledHeading>

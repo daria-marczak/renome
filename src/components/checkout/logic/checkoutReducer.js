@@ -9,6 +9,33 @@ export default (state = initialState.checkout, action) => {
         paymentMethod: action.paymentMethod,
       };
 
+    case checkoutActions.ADD_ORDER_DETAILS.INVOKE:
+      return {
+        ...state,
+        fetching: {
+          fetchingForm: true,
+        },
+      };
+
+    case checkoutActions.CHECKOUT_PRODUCTS.INVOKE:
+      return {
+        ...state,
+        fetching: {
+          fetchingForm: true,
+        },
+      };
+
+    case checkoutActions.ADD_ORDER_DETAILS.SUCCESS:
+    case checkoutActions.ADD_ORDER_DETAILS.FAILURE:
+    case checkoutActions.CHECKOUT_PRODUCTS.SUCCESS:
+    case checkoutActions.CHECKOUT_PRODUCTS.FAILURE:
+      return {
+        ...state,
+        fetching: {
+          fetchingForm: false,
+        },
+      };
+
     default:
       return state;
   }

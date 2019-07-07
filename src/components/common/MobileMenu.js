@@ -15,6 +15,10 @@ const StyledList = styled.ul`
   background-color: ${({ theme }) => theme.white};
   transition: transform 0.3s ease-in;
   transform: translateX(${({ isOpen }) => (isOpen ? '0%' : '-100%')});
+
+  @media (min-width: 1200px) {
+    display: none;
+  }
 `;
 
 const StyledLink = styled(Link)`

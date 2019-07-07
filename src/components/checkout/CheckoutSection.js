@@ -73,6 +73,7 @@ class CheckoutSection extends Component {
         <AddressForm
           type="Billing address"
           onSubmit={this.onSubmit}
+          isFetching={this.props.isFetching}
           shouldShowSubmitButton={!this.state.shippingAddress}
         />
         <Details
@@ -92,12 +93,14 @@ class CheckoutSection extends Component {
 CheckoutSection.propTypes = {
   addOrderDetails: PropTypes.func,
   changePaymentMethod: PropTypes.func,
+  isFetching: PropTypes.bool,
   products: PropTypes.arrayOf(PropTypes.shape()),
   allProducts: PropTypes.arrayOf(PropTypes.shape()),
 };
 
 const mapStateToProps = state => ({
   products: state.cart.cartItems,
+  isFetching: state.checkout.fetching.fetchingForm,
 });
 
 const mapDispatchToProps = dispatch => {

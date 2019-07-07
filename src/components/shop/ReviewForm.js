@@ -4,33 +4,14 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as shopActions from './logic/shopActions';
+import Loader from '../common/Loader';
+import { StyledButton } from '../common/common';
 
 const StyledForm = styled.form`
   font-family: ${({ theme }) => theme.font.family.montserrat};
 
   display: flex;
   flex-direction: column;
-`;
-
-const StyledButton = styled.button`
-  background-color: ${({ isSuccess, theme }) =>
-    isSuccess ? theme.primary : '#1e2633'};
-  text-transform: uppercase;
-  color: ${({ theme }) => theme.white};
-  font-size: ${({ theme }) => theme.font.size.paragraph};
-  transition: background 0.3s ease-in;
-  padding: 20px 20px;
-  border: none;
-  width: 100%;
-  cursor: pointer;
-  margin: 15px 0 20px 0;
-  font-family: ${({ theme }) => theme.font.family.montserrat};
-  font-weight: 600;
-  align-self: center;
-
-  @media (min-width: 1200px) {
-    width: auto;
-  }
 `;
 
 const StyledSectionHeader = styled.h2`
@@ -86,6 +67,7 @@ class ReviewForm extends Component {
 
   render() {
     const { author, email, rating, message } = this.state;
+    const { isFetching } = this.props;
 
     return (
       <StyledForm onSubmit={this.onSubmit}>
@@ -125,7 +107,10 @@ class ReviewForm extends Component {
           onChange={event => this.onChange(event)}
           name="message"
         />
-        <StyledButton type="submit">Post review</StyledButton>
+        <StyledButton type="submit" disabled={isFetching}>
+          {isFetching && <Loader />}
+          {!isFetching && 'Post review'}
+        </StyledButton>
       </StyledForm>
     );
   }
@@ -133,6 +118,7 @@ class ReviewForm extends Component {
 
 const mapStateToProps = state => ({
   comments: state.blog.comments,
+  isFetching: state.shop.fetching.fetchingReviews,
 });
 
 const mapDispatchToProps = dispatch => {
@@ -146,6 +132,7 @@ const mapDispatchToProps = dispatch => {
 
 ReviewForm.propTypes = {
   addReview: PropTypes.func.isRequired,
+  isFetching: PropTypes.bool,
 };
 
 export default connect(

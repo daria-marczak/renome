@@ -11,6 +11,23 @@ export default (state = initialState.cart, action) => {
         },
       };
 
+    case cartActions.APPLY_COUPON.INVOKE:
+      return {
+        ...state,
+        fetching: {
+          fetchingCoupon: true,
+        },
+      };
+
+    case cartActions.APPLY_COUPON.SUCCESS:
+    case cartActions.APPLY_COUPON.FAILURE:
+      return {
+        ...state,
+        fetching: {
+          fetchingCoupon: false,
+        },
+      };
+
     case cartActions.ADD_TO_CART.SUCCESS:
       return {
         ...state,

@@ -1,0 +1,2 @@
+export const TRIGGER_MESSAGE = 'TRIGGER_MESSAGE';
+export const CLOSE_MESSAGE = 'CLOSE_MESSAGE';
