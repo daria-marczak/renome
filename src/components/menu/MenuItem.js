@@ -72,7 +72,12 @@ const MenuItem = ({ dish, photo }) => {
   return (
     <StyledContainer>
       <StyledPhotoColumn>
-        {photo && <StyledImage fluid={photo.node.childImageSharp.fluid} />}
+        {photo && (
+          <StyledImage
+            fluid={photo.node.childImageSharp.fluid}
+            alt={dish.name}
+          />
+        )}
         <StyledPriceContainerMobile>
           <StyledPrice>$</StyledPrice>
           <StyledPrice>{dish.price}</StyledPrice>

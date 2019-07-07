@@ -136,8 +136,8 @@ const Header = ({ cartItems, photo, title, section }) => {
         </StyledContainer>
       </StyledBar>
       <StyledHeader>
-        <MobileMenu isOpen={isMenuOpen} />
-        <StyledHero fluid={photo.childImageSharp.fluid} />
+        <MobileMenu isOpen={isMenuOpen} aria-hidden={!isMenuOpen} />
+        <StyledHero fluid={photo.childImageSharp.fluid} role="presentation" />
         <StyledFilter />
         <StyledParagraph>
           <StyledHeading>{section}</StyledHeading>

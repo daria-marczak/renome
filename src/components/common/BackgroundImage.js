@@ -18,7 +18,7 @@ const StyledHero = styled(Img)`
 `;
 
 const BackgroundImage = ({ photo }) => {
-  return <StyledHero fluid={photo.childImageSharp.fluid} />;
+  return <StyledHero fluid={photo.childImageSharp.fluid} role="presentation" />;
 };
 
 BackgroundImage.propTypes = {
