@@ -28,6 +28,7 @@ const Reservation = ({
             firstPhoto={firstPhoto.node}
             secondPhoto={secondPhoto.node}
             switched
+            left
           />
         </StyledColumn>
         <StyledColumn isDescription>

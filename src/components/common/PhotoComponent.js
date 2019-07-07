@@ -9,10 +9,7 @@ const StyledWrapper = styled.div`
 
   @media (min-width: 1200px) {
     max-width: 450px;
-    transform: translateX(
-      ${({ isDescription, flipped }) =>
-        isDescription ? (flipped ? '-250px' : '250px') : '250px'}
-    );
+    transform: translateX(${({ left }) => (left ? '100px' : '250px')});
   }
 `;
 
@@ -39,8 +36,14 @@ const StyledImageSecond = styled(Img)`
   }
 `;
 
-const PhotoComponent = ({ firstPhoto, secondPhoto, flipped, switched }) => (
-  <StyledWrapper>
+const PhotoComponent = ({
+  firstPhoto,
+  secondPhoto,
+  flipped,
+  switched,
+  left,
+}) => (
+  <StyledWrapper left={left}>
     <StyledImageFirst
       fluid={firstPhoto.childImageSharp.fluid}
       flipped={flipped}
@@ -60,6 +63,7 @@ PhotoComponent.propTypes = {
   secondPhoto: PropTypes.shape().isRequired,
   flipped: PropTypes.bool,
   switched: PropTypes.bool,
+  left: PropTypes.bool,
 };
 
 PhotoComponent.defaultProps = {

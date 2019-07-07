@@ -33,14 +33,14 @@ function* addReservation({ date, time, people }) {
         kind: 'error',
         message: 'There was an error while making a reservation',
       });
-      yield put({ type: reservationActions.ADD_TO_CART.FAILURE });
+      yield put({ type: reservationActions.ADD_RESERVATION.FAILURE });
     }
   } catch (error) {
     yield put({
       type: appActions.TRIGGER_MESSAGE,
       kind: 'error',
-      message: 'There was an error while adding to cart',
+      message: 'There was an error while making a reservation',
     });
-    yield put({ type: reservationActions.ADD_TO_CART.FAILURE });
+    yield put({ type: reservationActions.ADD_RESERVATION.FAILURE });
   }
 }

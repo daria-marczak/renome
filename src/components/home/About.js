@@ -25,6 +25,7 @@ const About = ({
       <StyledWrapper>
         <StyledColumn>
           <PhotoComponent
+            left
             firstPhoto={firstPhoto.node}
             secondPhoto={secondPhoto.node}
           />

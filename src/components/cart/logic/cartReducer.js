@@ -37,6 +37,15 @@ export default (state = initialState.cart, action) => {
         cartItems: [...state.cartItems, action.cartItem],
       };
 
+    case cartActions.REMOVE_ITEM.FAILURE:
+    case cartActions.ADD_TO_CART.FAILURE:
+      return {
+        ...state,
+        fetching: {
+          fetchingCart: false,
+        },
+      };
+
     case cartActions.REMOVE_ITEM.INVOKE:
       return {
         ...state,
