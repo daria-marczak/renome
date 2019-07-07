@@ -23,6 +23,13 @@ const initialState = {
   contact: {
     fetching: {},
   },
+  appData: {
+    isSnackBarActive: false,
+    message: {
+      kind: '',
+      content: '',
+    },
+  },
 };
 
 export default initialState;

@@ -198,7 +198,7 @@ class BlogComments extends PureComponent {
               name="author"
             />
             <StyledInput
-              type="text"
+              type="email"
               required
               placeholder="Email"
               value={email}

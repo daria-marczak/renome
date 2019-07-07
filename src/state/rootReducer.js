@@ -4,6 +4,7 @@ import shopReducer from '../components/shop/logic/shopReducer';
 import checkoutReducer from '../components/checkout/logic/checkoutReducer';
 import cartReducer from '../components/cart/logic/cartReducer';
 import contactReducer from '../components/contact/logic/contactReducer';
+import appReducer from '../appLogic/appReducer';
 
 export default combineReducers({
   blog: blogReducer,
@@ -11,4 +12,5 @@ export default combineReducers({
   checkout: checkoutReducer,
   cart: cartReducer,
   contact: contactReducer,
+  appData: appReducer,
 });
