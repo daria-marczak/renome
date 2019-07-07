@@ -131,10 +131,11 @@ const BlogSection = props => {
       headerHeight;
 
     setActive(chosenCategory);
-    window.scrollTo({
-      top: -height,
-      behavior: 'smooth',
-    });
+    window &&
+      window.scrollTo({
+        top: -height,
+        behavior: 'smooth',
+      });
   };
 
   const filterPopularity = blogData => {
