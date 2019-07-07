@@ -11,7 +11,7 @@ export default ({ element }) => {
 
   const middleware = [sagaMiddleware];
   const composeEnhancers =
-    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+    (window && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
   const enhancer = composeEnhancers(applyMiddleware(...middleware));
   const store = createStore(rootReducer, {}, enhancer);
 
