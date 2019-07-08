@@ -884,3 +884,11 @@
     width: 15px;
     fill: #cacccd
   }
+
+  @media (min-width: 1200px) {
+    .SingleDatePicker {
+      position: relative;
+      width: auto;
+      display: inline-block
+    }
+  }

@@ -95,5 +95,6 @@ export const StyledButton = styled.button`
 
   @media (min-width: 1200px) {
     width: auto;
+    min-width: 300px;
   }
 `;
