@@ -52,20 +52,16 @@ class CheckoutSection extends Component {
   };
 
   render() {
-    const filteredCartItems = this.props.products
-      .map(product =>
-        this.props.allProducts.filter(
-          mdProduct => mdProduct.node.frontmatter.id === product.productId
-        )
+    const filteredCartItems = this.props.products.map(product =>
+      this.props.allProducts.filter(
+        mdProduct => mdProduct.node.frontmatter.id === product.productId
       )
-      .flat();
+    );
+    const cartItems = [].concat(...filteredCartItems);
 
     return (
       <StyledWrapper>
-        <OrderDetails
-          products={filteredCartItems}
-          cartItems={this.props.products}
-        />
+        <OrderDetails products={cartItems} cartItems={this.props.products} />
         <PaymentOptions
           paymentMethod={this.state.paymentMethod}
           onChange={this.changePaymentMethod}

@@ -50,26 +50,22 @@ class CartSection extends Component {
   };
 
   render() {
-    const filteredCartItems = this.props.products
-      .map(product =>
-        this.props.allProducts.filter(
-          mdProduct => mdProduct.node.frontmatter.id === product.productId
-        )
+    const filteredCartItems = this.props.products.map(product =>
+      this.props.allProducts.filter(
+        mdProduct => mdProduct.node.frontmatter.id === product.productId
       )
-      .flat();
+    );
+    const cartItems = [].concat(...filteredCartItems);
 
     return (
       <StyledWrapper>
         <CartTable
-          products={filteredCartItems}
+          products={cartItems}
           cartItems={this.props.products}
           removeItem={this.onRemove}
         />
         <Coupon onSubmit={this.onSubmit} isFetching={this.props.isFetching} />
-        <TotalSection
-          products={filteredCartItems}
-          cartItems={this.props.products}
-        />
+        <TotalSection products={cartItems} cartItems={this.props.products} />
         <StyledButton to="/checkout">Proceed to checkout</StyledButton>
       </StyledWrapper>
     );
