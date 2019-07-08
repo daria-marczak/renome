@@ -23,6 +23,12 @@ const StyledShopHeading = styled(StyledLevelTwoHeading)`
   letter-spacing: 0.07em;
 `;
 
+const StyledProductColumn = styled(StyledColumn)`
+  @media (min-width: 1200px) {
+    transform: translateX(-30%);
+  }
+`;
+
 const StyledStar = styled.p`
   color: ${({ theme }) => theme.primary};
 `;
@@ -89,15 +95,13 @@ const ProductPage = ({ photo, product, addToCart, reviews, isFetching }) => {
   return (
     <StyledSection title="shop">
       <StyledWrapper>
-        <StyledColumn>
+        <StyledProductColumn>
           <StyledImage fluid={photo.childImageSharp.fluid} />
-        </StyledColumn>
+        </StyledProductColumn>
         <StyledColumn isDescription>
           <StyledShopHeading>{product.frontmatter.title}</StyledShopHeading>
           <StyledReview>
-            <StyledParagraph>{`${
-              product.frontmatter.customers
-            } customer review`}</StyledParagraph>
+            <StyledParagraph>{`${product.frontmatter.customers} customer review`}</StyledParagraph>
             {Array(parseInt(product.frontmatter.stars)).fill(
               <StyledStar>&#9733;</StyledStar>
             )}

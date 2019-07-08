@@ -39,7 +39,7 @@ const ShopItem = ({ dish, photo }) => (
     >
       <StyledHeading>{dish.node.frontmatter.title}</StyledHeading>
     </StyledLink>
-    <StyledHeading>{dish.node.frontmatter.price}</StyledHeading>
+    <StyledHeading>${dish.node.frontmatter.price}</StyledHeading>
   </StyledItem>
 );
 

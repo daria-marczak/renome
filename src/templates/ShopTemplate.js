@@ -40,7 +40,6 @@ const ShopTemplate = ({
           }
         />
       </main>
-      <Footer />
       {isSnackBarActive && (
         <Snackbar
           message={message}
@@ -49,6 +48,7 @@ const ShopTemplate = ({
           closeMessage={closeMessage}
         />
       )}
+      <Footer />
     </>
   </ThemeProvider>
 );

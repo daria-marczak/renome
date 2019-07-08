@@ -35,13 +35,10 @@ function* placeOrder(action) {
         products,
         paymentMethod,
       });
-    } else {
+      yield delay(2000);
       yield put({
-        type: appActions.TRIGGER_MESSAGE,
-        kind: 'success',
-        message: 'Something went wrong',
+        type: appActions.CLOSE_MESSAGE,
       });
-      yield put({ type: checkoutActions.CHECKOUT_PRODUCTS.FAILURE });
     }
   } catch (error) {
     yield put({
@@ -50,5 +47,9 @@ function* placeOrder(action) {
       message: 'Something went wrong',
     });
     yield put({ type: checkoutActions.CHECKOUT_PRODUCTS.FAILURE });
+    yield delay(2000);
+    yield put({
+      type: appActions.CLOSE_MESSAGE,
+    });
   }
 }

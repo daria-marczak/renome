@@ -57,12 +57,21 @@ class CartSection extends Component {
     );
     const cartItems = [].concat(...filteredCartItems);
 
+    if (!cartItems.length) {
+      return (
+        <StyledWrapper>
+          <p>Your cart is empty</p>
+        </StyledWrapper>
+      );
+    }
+
     return (
       <StyledWrapper>
         <CartTable
           products={cartItems}
           cartItems={this.props.products}
           removeItem={this.onRemove}
+          isFetching={this.props.isFetchingCart}
         />
         <Coupon onSubmit={this.onSubmit} isFetching={this.props.isFetching} />
         <TotalSection products={cartItems} cartItems={this.props.products} />
@@ -78,11 +87,13 @@ CartSection.propTypes = {
   removeItem: PropTypes.func,
   applyCoupon: PropTypes.func,
   isFetching: PropTypes.bool,
+  isFetchingCart: PropTypes.bool,
 };
 
 const mapStateToProps = state => ({
   products: state.cart.cartItems,
   isFetching: state.cart.fetching.fetchingCoupon,
+  isFetchingCart: state.cart.fetching.fetchingCart,
 });
 
 const mapDispatchToProps = dispatch => {

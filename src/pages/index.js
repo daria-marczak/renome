@@ -12,7 +12,6 @@ import Reservation from '../components/home/Reservation';
 import Services from '../components/home/Services';
 import BlogHome from '../components/home/Blog';
 import Contact from '../components/home/Contact';
-import Footer from '../components/common/Footer';
 
 const IndexPage = ({ data }) => (
   <HomeTemplate>
@@ -26,7 +25,6 @@ const IndexPage = ({ data }) => (
     <Services />
     <BlogHome />
     <Contact />
-    <Footer />
   </HomeTemplate>
 );
 

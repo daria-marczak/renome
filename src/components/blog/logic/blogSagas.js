@@ -30,12 +30,9 @@ function* createComment({ comment }) {
         type: blogActions.CREATE_COMMENT.SUCCESS,
         comment: commentContent,
       });
-    } else {
-      yield put({ type: blogActions.CREATE_COMMENT.FAILURE });
+      yield delay(2000);
       yield put({
-        type: appActions.TRIGGER_MESSAGE,
-        kind: 'error',
-        message: 'There was an error while adding your comment',
+        type: appActions.CLOSE_MESSAGE,
       });
     }
   } catch (error) {
@@ -44,6 +41,9 @@ function* createComment({ comment }) {
       type: appActions.TRIGGER_MESSAGE,
       kind: 'error',
       message: 'There was an error while adding your comment',
+    });
+    yield put({
+      type: appActions.CLOSE_MESSAGE,
     });
   }
 }

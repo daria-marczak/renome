@@ -42,6 +42,7 @@ const StyledFormWrapper = styled.div`
   @media (min-width: 768px) {
     flex-direction: row;
     justify-content: center;
+    align-items: flex-end;
   }
 `;
 
@@ -116,6 +117,7 @@ const ReservationForm = ({ data, isFetching, addReservation }) => {
             id="reservation"
             noBorder
             small
+            openDirection="up"
             numberOfMonths={1}
             phrases={SingleDatePickerPhrases}
             screenReaderInputMessage="Select date of your reservation"

@@ -41,7 +41,6 @@ const PostTemplate = ({
           photos={allFile.edges}
         />
       </main>
-      <Footer />
       {isSnackBarActive && (
         <Snackbar
           message={message}
@@ -50,6 +49,7 @@ const PostTemplate = ({
           closeMessage={closeMessage}
         />
       )}
+      <Footer />
     </>
   </ThemeProvider>
 );

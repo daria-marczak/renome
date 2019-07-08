@@ -60,6 +60,9 @@ export default (state = initialState.cart, action) => {
         cartItems: state.cartItems.filter(
           cartItem => cartItem.productId !== action.productId
         ),
+        fetching: {
+          fetchingCart: false,
+        },
       };
 
     default:

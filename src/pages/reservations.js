@@ -6,7 +6,6 @@ import { bindActionCreators } from 'redux';
 import HomeTemplate from '../templates/HomeTemplate';
 import SEO from '../components/seo';
 import Header from '../components/common/Header';
-import Footer from '../components/common/Footer';
 import Online from '../components/reservations/Online';
 import ReservationForm from '../components/reservations/ReservationForm';
 import * as reservationActions from '../components/reservations/logic/reservationActions';
@@ -21,7 +20,6 @@ const Reservations = ({ data, addReservation, isFetching }) => (
     />
     <Online />
     <ReservationForm addReservation={addReservation} isFetching={isFetching} />
-    <Footer />
   </HomeTemplate>
 );
 

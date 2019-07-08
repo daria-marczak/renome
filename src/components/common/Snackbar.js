@@ -17,6 +17,10 @@ const StyledWrapper = styled.div`
   background-color: ${({ theme, type }) =>
     type === 'error' ? theme.black : theme.primary};
   color: ${({ theme }) => theme.white};
+
+  @media (min-width: 1200px) {
+    width: 50%;
+  }
 `;
 
 const StyledClose = styled.div`

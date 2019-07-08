@@ -6,7 +6,6 @@ import SEO from '../components/seo';
 import Header from '../components/common/Header';
 import Discover from '../components/menu/Discover';
 import Menu from '../components/menu/Menu';
-import Footer from '../components/common/Footer';
 
 const MenuPage = ({ data }) => (
   <HomeTemplate>
@@ -18,7 +17,6 @@ const MenuPage = ({ data }) => (
     />
     <Discover />
     <Menu />
-    <Footer />
   </HomeTemplate>
 );
 

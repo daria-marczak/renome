@@ -5,14 +5,12 @@ import HomeTemplate from '../templates/HomeTemplate';
 import SEO from '../components/seo';
 import Header from '../components/common/Header';
 import CheckoutSection from '../components/checkout/CheckoutSection';
-import Footer from '../components/common/Footer';
 
 const Checkout = ({ data }) => (
   <HomeTemplate>
     <SEO title="Checkout" keywords={[`renome`, `restaurant`]} />
     <Header photo={data.menuHeader} section="checkout" title="our products" />
     <CheckoutSection allProducts={data.allMarkdownRemark.edges} />
-    <Footer />
   </HomeTemplate>
 );
 

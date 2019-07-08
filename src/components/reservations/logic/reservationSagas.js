@@ -27,13 +27,10 @@ function* addReservation({ date, time, people }) {
       yield put({
         type: reservationActions.ADD_RESERVATION.SUCCESS,
       });
-    } else {
+      yield delay(2000);
       yield put({
-        type: appActions.TRIGGER_MESSAGE,
-        kind: 'error',
-        message: 'There was an error while making a reservation',
+        type: appActions.CLOSE_MESSAGE,
       });
-      yield put({ type: reservationActions.ADD_RESERVATION.FAILURE });
     }
   } catch (error) {
     yield put({
@@ -42,5 +39,9 @@ function* addReservation({ date, time, people }) {
       message: 'There was an error while making a reservation',
     });
     yield put({ type: reservationActions.ADD_RESERVATION.FAILURE });
+    yield delay(2000);
+    yield put({
+      type: appActions.CLOSE_MESSAGE,
+    });
   }
 }
