@@ -7,7 +7,6 @@ import Header from '../components/common/Header';
 import History from '../components/about/History';
 import Goals from '../components/about/Goals';
 import MoreAbout from '../components/about/MoreAbout';
-import Footer from '../components/common/Footer';
 
 const AboutPage = ({ data }) => (
   <HomeTemplate>
@@ -20,7 +19,6 @@ const AboutPage = ({ data }) => (
     <History />
     <Goals />
     <MoreAbout />
-    <Footer />
   </HomeTemplate>
 );
 

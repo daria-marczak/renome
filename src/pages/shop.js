@@ -5,7 +5,6 @@ import HomeTemplate from '../templates/HomeTemplate';
 import SEO from '../components/seo';
 import Header from '../components/common/Header';
 import ShopSection from '../components/shop/ShopSection';
-import Footer from '../components/common/Footer';
 
 const ShopPage = ({ data }) => (
   <HomeTemplate>
@@ -20,7 +19,6 @@ const ShopPage = ({ data }) => (
         product => product.node.frontmatter.type === 'shop'
       )}
     />
-    <Footer />
   </HomeTemplate>
 );
 

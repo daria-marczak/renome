@@ -8,10 +8,7 @@ const initialState = {
   },
   cart: {
     fetching: {},
-    cartItems: [
-      { quantity: 1, productId: '123123123124' },
-      { quantity: 1, productId: '123123123128964534863' },
-    ],
+    cartItems: [],
   },
   reservation: {
     fetching: {},

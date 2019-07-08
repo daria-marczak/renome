@@ -26,13 +26,10 @@ function* addToCart({ quantity, itemId }) {
         type: cartActions.ADD_TO_CART.SUCCESS,
         cartItem,
       });
-    } else {
+      yield delay(2000);
       yield put({
-        type: appActions.TRIGGER_MESSAGE,
-        kind: 'error',
-        message: 'There was an error while adding to cart',
+        type: appActions.CLOSE_MESSAGE,
       });
-      yield put({ type: cartActions.ADD_TO_CART.FAILURE });
     }
   } catch (error) {
     yield put({
@@ -41,6 +38,10 @@ function* addToCart({ quantity, itemId }) {
       message: 'There was an error while adding to cart',
     });
     yield put({ type: cartActions.ADD_TO_CART.FAILURE });
+    yield delay(2000);
+    yield put({
+      type: appActions.CLOSE_MESSAGE,
+    });
   }
 }
 
@@ -61,13 +62,10 @@ function* removeItem({ productId }) {
         type: cartActions.REMOVE_ITEM.SUCCESS,
         productId,
       });
-    } else {
+      yield delay(2000);
       yield put({
-        type: appActions.TRIGGER_MESSAGE,
-        kind: 'error',
-        message: 'There was an error while removing from cart',
+        type: appActions.CLOSE_MESSAGE,
       });
-      yield put({ type: cartActions.REMOVE_ITEM.FAILURE });
     }
   } catch (error) {
     yield put({
@@ -76,6 +74,10 @@ function* removeItem({ productId }) {
       message: 'There was an error while removing from cart',
     });
     yield put({ type: cartActions.REMOVE_ITEM.FAILURE });
+    yield delay(2000);
+    yield put({
+      type: appActions.CLOSE_MESSAGE,
+    });
   }
 }
 
@@ -95,13 +97,10 @@ function* applyCoupon({ applyCoupon }) {
         kind: 'success',
         message: 'Coupon successfully applied',
       });
-    } else {
+      yield delay(2000);
       yield put({
-        type: appActions.TRIGGER_MESSAGE,
-        kind: 'success',
-        message: 'There was an error while adding coupon',
+        type: appActions.CLOSE_MESSAGE,
       });
-      yield put({ type: cartActions.APPLY_COUPON.FAILURE });
     }
   } catch (error) {
     yield put({
@@ -110,5 +109,9 @@ function* applyCoupon({ applyCoupon }) {
       message: 'There was an error while adding coupon',
     });
     yield put({ type: cartActions.APPLY_COUPON.FAILURE });
+    yield delay(2000);
+    yield put({
+      type: appActions.CLOSE_MESSAGE,
+    });
   }
 }

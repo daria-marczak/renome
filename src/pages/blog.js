@@ -5,7 +5,6 @@ import HomeTemplate from '../templates/HomeTemplate';
 import SEO from '../components/seo';
 import Header from '../components/common/Header';
 import BlogSection from '../components/blog/BlogSection';
-import Footer from '../components/common/Footer';
 
 const Blog = ({ data }) => (
   <HomeTemplate>
@@ -16,7 +15,6 @@ const Blog = ({ data }) => (
       title="news, recipes and much more"
     />
     <BlogSection allPosts={data.allMarkdownRemark} />
-    <Footer />
   </HomeTemplate>
 );
 

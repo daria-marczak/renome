@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
 import SEO from '../components/seo';
 import Snackbar from '../components/common/Snackbar';
+import Footer from '../components/common/Footer';
 import GlobalStyles from '../assets/styles/GlobalStyles';
 import { theme } from '../assets/styles/theme';
 import * as appActions from '../appLogic/appActions';
@@ -29,6 +30,7 @@ const HomeTemplate = ({
           closeMessage={closeMessage}
         />
       )}
+      <Footer />
     </>
   </ThemeProvider>
 );

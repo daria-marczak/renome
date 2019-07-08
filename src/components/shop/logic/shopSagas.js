@@ -30,13 +30,10 @@ function* addReview({ reviewContent }) {
         type: shopActions.ADD_REVIEW.SUCCESS,
         comment: commentContent,
       });
-    } else {
+      yield delay(2000);
       yield put({
-        type: appActions.TRIGGER_MESSAGE,
-        kind: 'success',
-        message: 'Something went wrong',
+        type: appActions.CLOSE_MESSAGE,
       });
-      yield put({ type: shopActions.ADD_REVIEW.FAILURE });
     }
   } catch (error) {
     yield put({
@@ -45,5 +42,9 @@ function* addReview({ reviewContent }) {
       message: 'Something went wrong',
     });
     yield put({ type: shopActions.ADD_REVIEW.FAILURE });
+    yield delay(2000);
+    yield put({
+      type: appActions.CLOSE_MESSAGE,
+    });
   }
 }

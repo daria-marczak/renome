@@ -6,7 +6,6 @@ import SEO from '../components/seo';
 import Header from '../components/common/Header';
 import ContactSection from '../components/contact/ContactSection';
 import ContactInfo from '../components/contact/ContactInfo';
-import Footer from '../components/common/Footer';
 import BackgroundImage from '../components/common/BackgroundImage';
 
 const ContactPage = ({ data }) => (
@@ -20,7 +19,6 @@ const ContactPage = ({ data }) => (
     <ContactSection />
     <ContactInfo />
     <BackgroundImage photo={data.map} />
-    <Footer />
   </HomeTemplate>
 );
 

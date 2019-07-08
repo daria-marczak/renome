@@ -5,14 +5,12 @@ import HomeTemplate from '../templates/HomeTemplate';
 import SEO from '../components/seo';
 import Header from '../components/common/Header';
 import CartSection from '../components/cart/CartSection';
-import Footer from '../components/common/Footer';
 
 const Cart = ({ data }) => (
   <HomeTemplate>
     <SEO title="Cart" keywords={[`renome`, `restaurant`]} />
     <Header photo={data.menuHeader} section="your" title="shopping cart" />
     <CartSection allProducts={data.allMarkdownRemark.edges} />
-    <Footer />
   </HomeTemplate>
 );
 

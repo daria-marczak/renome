@@ -4,6 +4,11 @@ import styled from 'styled-components';
 import { StyledButton } from '../common/common';
 import Loader from '../common/Loader';
 
+const StyledForm = styled.form`
+  display: flex;
+  width: 50%;
+`;
+
 const StyledInput = styled.input`
   border: none;
   font-family: ${({ theme }) => theme.font.family.montserrat};
@@ -12,7 +17,8 @@ const StyledInput = styled.input`
   width: 100%;
 
   @media (min-width: 1200px) {
-    width: 50%;
+    width: 35%;
+    margin-right: auto;
   }
 `;
 
@@ -27,7 +33,7 @@ const Coupon = ({ onSubmit, isFetching }) => {
   };
 
   return (
-    <form onSubmit={event => handleSubmit(event)}>
+    <StyledForm onSubmit={event => handleSubmit(event)}>
       <StyledInput
         type="text"
         placeholder="Coupon code"
@@ -40,7 +46,7 @@ const Coupon = ({ onSubmit, isFetching }) => {
         {isFetching && <Loader />}
         {!isFetching && 'Apply coupon'}
       </StyledButton>
-    </form>
+    </StyledForm>
   );
 };
 
