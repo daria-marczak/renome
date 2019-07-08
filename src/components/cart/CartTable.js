@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import formatPrice from '../../utils/formatPrice';
+import Loader from '../common/Loader';
 
 const StyledWrapper = styled.article`
   margin: 0 auto;
@@ -18,6 +19,7 @@ const StyledTable = styled.table`
 const StyledTableRow = styled.tr`
   border-bottom: 1px solid ${({ theme }) => theme.lightGray};
   margin-bottom: 5px;
+  min-height: 40px;
 `;
 
 const StyledTableCell = styled.td`
@@ -40,7 +42,30 @@ const StyledHeadTableCell = styled.td`
   }
 `;
 
-const CartTable = ({ products, cartItems, removeItem }) => {
+const StyledCross = styled.div`
+  width: 40px;
+  height: 40px;
+  margin-left: auto;
+
+  &:before,
+  &:after {
+    position: absolute;
+    content: '';
+    width: 2px;
+    height: 25px;
+    background-color: ${({ theme }) => theme.black};
+  }
+
+  &:before {
+    transform: rotate(45deg);
+  }
+
+  &:after {
+    transform: rotate(-45deg);
+  }
+`;
+
+const CartTable = ({ products, cartItems, removeItem, isFetching }) => {
   return (
     <StyledWrapper>
       <StyledTable>
@@ -82,7 +107,7 @@ const CartTable = ({ products, cartItems, removeItem }) => {
                 onClick={() => removeItem(product.node.frontmatter.id)}
                 clickable
               >
-                &#11199;
+                {isFetching ? <Loader /> : <StyledCross />}
               </StyledTableCell>
             </StyledTableRow>
           ))}
@@ -96,6 +121,7 @@ CartTable.propTypes = {
   products: PropTypes.arrayOf(PropTypes.shape()),
   cartItems: PropTypes.arrayOf(PropTypes.shape()),
   removeItem: PropTypes.func,
+  isFetching: PropTypes.bool,
 };
 
 export default CartTable;

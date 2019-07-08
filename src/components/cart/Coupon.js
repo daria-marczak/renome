@@ -5,8 +5,11 @@ import { StyledButton } from '../common/common';
 import Loader from '../common/Loader';
 
 const StyledForm = styled.form`
-  display: flex;
-  width: 50%;
+  @media (min-width: 1200px) {
+    display: flex;
+    align-items: center;
+    width: 50%;
+  }
 `;
 
 const StyledInput = styled.input`
@@ -15,6 +18,7 @@ const StyledInput = styled.input`
   padding: 15px 10px;
   border-bottom: 3px solid ${({ theme }) => theme.lightGray};
   width: 100%;
+  height: 50%;
 
   @media (min-width: 1200px) {
     width: 35%;
