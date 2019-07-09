@@ -47,7 +47,7 @@ class ReviewForm extends Component {
     this.state = {
       author: '',
       email: '',
-      rating: 1,
+      rating: '',
       message: '',
     };
   }
@@ -96,6 +96,7 @@ class ReviewForm extends Component {
           min={1}
           max={5}
           value={rating}
+          placeholder="Rating"
           onChange={event => this.onChange(event)}
           name="rating"
         />

@@ -47,9 +47,9 @@ const History = ({
 };
 
 History.propTypes = {
-  data: PropTypes.objectOf(
+  data: PropTypes.shape(
     PropTypes.shape({
-      allFile: PropTypes.objectOf(
+      allFile: PropTypes.shape(
         PropTypes.shape({
           edges: PropTypes.array,
         })

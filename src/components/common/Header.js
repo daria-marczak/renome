@@ -38,7 +38,7 @@ const StyledContainer = styled.div`
 
 const StyledBar = styled.nav`
   background-color: white;
-  height: 86px;
+  height: 50px;
   position: fixed;
   top: 0;
   width: 100%;
@@ -86,6 +86,7 @@ const StyledHero = styled(Img)`
   width: 100%;
   z-index: -1;
   height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
 
   & > img {
     object-fit: cover !important;
@@ -93,22 +94,26 @@ const StyledHero = styled(Img)`
   }
 `;
 
+const StyledFilter = styled.div`
+  background-color: #162642;
+  opacity: 0.6;
+  width: 100%;
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+  position: absolute;
+  bottom: 0;
+`;
+
 const StyledLink = styled(Link)`
   text-decoration: none;
   color: ${({ theme }) => theme.black};
 `;
 
-const StyledFilter = styled.div`
-  background-color: #162642;
-  opacity: 0.6;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  bottom: 0;
-`;
-
 const Header = ({ cartItems, photo, title, section }) => {
   const [isMenuOpen, toggleMenu] = useState(false);
+
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
 
   const toggleMobileNavigation = () => {
     toggleMenu(!isMenuOpen);
@@ -136,7 +141,7 @@ const Header = ({ cartItems, photo, title, section }) => {
         </StyledContainer>
       </StyledBar>
       <StyledHeader>
-        <MobileMenu isOpen={isMenuOpen} aria-hidden={!isMenuOpen} />
+        <MobileMenu isOpen={isMenuOpen} />
         <StyledHero fluid={photo.childImageSharp.fluid} role="presentation" />
         <StyledFilter />
         <StyledParagraph>
