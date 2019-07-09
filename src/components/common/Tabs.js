@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const StyledTabContainer = styled.div`
   display: flex;
-  min-width: 375px;
+  max-width: 375px;
   justify-self: center;
   border-bottom: 2px solid ${({ theme }) => theme.lightGray};
 

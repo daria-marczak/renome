@@ -15,6 +15,7 @@ export default ({ element }) => {
   const composeEnhancers = windowExist
     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
     : compose;
+
   const enhancer = composeEnhancers(applyMiddleware(...middleware));
   const store = createStore(rootReducer, {}, enhancer);
 

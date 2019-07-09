@@ -61,8 +61,14 @@ const Carousel = ({ data }) => {
     { day: 'thursday', dish: 'pumpkin spicy pie', price: '$7.75' },
   ];
 
-  const specificDay = carouselData.find(data => data.day === node.name);
+  const setCarousel = index => {
+    if (index - 1 < 0) {
+      setIndex(0);
+    }
 
+    setIndex(index);
+  };
+  const specificDay = carouselData.find(data => data.day === node.name);
   return (
     <StyledWrapper>
       <Img fluid={node.childImageSharp.fluid} key={node.id} alt={node.name} />
@@ -75,7 +81,7 @@ const Carousel = ({ data }) => {
               backgroundColor: node.name === day.day ? 'white' : 'transparent',
             }}
             type="button"
-            onClick={() => setIndex(index)}
+            onClick={() => setCarousel(index)}
           />
         ))}
       </StyledButtonsContainer>

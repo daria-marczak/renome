@@ -20,8 +20,12 @@ const StyledOpeningHoursBox = styled.div`
   justify-content: center;
   align-items: space-around;
   text-transform: uppercase;
-  width: 360px;
+  width: 100%;
   height: 320px;
+
+  @media (min-width: 1200px) {
+    width: 320px;
+  }
 `;
 
 const StyledStrongParagraph = styled(StyledParagraph)`
@@ -70,9 +74,9 @@ const MoreAbout = ({
 };
 
 MoreAbout.propTypes = {
-  data: PropTypes.objectOf(
+  data: PropTypes.shape(
     PropTypes.shape({
-      allFile: PropTypes.objectOf(
+      allFile: PropTypes.shape(
         PropTypes.shape({
           edges: PropTypes.array,
         })

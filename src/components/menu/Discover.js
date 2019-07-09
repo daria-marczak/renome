@@ -29,7 +29,7 @@ const StyledSwitched = styled(StyledColumn)`
   }
 `;
 
-const MenuSection = ({
+const Discover = ({
   data: {
     allFile: { edges },
   },
@@ -61,16 +61,24 @@ const MenuSection = ({
   );
 };
 
-MenuSection.propTypes = {
-  data: PropTypes.objectOf(
+Discover.propTypes = {
+  data: PropTypes.shape(
     PropTypes.shape({
-      allFile: PropTypes.objectOf(
+      allFile: PropTypes.shape(
         PropTypes.shape({
           edges: PropTypes.array,
         })
       ),
     })
-  ).isRequired,
+  ),
+};
+
+Discover.defaultProps = {
+  data: {
+    allFile: {
+      edges: [],
+    },
+  },
 };
 
 export default props => (
@@ -92,6 +100,6 @@ export default props => (
         }
       }
     `}
-    render={data => <MenuSection data={data} {...props} />}
+    render={data => <Discover data={data} {...props} />}
   />
 );

@@ -10,8 +10,6 @@ import OrderDetails from './OrderDetails';
 import PaymentOptions from './PaymentOptions';
 
 const StyledWrapper = styled.div`
-  width: 80%;
-  margin: 0 auto;
   margin-bottom: 40px;
 `;
 
