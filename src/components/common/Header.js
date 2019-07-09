@@ -112,8 +112,12 @@ const StyledLink = styled(Link)`
 const Header = ({ cartItems, photo, title, section }) => {
   const [isMenuOpen, toggleMenu] = useState(false);
 
-  let vh = window.innerHeight * 0.01;
-  document.documentElement.style.setProperty('--vh', `${vh}px`);
+  const windowExist = typeof window === 'object';
+
+  if (windowExist) {
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  }
 
   const toggleMobileNavigation = () => {
     toggleMenu(!isMenuOpen);
