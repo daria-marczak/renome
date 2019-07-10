@@ -27,6 +27,10 @@ const StyledSection = styled.section`
   @media (min-width: 1281px) {
     height: 60vh;
   }
+
+  @media (max-height: 900px) {
+    height: 80vh;
+  }
 `;
 
 const StyledCarouselColumn = styled(StyledColumn)`

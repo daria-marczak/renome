@@ -69,7 +69,7 @@ export default props => (
               name
               childImageSharp {
                 fluid(quality: 90) {
-                  ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                  ...GatsbyImageSharpFluid_noBase64
                 }
               }
             }
