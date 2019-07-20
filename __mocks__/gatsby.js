@@ -1,5 +1,4 @@
 const React = require('react');
-const jest = require('jest');
 
 const gatsby = jest.requireActual('gatsby');
 
