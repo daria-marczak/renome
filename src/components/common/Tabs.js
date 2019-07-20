@@ -32,12 +32,13 @@ const StyledTabLink = styled.div`
 
 const Tabs = ({ tabs, activeTab, setTab }) => {
   return (
-    <StyledTabContainer>
+    <StyledTabContainer data-testid="tabsComponent">
       {tabs.map(tab => (
         <StyledTabLink
           key={tab}
           onClick={() => setTab(tab)}
           isActive={activeTab === tab}
+          data-testid={activeTab === tab ? 'activeTab' : ''}
         >
           {tab}
         </StyledTabLink>
@@ -49,7 +50,7 @@ const Tabs = ({ tabs, activeTab, setTab }) => {
 Tabs.propTypes = {
   tabs: PropTypes.arrayOf(PropTypes.string).isRequired,
   activeTab: PropTypes.string.isRequired,
-  setTab: PropTypes.func.isRequired,
+  setTab: PropTypes.func,
 };
 
 export default Tabs;
