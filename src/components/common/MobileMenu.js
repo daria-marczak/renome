@@ -40,7 +40,7 @@ const pages = [
 const linkAddres = item => (item === 'home' ? '/' : `/${item}`);
 
 const MobileMenu = ({ isOpen }) => (
-  <StyledList isOpen={isOpen}>
+  <StyledList isOpen={isOpen} data-testid="mobileMenu">
     {pages.map(item => (
       <StyledLink to={`${linkAddres(item)}`} key={item}>
         {item}

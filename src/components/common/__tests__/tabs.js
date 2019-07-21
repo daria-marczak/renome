@@ -8,7 +8,7 @@ jest.mock('./tabs');
 const setTab = jest.fn;
 
 describe('Tabs', () => {
-  const { getByTestId, container } = render(
+  const { container } = render(
     <Tabs
       theme={theme}
       tabs={tabs.tabs}
@@ -22,6 +22,27 @@ describe('Tabs', () => {
   });
 
   it('has active tab with correct text', () => {
-    expect(getByTestId('activeTab').innerHTML).toBe('Breakfast');
+    const { getByTestId } = render(
+      <Tabs
+        theme={theme}
+        tabs={tabs.tabs}
+        activeTab="Breakfast"
+        setTab={setTab}
+      />
+    );
+    expect(getByTestId('activeTab')).toHaveTextContent('Breakfast');
+  });
+
+  it('has active tab with correct styling', () => {
+    const { getByTestId } = render(
+      <Tabs
+        theme={theme}
+        tabs={tabs.tabs}
+        activeTab="Breakfast"
+        setTab={setTab}
+      />
+    );
+
+    expect(getByTestId('activeTab')).toHaveStyle('border-bottom: 5px solid');
   });
 });
