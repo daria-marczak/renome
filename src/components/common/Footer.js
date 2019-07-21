@@ -62,7 +62,7 @@ const StyledColumn = styled.div`
 `;
 
 const Footer = () => (
-  <StyledFooter>
+  <StyledFooter data-testid="footer">
     <StyledFollowColumn>
       <StyledParagraph>Follow us:</StyledParagraph>
       <StyledContainer>

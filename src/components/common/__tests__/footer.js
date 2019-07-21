@@ -1,11 +1,19 @@
 import React from 'react';
-import ShallowRenderer from 'react-test-renderer/shallow';
+import { ThemeProvider } from 'styled-components';
+import { render } from '@testing-library/react';
 import Footer from '../Footer';
-import theme from '../../../assets/styles/theme';
+import { theme } from '../../../assets/styles/theme';
+
+const renderComponent = ({ theme }) =>
+  render(
+    <ThemeProvider theme={theme}>
+      <Footer />
+    </ThemeProvider>
+  );
 
 describe('Footer', () => {
   it('renders correctly', () => {
-    const tree = new ShallowRenderer(<Footer theme={theme} />);
-    expect(tree).toMatchSnapshot();
+    const { getByTestId } = renderComponent({ theme });
+    expect(getByTestId('footer')).toBeInTheDocument();
   });
 });
