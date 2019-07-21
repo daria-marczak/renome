@@ -58,7 +58,7 @@ const StyledInput = styled.input`
 
 const Details = ({ createAccount, password, shippingAddress, onChange }) => {
   return (
-    <Wrapper>
+    <Wrapper data-testid="checkoutDetails">
       <Label htmlFor="account" checked={createAccount}>
         <Input
           type="checkbox"

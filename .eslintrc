@@ -7,6 +7,7 @@
       "prettier",
       "prettier/react"
     ],
+    "plugins": ["jest"],
     "globals": {
       "window": true,
       "document": true
@@ -24,6 +25,15 @@
       "react/display-name": false,
       "import/prefer-default-export": 0,
       "react/destructuring-assignment": false,
-      "react/require-default-props": false
+      "react/require-default-props": false,
+      "jest/no-disabled-tests": "warn",
+      "jest/no-focused-tests": "error",
+      "jest/no-identical-title": "error",
+      "jest/prefer-to-have-length": "warn",
+      "jest/valid-expect": "error",
+      "import/no-extraneous-dependencies": ["error", {"devDependencies": true}]
+    },
+    "env": {
+      "jest/globals": true
     }
 }

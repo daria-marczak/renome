@@ -99,7 +99,7 @@ class AddressForm extends Component {
     const { type, shouldShowSubmitButton, isFetching } = this.props;
 
     return (
-      <StyledFormWrapper>
+      <StyledFormWrapper data-testid="checkoutAddressForm">
         <StyledForm onSubmit={event => this.handleSubmit(event)}>
           <StyledHeading>{type}</StyledHeading>
           <StyledLabel
