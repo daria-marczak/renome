@@ -55,6 +55,7 @@ const Snackbar = ({ message, type, isActive, closeMessage }) => (
     isOpen={isActive}
     role="alert"
     aria-live="assertive"
+    data-testid="snackbar"
   >
     {message}
     <StyledClose onClick={closeMessage} />
